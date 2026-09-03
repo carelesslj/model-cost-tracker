@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-03T15:00:03+08:00",
+ "generated_at": "2026-09-03T07:25:40+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -207,11 +207,6 @@
      "source": "manual_only",
      "error": "免费平台无余额接口"
     },
-    "DeepSeek": {
-     "value": 56.42,
-     "source": "auto",
-     "first_value": 56.49
-    },
     "MiniMax": {
      "value": -0.0,
      "source": "auto",
@@ -222,6 +217,21 @@
       "owed": 0.0
      },
      "first_value": -0.0
+    },
+    "百炼": {
+     "value": 206.98,
+     "source": "auto",
+     "first_value": 206.98
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "DeepSeek": {
+     "value": 56.42,
+     "source": "auto",
+     "first_value": 56.49
     },
     "Kimi": {
      "value": 14.93,
@@ -236,48 +246,23 @@
      "value": 70.61,
      "source": "auto",
      "first_value": 70.61
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
-    "百炼": {
-     "value": 206.98,
-     "source": "auto",
-     "first_value": 206.98
     }
    },
    "plans": {
     "Token Plan": {
-     "monthly_pct": 28.2,
-     "resets_at": "2026-09-08T09:02:00+08:00",
-     "source": "auto",
-     "first_pct": 25.3
+     "monthly_pct": null,
+     "source": "no_credentials",
+     "error": "未抓取百炼控制台会话"
     },
     "OpenCode Go": {
-     "rolling": {
-      "percent": 2,
-      "resets_at": "2026-09-03T09:48:36.709Z",
-      "status": "ok",
-      "first_percent": 1
-     },
-     "weekly": {
-      "percent": 58,
-      "resets_at": "2026-09-07T00:00:00.709Z",
-      "status": "ok",
-      "first_percent": 47
-     },
-     "monthly": {
-      "percent": 90,
-      "resets_at": "2026-09-17T07:40:12.709Z",
-      "status": "ok",
-      "first_percent": 84
-     },
-     "source": "auto"
+     "rolling": null,
+     "weekly": null,
+     "monthly": null,
+     "source": "error",
+     "error": "401 Client Error: Unauthorized for url: https://opencode.ai/zen/go/v1/usage"
     }
    },
-   "fetched_at": "15:00:03"
+   "fetched_at": "07:25:40"
   }
  }
 }
