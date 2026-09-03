@@ -253,26 +253,26 @@
      "monthly_pct": 28.2,
      "resets_at": "2026-09-08T01:02:00+00:00",
      "source": "auto",
-     "first_pct": 28.2
+     "first_pct": 25.3
     },
     "OpenCode Go": {
      "rolling": {
       "percent": 4,
       "resets_at": "2026-09-03T09:48:36.627Z",
       "status": "ok",
-      "first_percent": 4
+      "first_percent": 1
      },
      "weekly": {
       "percent": 59,
       "resets_at": "2026-09-07T00:00:00.627Z",
       "status": "ok",
-      "first_percent": 59
+      "first_percent": 47
      },
      "monthly": {
       "percent": 90,
       "resets_at": "2026-09-17T07:40:12.627Z",
       "status": "ok",
-      "first_percent": 90
+      "first_percent": 84
      },
      "source": "auto"
     }
