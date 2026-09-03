@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-03 12:23:30",
+ "updated_at": "2026-09-03 16:47:01",
  "go_page_date": "2026年9月3日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 1.0423,
-    "output": 2.0845,
-    "cache_read": 0.0869
+    "input": 1.036,
+    "output": 2.072,
+    "cache_read": 0.0863
    },
-   "in_diff_pct": -36.7
+   "in_diff_pct": -36.3
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 1.0423,
-    "output": 2.0845,
-    "cache_read": 0.0869
+    "input": 1.036,
+    "output": 2.072,
+    "cache_read": 0.0863
    },
-   "in_diff_pct": 26.6
+   "in_diff_pct": 27.4
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0886,
-    "output": 0.1772,
-    "cache_read": 0.0177
+    "input": 0.084,
+    "output": 0.168,
+    "cache_read": 0.0168
    },
-   "in_diff_pct": 148.3
+   "in_diff_pct": 161.9
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0886,
-    "output": 0.1772,
-    "cache_read": 0.0177
+    "input": 0.084,
+    "output": 0.168,
+    "cache_read": 0.0168
    },
-   "in_diff_pct": 396.6
+   "in_diff_pct": 423.8
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   }
  ],
  "requests": [
