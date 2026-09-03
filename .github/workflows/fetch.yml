@@ -1,0 +1,65 @@
+name: Fetch Balances
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:       # Manual trigger
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install requests beautifulsoup4
+
+      - name: Inject secrets
+        run: |
+          python - <<'EOF'
+          import json, os
+          secrets = {
+            'deepseek': {'primary': os.environ.get('DEEPSEEK_KEY', '')},
+            'zhipu': {'primary': os.environ.get('ZHIPU_KEY', '')},
+            'kimi': {'primary': os.environ.get('KIMI_KEY', '')},
+            'opencode_go': {'primary': os.environ.get('OPENCODE_GO_KEY', '')},
+            'aliyun': {
+              'access_key_id': os.environ.get('ALIYUN_AK', ''),
+              'access_key_secret': os.environ.get('ALIYUN_SK', '')
+            },
+            'volcano': {
+              'access_key_id': os.environ.get('VOLCANO_AK', ''),
+              'access_key_secret': os.environ.get('VOLCANO_SK', '')
+            },
+            'minimax': {'group_id': os.environ.get('MINIMAX_GID', '')},
+            'minimax_console': {
+              'cookie': os.environ.get('MINIMAX_COOKIE', ''),
+              'x_group_id': os.environ.get('MINIMAX_GID', '')
+            },
+            'aliyun_console': {
+              'cookie': os.environ.get('TP_COOKIE', ''),
+              'sec_token': os.environ.get('TP_SEC', ''),
+              'switch_agent': 11526723
+            }
+          }
+          os.makedirs('.secrets', exist_ok=True)
+          json.dump(secrets, open('.secrets/model_keys.json', 'w'))
+          EOF
+
+      - name: Fetch balances
+        run: python fetch_balances.py
+
+      - name: Fetch prices
+        run: python fetch_prices.py || true
+
+      - name: Commit and push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add balances.json data.js prices.js prices.json fetch_log.txt
+          git diff --cached --quiet || git commit -m "Auto-update: $(date -u +%Y-%m-%dT%H:%M)"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
