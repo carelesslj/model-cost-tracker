@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>模型费用仪表盘</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<script src="data.js"></script>
+<script src="prices.js"></script>
+<style>
+:root{
+  --bg:#070a12; --bg2:#0b0f1a;
+  --panel:rgba(20,27,42,.55); --panel2:rgba(30,39,58,.62);
+  --line:rgba(120,140,180,.14);
+  --text:#e8eef9; --muted:#93a1bd; --dim:#64708a;
+  --green:#34d399; --red:#ff6b6b; --amber:#fbbf24; --blue:#5eb3ff;
+  --violet:#a78bfa; --cyan:#22d3ee; --pink:#f472b6;
+  --font-ui:"Sora","HarmonyOS Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono","JetBrains Mono","SF Mono",ui-monospace,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:
+    radial-gradient(1100px 680px at 82% -12%, rgba(34,211,238,.12), transparent 60%),
+    radial-gradient(900px 620px at -5% 108%, rgba(167,139,250,.12), transparent 55%),
+    linear-gradient(180deg,#070a12 0%,#0a0e18 55%,#070a12 100%);
+  background-attachment:fixed;
+  color:var(--text);font-family:var(--font-ui);padding:28px 32px 60px;min-height:100vh;position:relative;letter-spacing:.2px}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(120,140,180,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(120,140,180,.045) 1px,transparent 1px);
+  background-size:42px 42px;
+  -webkit-mask-image:radial-gradient(circle at 50% 22%,#000 0%,transparent 88%);
+  mask-image:radial-gradient(circle at 50% 22%,#000 0%,transparent 88%)}
+.wrap{max-width:1320px;margin:0 auto}
+header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:24px}
+h1{font-size:27px;font-weight:800;letter-spacing:.5px;font-family:var(--font-ui);
+  background:linear-gradient(92deg,#e8eef9,#9fe9ff 60%,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h1 .sub{font-size:13px;color:var(--muted);font-weight:400;margin-left:12px;-webkit-text-fill-color:var(--muted)}
+.hbtns{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{padding:9px 18px;border-radius:10px;border:1px solid var(--line);background:rgba(30,39,58,.6);color:var(--text);font-size:14px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;backdrop-filter:blur(6px)}
+.btn:hover{border-color:var(--cyan);transform:translateY(-1px);box-shadow:0 4px 16px rgba(34,211,238,.2)}
+.btn.primary{background:linear-gradient(135deg,#22d3ee,#5b8cff);border:none;color:#06121f;font-weight:700;box-shadow:0 4px 18px rgba(34,211,238,.35)}
+.btn.primary:hover{box-shadow:0 6px 22px rgba(34,211,238,.5)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.conn{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--dim)}
+.dot.on{background:var(--green);box-shadow:0 0 8px var(--green)}
+.dot.off{background:var(--amber);box-shadow:0 0 8px var(--amber)}
+.sec{display:flex;align-items:baseline;gap:12px;margin:32px 0 16px;font-size:16.5px;font-weight:800;letter-spacing:1px;border-left:3px solid var(--acc,var(--blue));padding-left:13px;color:#dbe6f7}
+.sec .sechint{font-size:12px;color:var(--dim);font-weight:400;letter-spacing:.2px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:8px}
+.card{background:var(--panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;box-shadow:0 8px 26px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.05)}
+.card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--acc,var(--blue)),transparent);opacity:.9}
+.card .k{font-size:12.5px;color:var(--muted);margin-bottom:8px;font-weight:600;letter-spacing:.4px}
+.card .v{font-family:var(--font-mono);font-size:25px;font-weight:600;letter-spacing:.5px;text-shadow:0 0 16px rgba(94,179,255,.22)}
+.card .d{font-size:12px;color:var(--dim);margin-top:7px;min-height:16px;line-height:1.5}
+.card .u{font-size:12.5px;margin-top:5px;font-weight:600;font-family:var(--font-mono)}
+.panel{background:var(--panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:22px;box-shadow:0 8px 26px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04)}
+.panel h2{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;letter-spacing:.3px}
+.panel h2 .hint{font-size:12px;color:var(--dim);font-weight:400;margin-left:auto}
+svg{display:block;width:100%;height:auto}
+#consChart{display:flex;justify-content:center}
+#consChart svg{width:100%;max-width:560px;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
+.pcard{background:var(--panel2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.pcard .pt{font-size:14px;font-weight:700;margin-bottom:14px;letter-spacing:.3px}
+.pcard .pt span{float:right;color:var(--muted);font-weight:400;font-size:12px}
+.rings{display:flex;justify-content:space-around;gap:6px;flex-wrap:wrap}
+.ring{text-align:center}
+.ring .rl{font-size:12.5px;color:var(--muted);margin-top:4px;font-weight:600}
+.ring .rr{font-size:11.5px;color:var(--dim);margin-top:2px;min-height:16px;font-family:var(--font-mono)}
+.pinfo{font-size:12px;color:var(--dim);margin-top:12px;line-height:1.7}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:rgba(10,14,24,.82);backdrop-filter:blur(8px);color:var(--muted);font-weight:700;padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);position:sticky;top:0;font-size:12.5px;letter-spacing:.3px}
+th:first-child,td:first-child{text-align:left}
+td{padding:8px 10px;text-align:right;border-bottom:1px solid rgba(120,140,180,.08);font-family:var(--font-mono)}
+tr:hover td{background:rgba(94,179,255,.06)}
+.dn{color:var(--red);font-weight:600}.zero{color:var(--dim)}
+.use{color:var(--amber);font-weight:700}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:8px;margin-left:6px;vertical-align:1px;font-family:var(--font-ui)}
+.tag.manual{background:rgba(251,191,36,.15);color:var(--amber)}
+.tag.err{background:rgba(248,113,113,.12);color:var(--red)}
+.tag.msonly{background:rgba(148,163,184,.14);color:#94a3b8}
+.scrolly{max-height:340px;overflow-y:auto;border-radius:8px}
+.alerts{display:flex;flex-wrap:wrap;gap:8px;margin:-10px 0 22px}
+.chip{font-size:12.5px;padding:6px 12px;border-radius:20px;border:1px solid;display:inline-flex;align-items:center;gap:5px;backdrop-filter:blur(6px)}
+.chip.warn{background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.35);color:var(--amber)}
+.chip.err{background:rgba(255,107,107,.08);border-color:rgba(255,107,107,.35);color:var(--red)}
+.chip.info{background:rgba(94,179,255,.08);border-color:rgba(94,179,255,.35);color:var(--blue)}
+select.sel{background:rgba(30,39,58,.7);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:5px 8px;font-size:12.5px;cursor:pointer;vertical-align:middle}
+select.sel:focus{outline:none;border-color:var(--cyan)}
+.modal-bg{position:fixed;inset:0;background:rgba(5,8,14,.72);display:none;align-items:center;justify-content:center;z-index:50;backdrop-filter:blur(4px)}
+.modal-bg.show{display:flex;animation:fade .2s ease}
+.modal{background:var(--panel2);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:18px;padding:26px;width:460px;max-width:92vw;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.modal h3{font-size:17px;margin-bottom:18px;font-weight:700}
+.frow{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.frow label{width:150px;font-size:13px;color:var(--muted)}
+.frow input{flex:1;background:rgba(10,14,24,.6);border:1px solid var(--line);border-radius:8px;padding:8px 10px;color:var(--text);font-size:14px;font-family:var(--font-mono)}
+.frow input:focus{outline:none;border-color:var(--cyan)}
+.mbtns{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.lgroup{width:100%;font-size:13px;color:var(--muted);font-weight:700;margin:10px 0 0;letter-spacing:.3px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.links a{font-size:13.5px;color:var(--text);border:1px solid var(--line);background:rgba(30,39,58,.5);padding:7px 14px;border-radius:10px;text-decoration:none;display:inline-flex;gap:6px;align-items:center;transition:.15s;backdrop-filter:blur(6px)}
+.links a:hover{border-color:var(--cyan);background:rgba(34,211,238,.1);transform:translateY(-1px);box-shadow:0 4px 14px rgba(34,211,238,.18)}
+.links a .sub{color:var(--dim);font-size:11.5px;font-family:var(--font-ui)}
+.empty{padding:36px;text-align:center;color:var(--dim);font-size:14px}
+.advice-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:920px){.advice-grid{grid-template-columns:1fr}}
+.acard{background:var(--panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 8px 26px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04)}
+.acard h3{font-size:16px;margin-bottom:12px;color:#dbe6f7;font-weight:700;letter-spacing:.3px}
+.al{padding:10px 0;border-bottom:1px dashed var(--line)}
+.al:last-child{border:none}
+.alt{font-size:15px;font-weight:600;letter-spacing:.2px}
+.als{font-size:13.5px;color:var(--muted);margin-top:5px;line-height:1.7}
+.als b{color:var(--amber)}
+table.mini{font-size:14px}
+table.mini td{padding:8px 10px;text-align:left;border-bottom:1px solid rgba(120,140,180,.08);vertical-align:top;line-height:1.7;font-family:var(--font-ui)}
+table.mini td:first-child{font-weight:700;white-space:nowrap}
+ul.tips{font-size:14px;color:var(--muted);line-height:1.95;padding-left:20px}
+ul.tips b{color:var(--text)}
+ol.sum{padding-left:24px;font-size:15px;line-height:1.85;color:var(--text)}
+ol.sum li{margin-bottom:9px}
+ol.sum b{color:var(--amber)}
+ol.sum .dim{color:var(--muted)}
+.tag-p{display:inline-block;font-size:12.5px;padding:2px 10px;border-radius:9px;margin-right:10px;font-weight:700;white-space:nowrap;font-family:var(--font-ui)}
+.tag-p.p0{background:rgba(255,107,107,.16);color:var(--red)}
+.tag-p.p1{background:rgba(251,191,36,.16);color:var(--amber)}
+.tag-p.p2{background:rgba(94,179,255,.14);color:var(--blue)}
+.tag-p.p3{background:rgba(52,211,153,.14);color:var(--green)}
+#adviceSummary{list-style:none;padding:0}
+#adviceSummary .dim{color:var(--muted);font-size:13px}
+#adviceSummary li:not(.top-pick){font-size:14px;line-height:1.65;padding:8px 10px;border-bottom:1px dashed var(--line);border-radius:8px}
+#adviceSummary li:not(.top-pick):last-child{border-bottom:none}
+#adviceSummary li:not(.top-pick):hover{background:rgba(94,179,255,.05)}
+#adviceSummary .top-pick{display:block;background:linear-gradient(120deg,rgba(250,204,21,.07),rgba(250,204,21,.015));border:1px solid rgba(250,204,21,.22);border-left:3px solid var(--amber);border-radius:12px;padding:12px 16px;margin:4px 0 12px;font-size:14px;line-height:1.5;box-shadow:0 2px 14px rgba(250,204,21,.06);animation:rise .5s ease both}
+@media(max-width:860px){}
+#adviceSummary .top-pick b{color:#fde68a}
+#adviceSummary .tp-head{grid-column:1/-1;margin-bottom:2px}
+#adviceSummary .tp-meta{grid-column:1/-1;font-size:12px;margin-top:4px}
+#adviceSummary .tp-tier{border-top:1px dashed rgba(250,204,21,.18);padding-top:7px}
+#adviceSummary .tp-tier>b{font-size:14px}
+#adviceSummary .tp-sub{color:var(--dim);font-size:12px;margin-left:6px;font-weight:400}
+#adviceSummary .tp-line{margin:4px 0 4px 2px;font-size:13.5px;line-height:1.45;font-family:var(--font-ui)}
+footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-height:1.7;font-family:var(--font-mono)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.gchart{overflow-x:auto}
+.gchart svg{width:100%;height:auto;min-width:760px}
+.gseg{font-size:10.5px;fill:var(--dim);font-family:var(--font-mono)}
+.gmodel{font-size:12px;fill:var(--text);font-weight:600;font-family:var(--font-ui)}
+.glegend{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px;font-size:13px;color:var(--muted)}
+.glegend i{display:inline-block;width:14px;height:12px;border-radius:3px;margin-right:5px;vertical-align:middle}
+.wrap>header,.sec,.cards,.panel,.plans,.advice-grid,.alerts{animation:rise .6s cubic-bezier(.2,.7,.3,1) both}
+.cards{animation-delay:.04s}.panel{animation-delay:.09s}.plans{animation-delay:.13s}.advice-grid{animation-delay:.17s}.alerts{animation-delay:.02s}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <h1>📊 模型费用仪表盘<span class="sub" id="genAt"></span></h1>
+  </div>
+  <div class="hbtns">
+    <span class="conn"><span class="dot" id="connDot"></span><span id="connTxt">检测中…</span></span>
+    <button class="btn" id="btnManual">✏️ 手动补录</button>
+    <button class="btn" id="btnCsv">📤 导出 CSV</button>
+    <button class="btn primary" id="btnRefresh">🔄 立即刷新</button>
+  </div>
+</header>
+
+<div class="alerts" id="alerts"></div>
+
+<div class="sec" style="--acc:var(--green)">💡 成本策略与充值建议<span class="sechint">随拉取数据自动更新 · 价格依据见页底 Go 价格面板</span></div>
+<div class="panel">
+  <div class="acard" style="margin-bottom:22px">
+    <h3>🏁 总结 · 按优先级行动<span style="font-size:13px;color:var(--dim);font-weight:400;margin-left:10px">每小时随数据自动重排 · 主力模型可换，决策规则不变</span></h3>
+    <ol id="adviceSummary"></ol>
+  </div>
+  <div class="advice-grid">
+    <div class="acard" style="grid-column:1/-1">
+      <h3>🔗 充值 · 订阅直达</h3>
+      <div class="lgroup">API 按量充值</div>
+      <div class="links">
+        <a href="https://platform.deepseek.com/top_up" target="_blank">🔮 DeepSeek 充值</a>
+        <a href="https://platform.deepseek.com/" target="_blank">DeepSeek 控制台</a>
+        <a href="https://api-docs.deepseek.com/quick_start/pricing" target="_blank">DeepSeek 定价页</a>
+        <a href="https://open.bigmodel.cn/" target="_blank">🤖 智谱控制台（财务管理→充值）</a>
+        <a href="https://platform.moonshot.cn/console/account" target="_blank">🌙 Kimi 账户（充值）</a>
+        <a href="https://billing-cost.console.aliyun.com/finance/fund-management/recharge" target="_blank">☁️ 阿里云充值 <span class="sub">→充「1880」账号=百炼现金</span></a>
+        <a href="https://console.volcengine.com/" target="_blank">🌋 火山控制台（费用中心→充值）</a>
+        <a href="https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey" target="_blank">火山 Ark API Key</a>
+        <a href="https://platform.minimaxi.com/user-center/payment/balance" target="_blank">📦 MiniMax 余额（缴清欠费）</a>
+        <a href="https://cloud.siliconflow.cn/" target="_blank">💧 硅基流动控制台</a>
+        <a href="https://siliconflow.cn/pricing" target="_blank">硅基流动定价页</a>
+        <a href="https://platform.openai.com/settings/organization/billing/overview" target="_blank">🌐 OpenAI 账单</a>
+        <a href="https://openrouter.ai/settings/credits" target="_blank">🧩 OpenRouter 充值</a>
+        <a href="https://build.nvidia.com/settings/api-keys" target="_blank">🟩 NVIDIA 免费 Key（不充值）</a>
+      </div>
+      <div class="lgroup">订阅管理</div>
+      <div class="links">
+        <a href="https://opencode.ai/auth" target="_blank">⚡ OpenCode Go 订阅（$10/月）</a>
+        <a href="https://bailian.console.aliyun.com/cn-beijing?tab=plan#/efm/subscription/token-plan/personal" target="_blank">🧩 百炼 Token Plan 我的订阅 <span class="sub">→「5318」账号</span></a>
+      </div>
+      <div class="als" style="margin-top:10px;color:var(--amber)">⚠ 双账号提醒：阿里云充值页默认登录哪个账号就充进哪个——<b>百炼现金=1880 账号，Token Plan=5318 账号</b>，充错不通用！</div>
+    </div>
+  </div>
+</div>
+
+<div class="sec" style="--acc:var(--blue)">🔌 API 模型余额<span class="sechint">大字 = 当前余额 · 下方 = 昨日用量</span></div>
+<div class="cards" id="totalCards"></div>
+<div class="cards" id="modelCards"></div>
+
+<div class="panel">
+  <h2>📈 余额趋势<span class="hint">单位：元（Y 轴 100 分度）· 悬停看明细 <select class="sel" id="rangeSel"><option value="0" selected>全部日期</option><option value="7">近7天</option><option value="10">近10天</option><option value="14">近14天</option><option value="30">近30天</option><option value="90">近90天</option></select></span></h2>
+  <div id="trendChart"></div>
+  <div class="legend" id="trendLegend"></div>
+</div>
+
+<div class="sec" style="--acc:var(--red)">📉 API 每日用量<span class="sechint">用量 = 前日终值 − 当日终值（当日 = 首次拉取 − 当前）· 仅保留最近 10 天</span></div>
+<div class="panel">
+  <h2>🔥 每日消费堆叠图</h2>
+  <div id="consChart"></div>
+  <div class="legend" id="consLegend"></div>
+</div>
+<div class="panel">
+  <h2>📋 每日用量明细</h2>
+  <div class="scrolly"><table id="usageTable"></table></div>
+</div>
+
+<div class="sec" style="--acc:var(--violet)">📦 订阅额度<span class="sechint">统一口径：环内数字 = <b>已用 %</b>（越高越紧张）· OpenCode Go 5小时/周/月三窗口 · 百炼 Token Plan 7 天窗口</span></div>
+<div class="panel"><div class="plans" id="planCards"></div></div>
+
+<div class="sec" style="--acc:var(--amber)">📋 订阅每日用量<span class="sechint">用量 = 当日已用% − 前日已用%（窗口重置当日按新窗口已用%计）</span></div>
+<div class="panel"><div class="scrolly"><table id="planUsageTable"></table></div></div>
+
+<div class="sec" style="--acc:var(--cyan)">⚡ OpenCode Go 预估请求数<span class="sechint">条长=真实线性比例 · ■ 5小时 / ■ 周 / ■ 月 · 越长=同额度下请求数越多越经济</span></div>
+<div class="panel" id="reqPanel" style="display:none">
+  <h2>Go 各模型预估请求数<span class="hint">基于 Go 文档页典型使用模式 · 同 $ 额度下请求数越多越省</span></h2>
+  <div class="gchart" id="reqChart"></div>
+  <div class="pinfo" id="reqMeta" style="margin-top:12px"></div>
+</div>
+
+<div class="sec" style="--acc:var(--cyan)">💲 API 官方价格甘特<span class="sechint">每模型一条横线分三段：■ 输入·缓存命中 / ■ 输入·未命中 / ■ 输出 · 全美元 USD/1M tokens · 线性真实比例</span></div>
+<div class="panel" id="pricePanel" style="display:none">
+  <h2>各模型 API 官方三价<span class="hint">缓存命中输入 / 未命中输入 / 输出 · USD / 1M tokens · 线性真实比例</span></h2>
+  <div class="gchart" id="priceChart"></div>
+  <div class="pinfo" id="priceMeta" style="margin-top:12px"></div>
+</div>
+
+<footer>数据源 balances.json / data.js · 与笔记 00-模型实时费用.md 自动同步<br>
+计划任务 ModelBalanceFetch 每小时自动拉取 · 手动补录与「立即刷新」需通过 <code>python sync_server.py</code> 打开本页</footer>
+</div>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h3>✏️ 手动补录</h3>
+    <div class="frow"><label for="mDate">日期</label><input type="date" id="mDate"></div>
+    <div class="frow"><label for="mDs">DeepSeek 余额（元）</label><input type="number" step="0.01" id="mDs" placeholder="API 故障时备用，留空不改"></div>
+    <div class="frow"><label for="mZp">智谱 余额（元）</label><input type="number" step="0.01" id="mZp" placeholder="留空不改"></div>
+    <div class="frow"><label for="mKimi">Kimi 余额（元）</label><input type="number" step="0.01" id="mKimi" placeholder="留空不改"></div>
+    <div class="frow"><label for="mBailian">百炼 余额（元）</label><input type="number" step="0.01" id="mBailian" placeholder="阿里云费用中心获取"></div>
+    <div class="frow"><label for="mVolc">火山 余额（元）</label><input type="number" step="0.01" id="mVolc" placeholder="留空不改"></div>
+    <div class="frow"><label for="mMmx">MiniMax 余额（元）</label><input type="number" step="0.01" id="mMmx" placeholder="会话失效时备用"></div>
+    <div class="frow"><label for="mSf">硅基流动（元）</label><input type="number" step="0.01" id="mSf" placeholder="API 已下线，手动填"></div>
+    <div class="frow"><label for="mOai">OpenAI（元）</label><input type="number" step="0.01" id="mOai" placeholder="未配置，手动填"></div>
+    <div class="frow"><label for="mAg">Agnes（元）</label><input type="number" step="0.01" id="mAg" placeholder="无余额接口，手动填"></div>
+    <div class="frow"><label for="mTp">Token Plan 已用%</label><input type="number" step="0.1" min="0" max="100" id="mTp" placeholder="会话失效时备用"></div>
+    <p style="font-size:12.5px;color:var(--dim);margin-top:8px">手填值标记为「手动」，当日自动拉取不会覆盖。硅基流动 / OpenAI / Agnes 无公开 API，余额在此手动登记。</p>
+    <div class="mbtns">
+      <button class="btn" id="mCancel">取消</button>
+      <button class="btn primary" id="mSave">保存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+let DATA = window.BALANCE_DATA || {daily:{}};
+const MODELS = ["DeepSeek","智谱","Kimi","百炼","火山","MiniMax","硅基流动","OpenAI","Agnes"];
+const COLORS = {DeepSeek:"#60a5fa", "智谱":"#34d399", Kimi:"#f472b6", "百炼":"#fbbf24", "火山":"#fb923c", MiniMax:"#f87171", "硅基流动":"#38bdf8", OpenAI:"#cbd5e1", Agnes:"#a3e635", TOTAL:"#a78bfa"};
+const TP_SUB_END = "2026-09-22";   // Token Plan 个人版订阅到期日（续费后更新此值）
+const hasServer = location.protocol === "http:";
+
+const $ = id => document.getElementById(id);
+const val = (d,m) => { const e = ((DATA.daily[d]||{}).cash||{})[m]; return e && e.value != null ? Number(e.value) : null; };
+const srcOf = (d,m) => { const e = ((DATA.daily[d]||{}).cash||{})[m]; return e ? e.source : "none"; };
+const planOf = d => ((DATA.daily[d]||{}).plans||{});
+const pctColor = p => p>=90 ? "#f87171" : p>=70 ? "#fbbf24" : "#34d399";
+let ALL_DATES = [];
+
+function fmtReset(iso){
+  if(!iso) return "";
+  const diff = (new Date(iso) - Date.now())/60000;
+  if(isNaN(diff) || diff<=0) return "即将";
+  const d=Math.floor(diff/1440), h=Math.floor(diff%1440/60), mn=Math.floor(diff%60);
+  return (d?d+"天":"") + (h?h+"小时":"") + (mn&&d<2?mn+"分":"") + "后";
+}
+
+// 北京时区下 DeepSeek 官方按量是否处于高峰（工作日 9-12、14-18 价×2）
+function isDeepSeekPeak(){
+  const n=new Date();
+  const bj=new Date(n.getTime() + n.getTimezoneOffset()*60000 + 8*3600000);
+  const day=bj.getDay();
+  if(day===0||day===6) return false;       // 周末全低峰
+  const h=bj.getHours();
+  return (h>=9&&h<12)||(h>=14&&h<18);
+}
+
+function calcCons(allDates){
+  const cons = {};
+  allDates.forEach((d,i)=>{
+    cons[d] = {};
+    MODELS.forEach(m=>{
+      const e = ((DATA.daily[d].cash)||{})[m]||{};
+      const b = e.value!=null ? Number(e.value) : null;
+      let a;
+      if(e.first_value!=null) a = Number(e.first_value);          // 当日首次快照
+      else if(i>0){ const pe=((DATA.daily[allDates[i-1]].cash)||{})[m]||{}; a = pe.value!=null?Number(pe.value):null; }
+      let c = (a!=null&&b!=null) ? Math.round((a-b)*100)/100 : null;
+      if(c!=null && c<0) c=null;   // 余额上升视为充值，不计消费
+      cons[d][m]=c;
+    });
+  });
+  return cons;
+}
+
+/* 订阅用量 = 当前% − 当日起点%（无起点用昨日终值）；负值=窗口重置 */
+function planUse(curFn, firstFn, d){
+  const cur = curFn(d); if(cur==null) return null;
+  let st = firstFn(d);
+  if(st==null){ const i=ALL_DATES.indexOf(d); if(i>0) st = curFn(ALL_DATES[i-1]); }
+  if(st==null) return null;
+  const u = Math.round((cur-st)*10)/10;
+  return u<0 ? {v:cur, reset:true} : {v:u, reset:false};
+}
+const goWin = win => d => { const g=planOf(d)["OpenCode Go"]; return g&&g[win]&&g[win].percent!=null?g[win].percent:null; };
+const goWinF = win => d => { const g=planOf(d)["OpenCode Go"]; return g&&g[win]&&g[win].first_percent!=null?g[win].first_percent:null; };
+const tpPct = d => { const t=planOf(d)["Token Plan"];  return t&&t.monthly_pct!=null?t.monthly_pct:null; };
+const tpFst = d => { const t=planOf(d)["Token Plan"];  return t&&t.first_pct!=null?t.first_pct:null; };
+const useTxt = u => u==null?"—" : u.v>0?`<span class="use">${u.v}%</span>`:'<span class="zero">0%</span>';
+
+let CONS = {};
+function renderAll(){
+  const allDates = Object.keys(DATA.daily).sort();
+  ALL_DATES = allDates;
+  $("genAt").textContent = DATA.generated_at
+    ? "数据更新 " + String(DATA.generated_at).replace("T"," ").slice(0,16) : "";
+  if (!allDates.length){
+    $("totalCards").innerHTML = '<div class="empty" style="grid-column:1/-1">暂无数据 — 点击右上角「立即刷新」拉取</div>';
+    $("modelCards").innerHTML = ""; $("alerts").innerHTML = "";
+    $("adviceSummary").innerHTML = "";
+    ["trendChart","consChart","planCards","usageTable","planUsageTable"].forEach(id=>$(id).innerHTML="");
+    $("trendLegend").innerHTML=""; $("consLegend").innerHTML="";
+    return;
+  }
+  CONS = calcCons(allDates);
+  const totalCons = d => MODELS.reduce((s,m)=>s+(CONS[d][m]||0),0);
+  const totalBal  = d => MODELS.reduce((s,m)=>s+(val(d,m)||0),0);
+  const latest = allDates[allDates.length-1];
+  const yesterday = allDates.length>1 ? allDates[allDates.length-2] : null;
+
+  renderAlerts(allDates);
+  renderSummary();
+  renderCards(latest, yesterday, totalBal, totalCons);
+  const dates = WIN ? allDates.slice(-WIN) : allDates;
+  renderTrend(dates, totalBal);
+  renderCons(allDates.slice(-10).slice(1), totalCons);
+  renderUsageTable(allDates.slice(-10), totalCons);
+  renderPlans(latest);
+  renderPlanUsage(allDates.slice(-10));
+  renderReqGantt();
+  renderPriceGantt();
+}
+
+function renderCards(latest, yesterday, totalBal, totalCons){
+  const cardHtml = c =>
+    `<div class="card" style="--acc:${c.acc}"><div class="k">${c.k}</div><div class="v"${c.dim?' style="color:var(--dim);font-size:21px"':''}>${c.v}</div>${c.u||""}<div class="d">${c.d||""}</div></div>`;
+  const yUse = yesterday ? totalCons(yesterday) : totalCons(latest);
+  $("totalCards").innerHTML = [{
+    k:"💰 现金总余额", v:"¥"+totalBal(latest).toFixed(2), acc:"#34d399",
+    u:`<div class="u" style="color:${yUse>0?"var(--amber)":"var(--dim)"}">${yesterday?"昨日":"今日"}用量 ¥${yUse.toFixed(2)}</div>`,
+    d:"含 "+MODELS.length+" 个模型" + (yesterday?"（"+yesterday+"）":"（今日累计）"),
+  }].map(cardHtml).join("");
+
+  const cards = MODELS.map(m=>{
+    const v = val(latest,m);
+    const e = ((DATA.daily[latest].cash)||{})[m]||{};
+    let sub;
+    if(e.source==="manual") sub="手动录入";
+    else if(e.source==="manual_only") sub="无公开 API · 需手动补录";
+    else if(e.source==="no_credentials") sub="待配置凭证";
+    else if(e.source==="error") sub=(e.error||"查询失败").slice(0,30);
+    else if(m==="Kimi"&&e.detail) sub="现金¥"+e.detail.cash+" + 赠款¥"+e.detail.voucher;
+    else if(m==="MiniMax"&&e.detail) sub="现金¥"+e.detail.cash+" 赠款¥"+e.detail.voucher+(e.detail.owed>0?" 欠¥"+e.detail.owed:"");
+    else sub={DeepSeek:"api.deepseek.com","智谱":"bigmodel.cn","百炼":"阿里云费用中心","火山":"billing.volcengineapi.com",MiniMax:"控制台会话"}[m]||"";
+    const u = yesterday ? CONS[yesterday][m] : CONS[latest][m];
+    const uHtml = u==null ? "" :
+      `<div class="u" style="color:${u>0?"var(--amber)":"var(--dim)"}">${yesterday?"昨日":"今日"}用量 ${u>0?"¥"+u.toFixed(2):"0"}</div>`;
+    const disp = v!=null ? (v<0?`<span style="color:var(--red)">-¥${Math.abs(v).toFixed(2)}</span>`:"¥"+v.toFixed(2)) : "—";
+    return {k:m, v:disp, u:uHtml, acc:COLORS[m], d:sub, dim:v==null};
+  });
+  $("modelCards").innerHTML = cards.map(cardHtml).join("");
+}
+
+function svgEl(w,h,inner){ return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet">${inner}</svg>`; }
+
+function renderTrend(dates, totalFn){
+  const W=1140,H=320,mg={t:24,r:20,b:40,l:56};
+  const cw=W-mg.l-mg.r, ch=H-mg.t-mg.b;
+  let all=[];
+  dates.forEach(d=>{MODELS.forEach(m=>{const v=val(d,m);if(v!=null)all.push(v)});all.push(totalFn(d));});
+  const rawMax=Math.max(...all,1);
+  const step=Math.max(100,Math.ceil(rawMax/4/100)*100);        // Y 轴 100 分度
+  const maxV=Math.ceil(rawMax/step)*step;
+  const xs=i=>dates.length<=1?mg.l+cw/2:mg.l+i/(dates.length-1)*cw;
+  const ys=v=>mg.t+ch-v/maxV*ch;
+  let g="";
+  for(let gv=0;gv<=maxV;gv+=step){
+    const gy=ys(gv);
+    g+=`<line x1="${mg.l}" y1="${gy}" x2="${mg.l+cw}" y2="${gy}" stroke="#1c2436"/>`;
+    g+=`<text x="${mg.l-8}" y="${gy+4}" text-anchor="end" font-size="12.5" fill="#9fabc0">${gv}</text>`;
+  }
+  dates.forEach((d,i)=>{g+=`<text x="${xs(i)}" y="${H-12}" text-anchor="middle" font-size="12.5" fill="#9fabc0">${d.slice(5)}</text>`;});
+  const line=(get,color,w,dash,lab)=>{
+    const pts=dates.map((d,i)=>({x:xs(i),y:null,v:get(d),i}));
+    pts.forEach(p=>{if(p.v!=null)p.y=ys(p.v)});
+    let cur=[];const segs=[];
+    pts.forEach(p=>{if(p.v==null){if(cur.length>1)segs.push(cur);cur=[];}else cur.push(p)});
+    if(cur.length>1)segs.push(cur);
+    segs.forEach(s=>g+=`<polyline points="${s.map(p=>p.x+","+p.y).join(" ")}" fill="none" stroke="${color}" stroke-width="${w}" ${dash?`stroke-dasharray="${dash}"`:""} stroke-linejoin="round"/>`);
+    pts.forEach(p=>{if(p.v!=null){
+      g+=`<circle cx="${p.x}" cy="${p.y}" r="4" fill="${color}" stroke="#0d1017" stroke-width="1.5"><title>${lab} · ${dates[p.i]} · ¥${p.v.toFixed(2)}</title></circle>`;
+    }});
+    if(dates.length===1&&pts[0].v!=null)
+      g+=`<circle cx="${pts[0].x}" cy="${pts[0].y}" r="5" fill="${color}"><title>${lab} · ¥${pts[0].v.toFixed(2)}</title></circle>`;
+  };
+  line(totalFn, COLORS.TOTAL, 3, "6 4", "总余额");
+  MODELS.forEach(m=>line(d=>val(d,m), COLORS[m], 2.2, null, m));
+  $("trendChart").innerHTML = svgEl(W,H,g);
+  $("trendLegend").innerHTML = `<span><i style="background:${COLORS.TOTAL}"></i>总余额（虚线）</span>`+
+    MODELS.map(m=>`<span><i style="background:${COLORS[m]}"></i>${m}</span>`).join("");
+}
+
+function renderCons(days, totalCons){
+  if(!days.length){$("consChart").innerHTML='<div class="empty">至少需要两天数据才能计算消费</div>';$("consLegend").innerHTML="";return;}
+  const W=560,H=250,mg={t:22,r:14,b:36,l:44};
+  const cw=W-mg.l-mg.r, ch=H-mg.t-mg.b;
+  const rawMax=Math.max(...days.map(d=>totalCons(d)),0.5);
+  // 自适应整洁刻度：1/2/5×10^n
+  const p=Math.pow(10,Math.floor(Math.log10(rawMax/4||0.1)));
+  const r=rawMax/4/p;
+  const step=(r<=1?1:r<=2?2:r<=5?5:10)*p;
+  const maxV=Math.ceil(rawMax/step)*step;
+  const fmt=v=>v>=10?Math.round(v):(v>=1?+v.toFixed(1):+v.toFixed(2));
+  const step2=cw/days.length, bw=Math.min(46,step2*0.6);
+  let g="";
+  for(let gv=0;gv<=maxV+1e-9;gv+=step){
+    const gy=mg.t+ch-gv/maxV*ch;
+    g+=`<line x1="${mg.l}" y1="${gy}" x2="${mg.l+cw}" y2="${gy}" stroke="#1c2436"/>`;
+    g+=`<text x="${mg.l-8}" y="${gy+4}" text-anchor="end" font-size="12" fill="#9fabc0">${fmt(gv)}</text>`;
+  }
+  days.forEach((d,i)=>{
+    const x=mg.l+step2*i+(step2-bw)/2;
+    let acc=0;
+    MODELS.forEach(m=>{
+      const v=(CONS[d]||{})[m]; if(!v||v<=0)return;
+      const hgt=v/maxV*ch; acc+=hgt;
+      g+=`<rect x="${x}" y="${mg.t+ch-acc}" width="${bw}" height="${hgt}" fill="${COLORS[m]}" rx="2" opacity=".9"><title>${m} · ${d} · ¥${v.toFixed(2)}</title></rect>`;
+    });
+    const t=totalCons(d);
+    if(t>0)g+=`<text x="${x+bw/2}" y="${mg.t+ch-acc-6}" text-anchor="middle" font-size="12" fill="#eef2f8" font-weight="700">${t>=100?t.toFixed(0):t>=10?t.toFixed(1):t.toFixed(2)}</text>`;
+    g+=`<text x="${x+bw/2}" y="${H-12}" text-anchor="middle" font-size="12" fill="#9fabc0">${d.slice(5)}</text>`;
+  });
+  $("consChart").innerHTML=svgEl(W,H,g);
+  $("consLegend").innerHTML=MODELS.map(m=>`<span><i style="background:${COLORS[m]}"></i>${m}</span>`).join("");
+}
+
+function renderUsageTable(days, totalCons){
+  let h="<tr><th>日期</th>"+MODELS.map(m=>`<th>${m}</th>`).join("")+"<th>合计用量</th></tr>";
+  [...days].reverse().forEach(d=>{
+    h+=`<tr><td style="color:var(--muted)">${d}</td>`;
+    MODELS.forEach(m=>{
+      const u=CONS[d][m], s=srcOf(d,m);
+      let mark = s==="manual"?'<span class="tag manual">手动</span>':(s==="manual_only"||s==="error"||s==="no_credentials")?'':'';
+      h+=`<td>${u==null?'<span style="color:#555f75">—</span>':(u>0?`<span class="use">¥${u.toFixed(2)}</span>`:'<span class="zero">0</span>')}${mark}</td>`;
+    });
+    const hasAny = MODELS.some(m=>CONS[d][m]!=null);
+    const t=totalCons(d);
+    h+=`<td style="font-weight:700;color:${t>0?"var(--amber)":"var(--dim)"}">${hasAny?(t>0?"¥"+t.toFixed(2):"0"):"—"}</td></tr>`;
+  });
+  $("usageTable").innerHTML=h;
+}
+
+function ring(pct,label,reset){
+  const r=34,c=2*Math.PI*r, p=pct==null?0:Math.min(pct,100);
+  const col=pct==null?"#232b3d":pctColor(pct);
+  return `<div class="ring"><svg width="88" height="88" viewBox="0 0 88 88">
+    <circle cx="44" cy="44" r="${r}" fill="none" stroke="#232b3d" stroke-width="8"/>
+    ${pct!=null?`<circle cx="44" cy="44" r="${r}" fill="none" stroke="${col}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 44 44)"/>`:""}
+    <text x="44" y="50" text-anchor="middle" font-size="18" font-weight="700" fill="#eef2f8">${pct==null?"—":pct+"%"}</text>
+  </svg><div class="rl">${label}</div><div class="rr">${pct!=null&&reset?fmtReset(reset)+"重置":""}</div></div>`;
+}
+
+function renderPlans(latest){
+  const plans = planOf(latest);
+  const go = plans["OpenCode Go"]||{};
+  let html="";
+  if(go.rolling||go.weekly||go.monthly){
+    const rst = w => go[w]&&go[w].resets_at ? fmtReset(go[w].resets_at)+"重置" : "—";
+    html+=`<div class="pcard"><div class="pt">OpenCode Go<span>$10/月 · 数字为已用%</span></div>
+      <div class="rings">
+        ${ring(go.rolling&&go.rolling.percent,"5h已用",go.rolling&&go.rolling.resets_at)}
+        ${ring(go.weekly&&go.weekly.percent,"本周已用",go.weekly&&go.weekly.resets_at)}
+        ${ring(go.monthly&&go.monthly.percent,"本月已用",go.monthly&&go.monthly.resets_at)}
+      </div>
+      <div class="pinfo">窗口重置：5h ${rst("rolling")} · 本周 ${rst("weekly")} · 本月 ${rst("monthly")}<br>Go 价格恒定不分峰谷</div></div>`;
+  }else{
+    html+=`<div class="pcard"><div class="pt">OpenCode Go</div><div class="empty" style="padding:18px">${go.error||"无数据"}</div></div>`;
+  }
+  const tp = plans["Token Plan"]||{};
+  const tpp = tp.monthly_pct;
+  const daysLeft = Math.max(0, Math.ceil((new Date(TP_SUB_END) - new Date())/864e5));
+  let tpFoot;
+  if(tp.source==="error"||tp.source==="no_credentials") tpFoot=`⚠️ ${tp.error||"会话失效"} — 重新登录控制台后让 Claudian 重抓`;
+  else tpFoot=`窗口重置：${tp.resets_at?fmtReset(tp.resets_at)+"重置":"—"} · 订阅到期 ${TP_SUB_END}（剩 ${daysLeft} 天，未开自动续费·到期前手动续）`;
+  html+=`<div class="pcard"><div class="pt">阿里云 Token Plan<span>Standard（10000 Credits/7天）· 7天窗口已用% · ${tp.source==="auto"?"自动":"手动"}</span></div>
+    <div class="rings">${ring(tpp,"7天已用",tp.resets_at)}</div>
+    <div class="pinfo" style="${tp.source==="auto"?"":"color:var(--amber)"}">${tpFoot}</div></div>`;
+  $("planCards").innerHTML=html;
+}
+
+function renderPlanUsage(days){
+  let h="<tr><th>日期</th><th>Go·5h 已用</th><th>Go·周 已用</th><th>Go·月 已用</th><th>TP·7天 已用</th></tr>";
+  [...days].reverse().forEach(d=>{
+    h+=`<tr><td style="color:var(--muted)">${d}</td>`;
+    h+=`<td>${useTxt(planUse(goWin("rolling"), goWinF("rolling"), d))}</td>`;
+    h+=`<td>${useTxt(planUse(goWin("weekly"), goWinF("weekly"), d))}</td>`;
+    h+=`<td>${useTxt(planUse(goWin("monthly"), goWinF("monthly"), d))}</td>`;
+    h+=`<td>${useTxt(planUse(tpPct, tpFst, d))}</td></tr>`;
+  });
+  $("planUsageTable").innerHTML=h;
+}
+
+/* ---------- 总结·按优先级行动（动态计算） ---------- */
+function renderTopPick(){
+  const latest = ALL_DATES[ALL_DATES.length-1];
+  if(!latest) return "";
+  const go=planOf(latest)["OpenCode Go"]||{};
+  const gm=go.monthly&&go.monthly.percent;
+  const left = gm!=null ? Math.round((100-gm)/100*60*10)/10 : null;
+  const tp=planOf(latest)["Token Plan"]||{};
+  const tpp=tp.monthly_pct;
+  const peak = isDeepSeekPeak();
+  // 一句话策略（用户定稿）：主力 V4 Flash，搞不定换 Qwen3.8 Max / Kimi K3
+  const eff = gm!=null && gm>=90 ? "Go 月度将满 → K3/Qwen3.8Max 改走 OpenRouter 兜底"
+          : (tpp!=null && tpp>=90) ? "TP 7 天将满 → 升级 Qwen3.8Max 走百炼按量"
+          : "Go/TP 额度充足，放心用";
+  return `<li class="top-pick"><span class="tag-p p0 tp-head">⭐ 模型策略</span>`
+    + `<div class="tp-line">主力：<b>DeepSeek V4-Flash</b> — 日常聊天/编程全用它<span class="tp-sub">${peak?"，高峰价格翻倍→重活挪非高峰或走 NVIDIA/百炼":"，低峰官方 ¥ 最省"}</span></div>`
+    + `<div class="tp-line">搞不定再换：<b>Qwen3.8 Max</b>（Token Plan，夜间 5 折）或 <b>Kimi K3</b>（NVIDIA 免费）</div>`
+    + `<div class="dim tp-meta">${eff} · Go ${gm!=null?gm+"%":"?"}（剩 $${left!=null?left:"?"}）· TP ${tpp!=null?tpp+"%":"?"}</div></li>`;
+}
+
+function renderSummary(){
+  const latest = ALL_DATES[ALL_DATES.length-1];
+  if(!latest) return;
+  const items=[];
+  const add=(p,txt)=>items.push({p,txt});
+  // P0 立即：停机/打爆风险（纯财务/服务警报，不含模型选择建议）
+  const mm=val(latest,"MiniMax");
+  if(mm!=null&&mm<0) add(0,`缴清 MiniMax 欠费 ¥${Math.abs(mm).toFixed(2)} 防停机<span class="dim">（此后不再充值）</span>`);
+  const go=planOf(latest)["OpenCode Go"]||{};
+  const gm=go.monthly&&go.monthly.percent;
+  if(gm!=null&&gm>=90) add(0,`Go 月度 ${gm}% 即将打爆：重活改走 NVIDIA / 百炼兜底，等月度重置`);
+  // P1 今天：额度 / 余额 / 赠款
+  if(gm!=null&&gm>=70&&gm<90){
+    const left=Math.round((100-gm)/100*60*10)/10;
+    add(1,`Go 月度 ${gm}%（剩 ~$${left}）：重活转 NVIDIA / 百炼按量，省着用等重置`);
+  }
+  const tp=planOf(latest)["Token Plan"]||{};
+  const tpp=tp.monthly_pct;
+  if(tpp!=null&&tpp>=70) add(1,`Token Plan 7天窗口 ${tpp}%：压缩上下文、新开对话，撑到 ${tp.resets_at?fmtReset(tp.resets_at)+"":""}重置`);
+  const ke=((DATA.daily[latest].cash)||{})["Kimi"]||{};
+  if(ke.detail&&ke.detail.voucher>0) add(1,`Kimi 赠款 ¥${ke.detail.voucher} 有到期风险——本周用掉`);
+  const ds=val(latest,"DeepSeek");
+  if(ds!=null&&ds<30) add(1,`DeepSeek 现金 ¥${ds.toFixed(2)} 偏低：建议充 ¥50`);
+  else if(ds!=null) add(3,`DeepSeek 现金 ¥${ds.toFixed(2)} 充足`);
+  // P2：备用现金余额（Qwen 兜底路径）
+  const bl=val(latest,"百炼");
+  if(bl!=null&&bl<50) add(2,`百炼余额 ¥${bl.toFixed(2)} 低于 ¥50，Qwen3.8Max 兜底前补一次`);
+  // P3 长期：充值纪律（消费下限，非模型选择）
+  add(3,`<b>充值纪律</b>：现金只给 DeepSeek/百炼 续命；智谱/Kimi/火山/MiniMax 用存量不补`);
+  items.sort((a,b)=>a.p-b.p);
+  const lab={0:"🔴 立即",1:"🟠 今天",2:"🟡 本周",3:"🟢 长期"};
+  $("adviceSummary").innerHTML=renderTopPick()+items.map(x=>`<li><span class="tag-p p${x.p}">${lab[x.p]}</span>${x.txt}</li>`).join("");
+}
+
+/* ---------- 数据健康告警 ---------- */
+function renderAlerts(allDates){
+  const chips=[];
+  const latest=allDates[allDates.length-1];
+  const today=new Date().toLocaleDateString("sv-SE");
+  if(latest<today)chips.push({t:"info",m:"⏳ 今日 "+today+" 尚未拉取（上次 "+latest+" "+(DATA.daily[latest].fetched_at||"")+"）"});
+  MODELS.forEach(m=>{
+    const e=((DATA.daily[latest].cash)||{})[m]||{};
+    const v=val(latest,m);
+    if(v==null){
+      if(e.source==="no_credentials")chips.push({t:"warn",m:"🔑 "+m+" 未配置凭证 — 在 .secrets 填 AK/SK 或用「手动补录」"});
+      else if(e.source==="error")chips.push({t:"warn",m:"❌ "+m+" 拉取失败："+String(e.error||"").slice(0,50)});
+    }else if(v<0)chips.push({t:"err",m:"🚨 "+m+" 已欠费 ¥"+Math.abs(v).toFixed(2)+"，服务可能中断"});
+    else if(v<20)chips.push({t:"err",m:"⚠️ "+m+" 余额仅 ¥"+v.toFixed(2)+"（低于¥20），注意充值"});
+  });
+  const go=(DATA.daily[latest].plans||{})["OpenCode Go"]||{};
+  const mp=go.monthly&&go.monthly.percent;
+  if(mp!=null&&mp>=90)chips.push({t:"err",m:"📦 Go 月度额度已用 "+mp+"%，接近上限"});
+  const tp=(DATA.daily[latest].plans||{})["Token Plan"]||{};
+  const tpv=tp.monthly_pct;
+  if(tpv!=null&&tpv>=90)chips.push({t:"err",m:"🧩 Token Plan 7天额度已用 "+tpv+"%，接近上限"});
+  if(tp.source==="error")chips.push({t:"warn",m:"🔑 Token Plan 会话失效："+String(tp.error||"").slice(0,40)+" — 重新登录控制台后让 Claudian 重抓"});
+  const el=$("alerts");
+  if(!chips.length){el.style.display="none";el.innerHTML="";return;}
+  el.style.display="flex";
+  el.innerHTML=chips.map(c=>`<span class="chip ${c.t}">${c.m}</span>`).join("");
+}
+
+/* ---------- CSV 导出 ---------- */
+function exportCsv(){
+  const allDates=Object.keys(DATA.daily).sort();
+  if(!allDates.length)return;
+  const cons=calcCons(allDates);
+  const head=["日期",...MODELS.map(m=>m+"用量(元)"),"合计用量(元)","Go·5h已用%","Go·周已用%","Go·月已用%","TP·7天已用%"];
+  const rows=[head];
+  allDates.forEach(d=>{
+    const cell=m=>{const u=cons[d][m];return u==null?"":u.toFixed(2)};
+    const tb=MODELS.reduce((s,m)=>s+(cons[d][m]||0),0).toFixed(2);
+    const du=x=>{const u=planUse(x.c,x.f,d);return u?u.v:""};
+    rows.push([d,...MODELS.map(cell),tb,
+      du({c:goWin("rolling"),f:goWinF("rolling")}),du({c:goWin("weekly"),f:goWinF("weekly")}),
+      du({c:goWin("monthly"),f:goWinF("monthly")}),du({c:tpPct,f:tpFst})]);
+  });
+  const csv="\uFEFF"+rows.map(r=>r.join(",")).join("\r\n");
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+  a.download="模型用量明细_"+new Date().toLocaleDateString("sv-SE")+".csv";
+  document.body.appendChild(a);a.click();a.remove();
+}
+
+/* ---------- 甘特横线图（线性真实比例，SVG 手绘） ---------- */
+/* 用户重点模型：名称以 ★ + 琥珀色加粗突出 */
+const HL = new Set([
+  "DeepSeek V4 Flash","Qwen3.8 Flash","Qwen3.7 Plus","Hy3",
+  "DeepSeek V4 Flash Vision Exp","GPT 5.6 Luna","GLM-5.3-Flash",
+  "DeepSeek V4 Pro","GLM-5.2","GLM-5.3","Qwen3.8 Max","Kimi K3",
+]);
+/**
+ * ganttBar: 线性比例甘特条——条长严格 ∝ 数值。
+ * rows=[{label, segs:[{v,name,color,label,tag,suffix}], tip}]
+ * 数字优先画在段内（够宽时）；放不下的一律"·"连接紧跟整条右端头。
+ * rows[].rawTip 追加到悬停（如原始价目）。
+ */
+function ganttBar(rows,{W=980,labelW=265,H,rowH=24,t=20,showSeg=true,endSpace=110}){
+  const segName=r=>r.segs.map(s=>s.name).filter(Boolean);
+  let mx=0;
+  rows.forEach(r=>r.segs.forEach(s=>{if(s.v!=null&&s.v>mx)mx=s.v}));
+  mx=mx||1;
+  H = H || t + rows.length*rowH + 14;
+  const chartW=W-labelW-16-endSpace;
+  const xs=v=>labelW+16+(v/mx)*chartW;           // 线性刻度
+  let g='';
+  // 网格竖线：1/2/5×10^n 整洁步长
+  const p=Math.pow(10,Math.floor(Math.log10(mx/4||0.1)));
+  const r0=mx/4/p;
+  const step=(r0<=1?1:r0<=2?2:r0<=5?5:10)*p;
+  for(let v=0;v<=mx+1e-9;v+=step){
+    const x=xs(v);
+    g+=`<line x1="${x}" y1="${t}" x2="${x}" y2="${t+rows.length*rowH}" stroke="${v===0?"#2a3550":"#1c2436"}"/>`;
+    const lab=v>=1000?(v/1000).toFixed(v%1000?1:0)+"k":(+v.toFixed(3))+"";
+    g+=`<text x="${x}" y="${t-6}" text-anchor="middle" font-size="10.5" fill="#64708a" font-family="var(--font-mono)">${lab}</text>`;
+  }
+  rows.forEach((r,i)=>{
+    const y=t+i*rowH;
+    const hl=HL.has(r.label);
+    g+=`<text x="${labelW-10}" y="${y+rowH/2+3.5}" text-anchor="end" font-size="${hl?12:11.5}" fill="${hl?"#fbbf24":"#e8eef9"}" font-weight="${hl?800:600}">${hl?"★ ":""}${r.label}${r.tip?`<tspan fill="#64708a" font-size="10" font-weight="400"> ${r.tip}</tspan>`:""}</text>`;
+    let cur=0,last=labelW+16; const over=[];
+    r.segs.forEach(s=>{
+      if(s.v==null||s.v<=0)return;
+      const x1=xs(cur), x2=xs(s.v), w=Math.max(x2-x1,1.5);
+      const mid=(x1+x2)/2, segH=rowH-12;
+      g+=`<rect x="${x1}" y="${y+(rowH-segH)/2}" width="${w}" height="${segH}" rx="3" fill="${s.color}">`
+        +`<title>${r.label} · ${s.name}: ${s.v>=1000?s.v.toLocaleString():+s.v.toPrecision(3)}${s.suffix||""}${r.rawTip?`（${r.rawTip}）`:""}</title></rect>`;
+      const lab=s.label!=null?String(s.label):null;
+      if(showSeg && lab && w>=lab.length*6.6+14){
+        g+=`<text x="${mid}" y="${y+(rowH+segH)/2-1}" text-anchor="middle" font-size="11" fill="#0a0e18" font-weight="700">${lab}</text>`;
+      }else if(lab){ over.push((s.tag||"")+lab); }
+      cur=s.v; last=x2;
+    });
+    if(over.length){
+      const txt=over.join(" · ");
+      const tx=Math.min(last+7, W-txt.length*6.4-6);   // 紧跟条右端，且不越画布
+      g+=`<text x="${tx}" y="${y+rowH/2+3.5}" font-size="10.5" fill="${hl?"#fcd34d":"#93a1bd"}" font-family="var(--font-mono)">${txt}</text>`;
+    }
+  });
+  const legend=[...new Set(rows.flatMap(segName))].filter(Boolean)
+    .map((n,i)=>n);
+  return {svg:`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${g}</svg>`, legend};
+}
+
+/* 板块A：Go 各模型预估请求数，一条线三段（5h 浅 → 周 中 → 月 深） */
+function renderReqGantt(){
+  const P=window.PRICE_DATA;
+  const req=(P&&P.requests)||[];
+  if(!req.length){ $("reqPanel").style.display="none"; return; }
+  $("reqPanel").style.display="";
+  const n=v=>v==null?"—":v.toLocaleString();
+  const rows=req.slice().sort((a,b)=>(b.monthly??0)-(a.monthly??0)).map(r=>({label:r.model,
+    segs:[
+      {v:r.h5,   name:"5h", color:"#7dd3fc", label:n(r.h5), tag:"5h ", suffix:"/5h"},
+      {v:r.weekly,name:"周", color:"#38bdf8", label:n(r.weekly), tag:"周 ", suffix:"/周"},
+      {v:r.monthly,name:"月", color:"#0284c7", label:n(r.monthly), tag:"月 ", suffix:"/月"},
+    ]}));
+  const {svg,legend}=ganttBar(rows,{W:980,labelW:265,showSeg:true,endSpace:130});
+  $("reqChart").innerHTML=svg;
+  $("reqMeta").innerHTML=`条长 = 真实线性比例（短就是真少）· 每行浅(5小时)→中(周)→深(月)三段串联 · 数字放得下画在条上，放不下紧跟条右端 · ★=你的重点模型`
+    +`<br>数据源：Go 文档页实时抓取${P.go_page_date?"（文档版本 "+P.go_page_date+"）":""} · 拉取于 ${P.updated_at||"?"}`
+    +`<div class="glegend">${legend.map((n2,i)=>`<span><i style="background:${["#7dd3fc","#38bdf8","#0284c7"][i]}"></i>${n2}</span>`).join("")}</div>`;
+}
+
+/* 板块B：API 官方三价——缓存命中输入 / 输入(未命中) / 输出，三段串联 */
+function renderPriceGantt(){
+  const P=window.PRICE_DATA; if(!P||!P.rows||!P.rows.length)return;
+  $("pricePanel").style.display="";
+  // 每模型取主档（最便宜 input 行 = 低峰/标准档）
+  const groups={};
+  P.rows.forEach(r=>{
+    const base=r.model.replace(/\s*[（(].*/,'').trim();
+    if(!groups[base]) groups[base]={label:base,input:null,output:null,cache:null,tier:""};
+    const g=groups[base];
+    if(r.input!=null && (g.input==null || r.input<g.input)){ g.input=r.input; g.output=r.output; g.cache=r.cache_read; g.tier=r.tier||""; }
+  });
+  const f=v=>v==null?null:"$"+(+v.toPrecision(3));   // 3 位有效数字：$15 / $2.5 / $0.022 / $0.007
+  const rows=Object.values(groups).sort((a,b)=>(b.output??0)-(a.output??0)).map(g=>({label:g.label,
+    tip:g.tier||"",
+    segs:[
+      ...(g.cache!=null?[{v:g.cache, name:"输入·缓存命中", color:"#34d399", label:f(g.cache), tag:"命中 ",suffix:"/1M tokens (USD)"}]:[]),
+      {v:g.input,  name:"输入·未命中", color:"#38bdf8", label:f(g.input), tag:"输入 ",suffix:"/1M tokens (USD)"},
+      {v:g.output, name:"输出",        color:"#818cf8", label:f(g.output),tag:"输出 ",suffix:"/1M tokens (USD)"},
+    ]}));
+  const {svg,legend}=ganttBar(rows,{W:980,labelW:265,showSeg:true,endSpace:150});
+  $("priceChart").innerHTML=svg;
+  const lc={"输入·缓存命中":"#34d399","输入·未命中":"#38bdf8","输出":"#818cf8"};
+  $("priceMeta").innerHTML=`每行三段串联：🟢 输入·缓存命中 → 🔵 输入·未命中 → 🟣 输出（各段右边界 = 该价真实数值）· 全美元 USD/1M tokens · 数字放不下时紧跟条右端 · ★=你的重点模型`
+    +`<br>数据源：Go 文档页目录价（=官方牌价 USD 折算，K3 已对 platform.kimi.com ¥2/¥20/¥100 核验）+ OpenRouter 交叉 · 拉取于 ${P.updated_at||"?"}`
+    +`<div class="glegend">${legend.map(n2=>`<span><i style="background:${lc[n2]||"#888"}"></i>${n2}</span>`).join("")}</div>`;
+}
+
+renderReqGantt();
+renderPriceGantt();
+
+
+/* ---------- 交互 ---------- */
+let WIN = 0;
+function checkServer(){
+  if(!hasServer){
+    $("connDot").className="dot off";
+    $("connTxt").textContent="离线模式（经 sync_server 打开可刷新/补录）";
+    $("btnRefresh").disabled=true;
+    $("btnManual").disabled=true;
+    return;
+  }
+  fetch("/api/balances").then(r=>{
+    if(r.ok){$("connDot").className="dot on";$("connTxt").textContent="同步服务在线";}
+    else throw 0;
+  }).catch(()=>{$("connDot").className="dot off";$("connTxt").textContent="服务未响应";});
+}
+
+$("btnRefresh").addEventListener("click", async ()=>{
+  if(!hasServer)return;
+  const b=$("btnRefresh"); b.disabled=true; b.textContent="⏳ 拉取中…";
+  try{
+    const r=await fetch("/api/refresh",{method:"POST"});
+    const j=await r.json();
+    if(j.ok){DATA=j.data;
+      try{const pr=await fetch("/api/prices");if(pr.ok){const pj=await pr.json();if(pj&&pj.rows)window.PRICE_DATA=pj;}}catch(_){}
+      renderAll();b.textContent="✅ 已刷新";}
+    else b.textContent="❌ "+String(j.error||"失败").slice(0,24);
+  }catch(e){b.textContent="❌ 网络错误";}
+  setTimeout(()=>{b.disabled=false;b.textContent="🔄 立即刷新"},1600);
+});
+
+$("btnManual").addEventListener("click",()=>{
+  $("mDate").value=new Date().toLocaleDateString("sv-SE");
+  ["mDs","mZp","mKimi","mBailian","mVolc","mMmx","mSf","mOai","mAg","mTp"].forEach(id=>$(id).value="");
+  $("mSave").disabled=!hasServer;
+  $("modalBg").classList.add("show");
+});
+$("mCancel").addEventListener("click",()=>$("modalBg").classList.remove("show"));
+$("mSave").addEventListener("click", async ()=>{
+  const body={date:$("mDate").value, cash:{}, plans:{}};
+  const cashMap={DeepSeek:"mDs","智谱":"mZp",Kimi:"mKimi","百炼":"mBailian","火山":"mVolc",MiniMax:"mMmx","硅基流动":"mSf",OpenAI:"mOai",Agnes:"mAg"};
+  let bad=false;
+  Object.entries(cashMap).forEach(([m,id])=>{
+    const x=$(id).value.trim();
+    if(x==="")return;
+    const n=Number(x);
+    if(!isFinite(n))bad=true;else body.cash[m]=n;
+  });
+  const tp=$("mTp").value.trim();
+  if(tp!==""){const n=Number(tp);if(!isFinite(n)||n<0||n>100)bad=true;else body.plans["Token Plan"]={monthly_pct:n};}
+  if(bad){alert("数值格式不正确");return;}
+  if(!Object.keys(body.cash).length&&!Object.keys(body.plans).length){alert("至少填写一项");return;}
+  try{
+    const r=await fetch("/api/manual",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+    const j=await r.json();
+    if(j.ok){DATA=j.data;renderAll();$("modalBg").classList.remove("show");}
+    else alert(j.error||"保存失败");
+  }catch(e){alert("保存失败："+e.message);}
+});
+$("modalBg").addEventListener("click",e=>{if(e.target===e.currentTarget)$("modalBg").classList.remove("show");});
+$("rangeSel").addEventListener("change",e=>{WIN=Number(e.target.value)||0;renderAll();});
+$("btnCsv").addEventListener("click",exportCsv);
+
+renderAll();
+checkServer();
+setInterval(()=>{ if(hasServer){
+  fetch("/api/balances").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.daily){DATA=j;renderAll();}}).catch(()=>{});
+  fetch("/api/prices").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.rows){window.PRICE_DATA=j;renderReqGantt();renderPriceGantt();}}).catch(()=>{});
+}},300000);
+</script>
+</body>
+</html>
