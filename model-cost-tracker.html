@@ -774,8 +774,9 @@ function checkServer(){
     $("connDot").className="dot on";
     $("connTxt").textContent="云同步 · hourly 自动更新";
     $("btnRefresh").disabled=false;
-    $("btnRefresh").textContent="🔄 触发云端刷新";
-    $("btnManual").disabled=true;
+    $("btnRefresh").textContent="🔄 刷新本页数据";
+    // 云端无本地后端：手动补录不可持久化，故隐藏（补录只在本机有意义）
+    $("btnManual").style.display="none";
     return;
   }
   fetch("/api/balances").then(r=>{
@@ -799,11 +800,19 @@ function reloadData(){
 $("btnRefresh").addEventListener("click", async ()=>{
   const b=$("btnRefresh"); b.disabled=true;
   if(isCloud){
-    // 云端：不内嵌 token（避免公开泄密）。每小时自动更新已足够；
-    // 如需立即刷新，打开 GitHub Actions 页面手动点 "Run workflow"（需 GitHub 登录）。
-    b.textContent="⏳ 打开 GitHub Actions…";
-    window.open("https://github.com/"+GH_REPO+"/actions", "_blank");
-    setTimeout(()=>{b.disabled=false;b.textContent="🔄 触发云端刷新"},2000);
+    // 云端：重载本页 data.js/prices.js 并重新渲染（不跳转）。数据由 Actions 每小时更新。
+    b.textContent="⏳ 刷新中…";
+    let ok=false;
+    try{
+      ok = await reloadData();
+      const p=document.createElement("script");
+      p.src="prices.js?t="+Date.now();
+      p.onload=()=>{ if(window.PRICE_DATA){renderReqGantt();renderPriceGantt();} };
+      document.head.appendChild(p);
+    }catch(e){}
+    if(ok){ renderAll(); b.textContent="✅ 已刷新"; }
+    else b.textContent="❌ 刷新失败";
+    setTimeout(()=>{b.disabled=false;b.textContent="🔄 刷新本页数据"},1600);
     return;
   }
   // 本地 sync_server 模式
