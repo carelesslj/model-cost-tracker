@@ -20,6 +20,19 @@ jobs:
       - run: pip install requests beautifulsoup4
 
       - name: Inject secrets
+        env:
+          DEEPSEEK_KEY: ${{ secrets.DEEPSEEK_KEY }}
+          ZHIPU_KEY: ${{ secrets.ZHIPU_KEY }}
+          KIMI_KEY: ${{ secrets.KIMI_KEY }}
+          OPENCODE_GO_KEY: ${{ secrets.OPENCODE_GO_KEY }}
+          ALIYUN_AK: ${{ secrets.ALIYUN_AK }}
+          ALIYUN_SK: ${{ secrets.ALIYUN_SK }}
+          VOLCANO_AK: ${{ secrets.VOLCANO_AK }}
+          VOLCANO_SK: ${{ secrets.VOLCANO_SK }}
+          MINIMAX_GID: ${{ secrets.MINIMAX_GID }}
+          MINIMAX_COOKIE: ${{ secrets.MINIMAX_COOKIE }}
+          TP_COOKIE: ${{ secrets.TP_COOKIE }}
+          TP_SEC: ${{ secrets.TP_SEC }}
         run: |
           python - <<'EOF'
           import json, os
