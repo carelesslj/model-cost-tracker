@@ -286,7 +286,9 @@ let DATA = window.BALANCE_DATA || {daily:{}};
 const MODELS = ["DeepSeek","智谱","Kimi","百炼","火山","MiniMax","硅基流动","OpenAI","Agnes"];
 const COLORS = {DeepSeek:"#60a5fa", "智谱":"#34d399", Kimi:"#f472b6", "百炼":"#fbbf24", "火山":"#fb923c", MiniMax:"#f87171", "硅基流动":"#38bdf8", OpenAI:"#cbd5e1", Agnes:"#a3e635", TOTAL:"#a78bfa"};
 const TP_SUB_END = "2026-09-22";   // Token Plan 个人版订阅到期日（续费后更新此值）
-const hasServer = location.protocol === "http:";
+// 云部署模式（GitHub Pages）：无本地 sync_server，改用 GitHub Actions 触发刷新 + 重载 data.js
+const isCloud = /^https:/.test(location.protocol) && /github\.io/.test(location.hostname);
+const GH_REPO = "carelesslj/model-cost-tracker";   // 云刷新按钮触发此仓库的 Actions
 
 const $ = id => document.getElementById(id);
 const val = (d,m) => { const e = ((DATA.daily[d]||{}).cash||{})[m]; return e && e.value != null ? Number(e.value) : null; };
@@ -766,23 +768,46 @@ renderPriceGantt();
 
 /* ---------- 交互 ---------- */
 let WIN = 0;
+let hasServer = false;
 function checkServer(){
-  if(!hasServer){
-    $("connDot").className="dot off";
-    $("connTxt").textContent="离线模式（经 sync_server 打开可刷新/补录）";
-    $("btnRefresh").disabled=true;
+  if(isCloud){ // GitHub Pages：云模式
+    $("connDot").className="dot on";
+    $("connTxt").textContent="云同步 · hourly 自动更新";
+    $("btnRefresh").disabled=false;
+    $("btnRefresh").textContent="🔄 触发云端刷新";
     $("btnManual").disabled=true;
     return;
   }
   fetch("/api/balances").then(r=>{
-    if(r.ok){$("connDot").className="dot on";$("connTxt").textContent="同步服务在线";}
+    if(r.ok){hasServer=true;$("connDot").className="dot on";$("connTxt").textContent="同步服务在线";
+      $("btnRefresh").disabled=false;$("btnManual").disabled=false;}
     else throw 0;
-  }).catch(()=>{$("connDot").className="dot off";$("connTxt").textContent="服务未响应";});
+  }).catch(()=>{hasServer=false;$("connDot").className="dot off";$("connTxt").textContent="服务未响应（离线模式）";
+    $("btnRefresh").disabled=true;$("btnManual").disabled=true;});
+}
+
+function reloadData(){
+  return new Promise((res)=>{
+    const s=document.createElement("script");
+    s.src="data.js?t="+Date.now();
+    s.onload=()=>{DATA=window.BALANCE_DATA||{daily:{}};res(true);};
+    s.onerror=()=>res(false);
+    document.head.appendChild(s);
+  });
 }
 
 $("btnRefresh").addEventListener("click", async ()=>{
-  if(!hasServer)return;
-  const b=$("btnRefresh"); b.disabled=true; b.textContent="⏳ 拉取中…";
+  const b=$("btnRefresh"); b.disabled=true;
+  if(isCloud){
+    // 云端：不内嵌 token（避免公开泄密）。每小时自动更新已足够；
+    // 如需立即刷新，打开 GitHub Actions 页面手动点 "Run workflow"（需 GitHub 登录）。
+    b.textContent="⏳ 打开 GitHub Actions…";
+    window.open("https://github.com/"+GH_REPO+"/actions", "_blank");
+    setTimeout(()=>{b.disabled=false;b.textContent="🔄 触发云端刷新"},2000);
+    return;
+  }
+  // 本地 sync_server 模式
+  b.textContent="⏳ 拉取中…";
   try{
     const r=await fetch("/api/refresh",{method:"POST"});
     const j=await r.json();
@@ -828,7 +853,10 @@ $("btnCsv").addEventListener("click",exportCsv);
 
 renderAll();
 checkServer();
-setInterval(()=>{ if(hasServer){
+setInterval(()=>{ if(isCloud){
+  // 云端：周期性重载 data.js（Actions 每小时提交新数据）
+  reloadData().then(ok=>{ if(ok) renderAll(); });
+}else if(hasServer){
   fetch("/api/balances").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.daily){DATA=j;renderAll();}}).catch(()=>{});
   fetch("/api/prices").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.rows){window.PRICE_DATA=j;renderReqGantt();renderPriceGantt();}}).catch(()=>{});
 }},300000);
