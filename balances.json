@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-03T07:25:40+00:00",
+ "generated_at": "2026-09-03T08:12:04+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -207,31 +207,20 @@
      "source": "manual_only",
      "error": "免费平台无余额接口"
     },
-    "MiniMax": {
-     "value": -0.0,
+    "DeepSeek": {
+     "value": 56.42,
      "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 0.0,
-      "credit": 0.0,
-      "owed": 0.0
-     },
-     "first_value": -0.0
-    },
-    "百炼": {
-     "value": 206.98,
-     "source": "auto",
-     "first_value": 206.98
+     "first_value": 56.49
     },
     "火山": {
      "value": 10.0,
      "source": "auto",
      "first_value": 10.0
     },
-    "DeepSeek": {
-     "value": 56.42,
+    "百炼": {
+     "value": 206.98,
      "source": "auto",
-     "first_value": 56.49
+     "first_value": 206.98
     },
     "Kimi": {
      "value": 14.93,
@@ -246,23 +235,49 @@
      "value": 70.61,
      "source": "auto",
      "first_value": 70.61
+    },
+    "MiniMax": {
+     "value": -0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": -0.0
     }
    },
    "plans": {
     "Token Plan": {
-     "monthly_pct": null,
-     "source": "no_credentials",
-     "error": "未抓取百炼控制台会话"
+     "monthly_pct": 28.2,
+     "resets_at": "2026-09-08T01:02:00+00:00",
+     "source": "auto",
+     "first_pct": 28.2
     },
     "OpenCode Go": {
-     "rolling": null,
-     "weekly": null,
-     "monthly": null,
-     "source": "error",
-     "error": "401 Client Error: Unauthorized for url: https://opencode.ai/zen/go/v1/usage"
+     "rolling": {
+      "percent": 4,
+      "resets_at": "2026-09-03T09:48:36.627Z",
+      "status": "ok",
+      "first_percent": 4
+     },
+     "weekly": {
+      "percent": 59,
+      "resets_at": "2026-09-07T00:00:00.627Z",
+      "status": "ok",
+      "first_percent": 59
+     },
+     "monthly": {
+      "percent": 90,
+      "resets_at": "2026-09-17T07:40:12.627Z",
+      "status": "ok",
+      "first_percent": 90
+     },
+     "source": "auto"
     }
    },
-   "fetched_at": "07:25:40"
+   "fetched_at": "08:12:04"
   }
  }
 }
