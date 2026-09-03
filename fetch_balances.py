@@ -447,13 +447,24 @@ def merge_day(hist, cash, plans):
     """写入当日快照。规则：
     - source==manual 的值不被自动结果覆盖
     - source==skipped（本次未拉取）不覆盖已有值
+    - 当天首次出现时，first_* 从前一天终值继承（而非等于当日当前值）
     """
     day = today_key()
     old = hist["daily"].get(day, {})
+    # 回溯最近一个已存在的日期，作为"当天首次出现"时的继承基准
+    prev_day = None
+    for d in sorted(hist["daily"].keys()):
+        if d < day:
+            prev_day = d
+        else:
+            break
+    prev_hist = hist["daily"].get(prev_day, {}) if prev_day else {}
     old_cash = old.get("cash", {})
     merged_cash = {}
     for p, v in cash.items():
         prev = old_cash.get(p) or {}
+        # 当天首次出现时，用前一天的终值作为 prev（用于继承 first_*）
+        est_prev = prev if prev else (prev_hist.get("cash", {}).get(p) or {})
         if v.get("source") == "skipped" and prev:
             merged_cash[p] = prev          # 本次未拉，保留旧值
         elif prev.get("source") == "manual":
@@ -465,13 +476,17 @@ def merge_day(hist, cash, plans):
                 # 记录当日首次值（消费=首次值−当前值）
                 fv = prev.get("first_value")
                 if fv is None:
-                    fv = prev.get("value") if prev.get("value") is not None else v["value"]
+                    fv = prev.get("value") if prev.get("value") is not None \
+                        else (est_prev.get("value") if est_prev.get("value") is not None else v["value"])
                 v = dict(v, first_value=fv)
             merged_cash[p] = v
     old_plans = old.get("plans", {})
+    prev_plans = prev_hist.get("plans", {})
     merged_plans = dict(old_plans)
     for k, v in plans.items():
         prevp = old_plans.get(k) or {}
+        # 当天首次出现时，用前一天的 plans 作为继承基准（first_*）
+        est_prevp = prevp if prevp else (prev_plans.get(k) or {})
         if v.get("source") == "skipped" and k in old_plans:
             continue                        # 本次未拉，保留旧值
         if k == "Token Plan" and prevp.get("source") == "manual":
@@ -480,7 +495,7 @@ def merge_day(hist, cash, plans):
             vv = dict(v)
             for win in ("rolling", "weekly", "monthly"):
                 cur = dict(vv.get(win) or {})
-                pr = prevp.get(win) or {}
+                pr = est_prevp.get(win) or {}
                 if cur.get("percent") is not None:
                     fp = pr.get("first_percent")
                     if fp is None:
@@ -494,13 +509,13 @@ def merge_day(hist, cash, plans):
         elif k == "Token Plan" and v.get("source") == "auto":
             vv = dict(v)
             if v.get("monthly_pct") is not None:
-                fp = prevp.get("first_pct")
+                fp = est_prevp.get("first_pct")
                 if fp is None:
-                    fp = prevp.get("monthly_pct") if prevp.get("monthly_pct") is not None \
+                    fp = est_prevp.get("monthly_pct") if est_prevp.get("monthly_pct") is not None \
                         else v["monthly_pct"]
                 vv["first_pct"] = fp
-            elif prevp.get("monthly_pct") is not None:
-                vv = prevp                  # 会话失败保留旧值
+            elif est_prevp.get("monthly_pct") is not None:
+                vv = est_prevp            # 会话失败保留旧值
             merged_plans[k] = vv
         else:
             merged_plans[k] = v
