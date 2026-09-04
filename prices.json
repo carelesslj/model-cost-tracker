@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-04 05:16:19",
+ "updated_at": "2026-09-04 06:30:50",
  "go_page_date": "2026年9月4日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -558,11 +558,11 @@
     "id": "deepseek/deepseek-v4-flash-vision-exp",
     "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
     "base": "deepseek v4 flash vision exp",
-    "input": 0.22,
-    "output": 0.66,
-    "cache_read": 0.007
+    "input": 0.44,
+    "output": 1.32,
+    "cache_read": 0.014
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": -50.0
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Peak)",
@@ -576,11 +576,11 @@
     "id": "deepseek/deepseek-v4-flash-vision-exp",
     "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
     "base": "deepseek v4 flash vision exp",
-    "input": 0.22,
-    "output": 0.66,
-    "cache_read": 0.007
+    "input": 0.44,
+    "output": 1.32,
+    "cache_read": 0.014
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "Hy4 preview",
