@@ -39,6 +39,13 @@ header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap
 h1{font-size:27px;font-weight:800;letter-spacing:.5px;font-family:var(--font-ui);
   background:linear-gradient(92deg,#e8eef9,#9fe9ff 60%,#a78bfa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 h1 .sub{font-size:13px;color:var(--muted);font-weight:400;margin-left:12px;-webkit-text-fill-color:var(--muted)}
+/* 数据新鲜度提示 */
+.freshness{font-size:11.5px;font-weight:600;margin-left:10px;padding:2px 8px;border-radius:20px;vertical-align:middle;letter-spacing:.2px}
+.freshness.fresh-ok{color:var(--green);background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3)}
+.freshness.fresh-warn{color:#fbbf24;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.3)}
+.freshness.fresh-stale{color:#f87171;background:rgba(248,113,113,.14);border:1px solid rgba(248,113,113,.4)}
+.freshness.fresh-stale{animation:pulseWarn 1.6s ease-in-out infinite}
+@keyframes pulseWarn{0%,100%{opacity:1}50%{opacity:.55}}
 .hbtns{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .btn{padding:9px 18px;border-radius:10px;border:1px solid var(--line);background:rgba(30,39,58,.6);color:var(--text);font-size:14px;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:6px;backdrop-filter:blur(6px)}
 .btn:hover{border-color:var(--cyan);transform:translateY(-1px);box-shadow:0 4px 16px rgba(34,211,238,.2)}
@@ -165,7 +172,7 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
 <div class="wrap">
 <header>
   <div>
-    <h1>📊 模型费用仪表盘<span class="sub" id="genAt"></span></h1>
+    <h1>📊 模型费用仪表盘<span class="sub" id="genAt"></span><span class="freshness" id="freshness"></span></h1>
   </div>
   <div class="hbtns">
     <span class="conn"><span class="dot" id="connDot"></span><span id="connTxt">检测中…</span></span>
@@ -364,6 +371,7 @@ function renderAll(){
     }
   }
   $("genAt").textContent = genTxt;
+  updateFreshness();   // 实时刷新"数据新鲜度"提示（每分钟）
   if (!allDates.length){
     $("totalCards").innerHTML = '<div class="empty" style="grid-column:1/-1">暂无数据 — 点击右上角「立即刷新」拉取</div>';
     $("modelCards").innerHTML = ""; $("alerts").innerHTML = "";
@@ -390,6 +398,24 @@ function renderAll(){
   renderReqGantt();
   renderPriceGantt();
 }
+
+/* ---------- 数据新鲜度提示（云端每小时更新，超时醒目提醒） ---------- */
+function updateFreshness(){
+  const el = document.getElementById("freshness");
+  if (!el) return;
+  const last = DATA.generated_at ? new Date(DATA.generated_at) : null;
+  if (!last || isNaN(last)){ el.innerHTML = ""; return; }
+  const mins = Math.floor((Date.now() - last.getTime()) / 60000);
+  let cls = "fresh-ok", txt = "";
+  if (mins < 0){ txt = ""; }             // 时钟异常，忽略
+  else if (mins <= 65){ cls = "fresh-ok"; txt = "新鲜 · " + mins + " 分钟前"; }
+  else if (mins <= 120){ cls = "fresh-warn"; txt = "可能过期 · " + Math.floor(mins/60) + " 小时" + (mins%60) + " 分前"; }
+  else { cls = "fresh-stale"; txt = "已过期 · " + Math.floor(mins/60) + " 小时" + (mins%60) + " 分前 去 GitHub Run workflow"; }
+  el.className = "freshness " + cls;
+  el.textContent = txt;
+}
+// 每 60 秒刷新一次新鲜度
+setInterval(()=>{ if (window.BALANCE_DATA){ updateFreshness(); } }, 60000);
 
 function renderCards(latest, yesterday, totalBal, totalCons){
   const cardHtml = c =>
