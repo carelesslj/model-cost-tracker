@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-04T06:30:49+00:00",
+ "generated_at": "2026-09-04T10:13:41+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -296,28 +296,33 @@
      "error": "免费平台无余额接口"
     },
     "DeepSeek": {
-     "value": 56.33,
+     "value": 56.3,
      "source": "auto",
      "first_value": 56.39
+    },
+    "百炼": {
+     "value": 206.98,
+     "source": "auto",
+     "first_value": 206.98
     },
     "火山": {
      "value": 10.0,
      "source": "auto",
      "first_value": 10.0
     },
-    "Kimi": {
-     "value": 14.93,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 14.93
-     },
-     "first_value": 14.93
-    },
     "智谱": {
      "value": 70.31,
      "source": "auto",
      "first_value": 70.31
+    },
+    "Kimi": {
+     "value": 14.73,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 14.73
+     },
+     "first_value": 14.93
     },
     "MiniMax": {
      "value": -0.0,
@@ -329,43 +334,38 @@
       "owed": 0.0
      },
      "first_value": -0.0
-    },
-    "百炼": {
-     "value": 206.98,
-     "source": "auto",
-     "first_value": 206.98
     }
    },
    "plans": {
     "OpenCode Go": {
      "rolling": {
-      "percent": 0,
-      "resets_at": "2026-09-04T11:30:36.862Z",
+      "percent": 2,
+      "resets_at": "2026-09-04T11:30:36.108Z",
       "status": "ok",
       "first_percent": 1
      },
      "weekly": {
-      "percent": 76,
-      "resets_at": "2026-09-07T00:00:00.862Z",
+      "percent": 77,
+      "resets_at": "2026-09-07T00:00:00.108Z",
       "status": "ok",
       "first_percent": 47
      },
      "monthly": {
-      "percent": 99,
-      "resets_at": "2026-09-17T07:40:12.862Z",
-      "status": "ok",
+      "percent": 100,
+      "resets_at": "2026-09-17T07:40:12.108Z",
+      "status": "rate-limited",
       "first_percent": 84
      },
      "source": "auto"
     },
     "Token Plan": {
-     "monthly_pct": 37.5,
+     "monthly_pct": 40.4,
      "resets_at": "2026-09-08T01:02:00+00:00",
      "source": "auto",
      "first_pct": 28.6
     }
    },
-   "fetched_at": "06:30:49"
+   "fetched_at": "10:13:41"
   }
  }
 }
