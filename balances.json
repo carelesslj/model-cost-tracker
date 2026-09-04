@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-04T00:33:30+00:00",
+ "generated_at": "2026-09-04T02:17:21+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -300,11 +300,6 @@
      "source": "auto",
      "first_value": 56.39
     },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
     "百炼": {
      "value": 206.98,
      "source": "auto",
@@ -314,6 +309,20 @@
      "value": 70.31,
      "source": "auto",
      "first_value": 70.31
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "Kimi": {
+     "value": 14.93,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 14.93
+     },
+     "first_value": 14.93
     },
     "MiniMax": {
      "value": -0.0,
@@ -325,46 +334,38 @@
       "owed": 0.0
      },
      "first_value": -0.0
-    },
-    "Kimi": {
-     "value": 14.93,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 14.93
-     },
-     "first_value": 14.93
     }
    },
    "plans": {
     "OpenCode Go": {
      "rolling": {
-      "percent": 0,
-      "resets_at": "2026-09-04T04:44:38.926Z",
+      "percent": 16,
+      "resets_at": "2026-09-04T04:44:38.360Z",
       "status": "ok",
       "first_percent": 1
      },
      "weekly": {
-      "percent": 63,
-      "resets_at": "2026-09-07T00:00:00.926Z",
+      "percent": 69,
+      "resets_at": "2026-09-07T00:00:00.360Z",
       "status": "ok",
       "first_percent": 47
      },
      "monthly": {
-      "percent": 92,
-      "resets_at": "2026-09-17T07:40:12.926Z",
+      "percent": 96,
+      "resets_at": "2026-09-17T07:40:12.360Z",
       "status": "ok",
       "first_percent": 84
      },
      "source": "auto"
     },
     "Token Plan": {
-     "monthly_pct": null,
-     "source": "error",
-     "error": "Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_console.note）"
+     "monthly_pct": 28.6,
+     "resets_at": "2026-09-08T01:02:00+00:00",
+     "source": "auto",
+     "first_pct": 28.6
     }
    },
-   "fetched_at": "00:33:30"
+   "fetched_at": "02:17:21"
   }
  }
 }
