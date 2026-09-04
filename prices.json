@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-09-04 03:05:13",
- "go_page_date": "2026年9月3日",
+ "updated_at": "2026-09-04 05:16:19",
+ "go_page_date": "2026年9月4日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -558,11 +558,11 @@
     "id": "deepseek/deepseek-v4-flash-vision-exp",
     "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
     "base": "deepseek v4 flash vision exp",
-    "input": 0.44,
-    "output": 1.32,
-    "cache_read": 0.014
+    "input": 0.22,
+    "output": 0.66,
+    "cache_read": 0.007
    },
-   "in_diff_pct": -50.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Peak)",
@@ -576,11 +576,11 @@
     "id": "deepseek/deepseek-v4-flash-vision-exp",
     "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
     "base": "deepseek v4 flash vision exp",
-    "input": 0.44,
-    "output": 1.32,
-    "cache_read": 0.014
+    "input": 0.22,
+    "output": 0.66,
+    "cache_read": 0.007
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 100.0
   },
   {
    "model": "Hy4 preview",
@@ -617,6 +617,17 @@
     "cache_read": 0.033
    },
    "in_diff_pct": 6.1
+  },
+  {
+   "model": "Omen Alpha",
+   "input": 0.2,
+   "output": 0.66,
+   "cache_read": 0.04,
+   "cache_write": null,
+   "quota": "$100",
+   "tier": null,
+   "or": null,
+   "in_diff_pct": null
   }
  ],
  "requests": [
@@ -775,6 +786,12 @@
    "h5": 4300,
    "weekly": 10750,
    "monthly": 21500
+  },
+  {
+   "model": "Omen Alpha",
+   "h5": 11600,
+   "weekly": 29000,
+   "monthly": 57900
   }
  ]
 }
