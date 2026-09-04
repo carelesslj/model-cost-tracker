@@ -352,8 +352,18 @@ let CONS = {};
 function renderAll(){
   const allDates = Object.keys(DATA.daily).sort();
   ALL_DATES = allDates;
-  $("genAt").textContent = DATA.generated_at
-    ? "数据更新 " + String(DATA.generated_at).replace("T"," ").slice(0,16) : "";
+  // 生成时间统一按浏览器本地时区显示（generated_at 为 UTC 时带 +00:00，需换算）
+  let genTxt = "";
+  if (DATA.generated_at){
+    const g = new Date(DATA.generated_at);
+    if (!isNaN(g)){
+      genTxt = "数据更新 " + g.toLocaleString("sv-SE", {hour12:false}).slice(0,16).replace("T"," ")
+        + "（本地时间）";
+    } else {
+      genTxt = "数据更新 " + String(DATA.generated_at).replace("T"," ").slice(0,16);
+    }
+  }
+  $("genAt").textContent = genTxt;
   if (!allDates.length){
     $("totalCards").innerHTML = '<div class="empty" style="grid-column:1/-1">暂无数据 — 点击右上角「立即刷新」拉取</div>';
     $("modelCards").innerHTML = ""; $("alerts").innerHTML = "";
