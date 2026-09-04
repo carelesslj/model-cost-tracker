@@ -204,9 +204,6 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
         <a href="https://console.volcengine.com/" target="_blank">🌋 火山控制台（费用中心→充值）</a>
         <a href="https://console.volcengine.com/ark/region:ark+cn-beijing/apiKey" target="_blank">火山 Ark API Key</a>
         <a href="https://platform.minimaxi.com/user-center/payment/balance" target="_blank">📦 MiniMax 余额（缴清欠费）</a>
-        <a href="https://cloud.siliconflow.cn/" target="_blank">💧 硅基流动控制台</a>
-        <a href="https://siliconflow.cn/pricing" target="_blank">硅基流动定价页</a>
-        <a href="https://platform.openai.com/settings/organization/billing/overview" target="_blank">🌐 OpenAI 账单</a>
         <a href="https://openrouter.ai/settings/credits" target="_blank">🧩 OpenRouter 充值</a>
         <a href="https://build.nvidia.com/settings/api-keys" target="_blank">🟩 NVIDIA 免费 Key（不充值）</a>
       </div>
@@ -275,11 +272,8 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
     <div class="frow"><label for="mBailian">百炼 余额（元）</label><input type="number" step="0.01" id="mBailian" placeholder="阿里云费用中心获取"></div>
     <div class="frow"><label for="mVolc">火山 余额（元）</label><input type="number" step="0.01" id="mVolc" placeholder="留空不改"></div>
     <div class="frow"><label for="mMmx">MiniMax 余额（元）</label><input type="number" step="0.01" id="mMmx" placeholder="会话失效时备用"></div>
-    <div class="frow"><label for="mSf">硅基流动（元）</label><input type="number" step="0.01" id="mSf" placeholder="API 已下线，手动填"></div>
-    <div class="frow"><label for="mOai">OpenAI（元）</label><input type="number" step="0.01" id="mOai" placeholder="未配置，手动填"></div>
-    <div class="frow"><label for="mAg">Agnes（元）</label><input type="number" step="0.01" id="mAg" placeholder="无余额接口，手动填"></div>
     <div class="frow"><label for="mTp">Token Plan 已用%</label><input type="number" step="0.1" min="0" max="100" id="mTp" placeholder="会话失效时备用"></div>
-    <p style="font-size:12.5px;color:var(--dim);margin-top:8px">手填值标记为「手动」，当日自动拉取不会覆盖。硅基流动 / OpenAI / Agnes 无公开 API，余额在此手动登记。</p>
+    <p style="font-size:12.5px;color:var(--dim);margin-top:8px">手填值标记为「手动」，当日自动拉取不会覆盖。</p>
     <div class="mbtns">
       <button class="btn" id="mCancel">取消</button>
       <button class="btn primary" id="mSave">保存</button>
@@ -290,8 +284,8 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
 <script>
 "use strict";
 let DATA = window.BALANCE_DATA || {daily:{}};
-const MODELS = ["DeepSeek","智谱","Kimi","百炼","火山","MiniMax","硅基流动","OpenAI","Agnes"];
-const COLORS = {DeepSeek:"#60a5fa", "智谱":"#34d399", Kimi:"#f472b6", "百炼":"#fbbf24", "火山":"#fb923c", MiniMax:"#f87171", "硅基流动":"#38bdf8", OpenAI:"#cbd5e1", Agnes:"#a3e635", TOTAL:"#a78bfa"};
+const MODELS = ["DeepSeek","智谱","Kimi","百炼","火山","MiniMax"];
+const COLORS = {DeepSeek:"#60a5fa", "智谱":"#34d399", Kimi:"#f472b6", "百炼":"#fbbf24", "火山":"#fb923c", MiniMax:"#f87171", TOTAL:"#a78bfa"};
 const TP_SUB_END = "2026-09-22";   // Token Plan 个人版订阅到期日（续费后更新此值）
 // 云部署模式（GitHub Pages）：无本地 sync_server，改用 GitHub Actions 触发刷新 + 重载 data.js
 const isCloud = /^https:/.test(location.protocol) && /github\.io/.test(location.hostname);
@@ -866,14 +860,14 @@ $("btnRefresh").addEventListener("click", async ()=>{
 
 $("btnManual").addEventListener("click",()=>{
   $("mDate").value=new Date().toLocaleDateString("sv-SE");
-  ["mDs","mZp","mKimi","mBailian","mVolc","mMmx","mSf","mOai","mAg","mTp"].forEach(id=>$(id).value="");
+  ["mDs","mZp","mKimi","mBailian","mVolc","mMmx","mTp"].forEach(id=>$(id).value="");
   $("mSave").disabled=!hasServer;
   $("modalBg").classList.add("show");
 });
 $("mCancel").addEventListener("click",()=>$("modalBg").classList.remove("show"));
 $("mSave").addEventListener("click", async ()=>{
   const body={date:$("mDate").value, cash:{}, plans:{}};
-  const cashMap={DeepSeek:"mDs","智谱":"mZp",Kimi:"mKimi","百炼":"mBailian","火山":"mVolc",MiniMax:"mMmx","硅基流动":"mSf",OpenAI:"mOai",Agnes:"mAg"};
+  const cashMap={DeepSeek:"mDs","智谱":"mZp",Kimi:"mKimi","百炼":"mBailian","火山":"mVolc",MiniMax:"mMmx"};
   let bad=false;
   Object.entries(cashMap).forEach(([m,id])=>{
     const x=$(id).value.trim();
