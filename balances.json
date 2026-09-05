@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-05T20:50:25+00:00",
+ "generated_at": "2026-09-05T22:30:11+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -385,7 +385,7 @@
      "error": "免费平台无余额接口"
     },
     "DeepSeek": {
-     "value": 55.28,
+     "value": 55.0,
      "source": "auto",
      "first_value": 56.27
     },
@@ -429,32 +429,32 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-06T01:50:23.421Z",
+      "resets_at": "2026-09-06T03:30:09.506Z",
       "status": "ok",
       "first_percent": 1
      },
      "weekly": {
       "percent": 77,
-      "resets_at": "2026-09-07T00:00:00.421Z",
+      "resets_at": "2026-09-07T00:00:00.506Z",
       "status": "ok",
       "first_percent": 47
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.421Z",
+      "resets_at": "2026-09-17T07:40:12.506Z",
       "status": "rate-limited",
       "first_percent": 84
      },
      "source": "auto"
     },
     "Token Plan": {
-     "monthly_pct": 69.0,
+     "monthly_pct": 70.1,
      "resets_at": "2026-09-08T01:02:00+00:00",
      "source": "auto",
      "first_pct": 28.6
     }
    },
-   "fetched_at": "20:50:25"
+   "fetched_at": "22:30:11"
   }
  }
 }
