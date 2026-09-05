@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-05 13:07:55",
+ "updated_at": "2026-09-05 16:24:57",
  "go_page_date": "2026年9月5日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.8803,
-    "output": 1.7605,
-    "cache_read": 0.0734
+    "input": 0.8498,
+    "output": 1.6996,
+    "cache_read": 0.0708
    },
-   "in_diff_pct": -25.0
+   "in_diff_pct": -22.3
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.8803,
-    "output": 1.7605,
-    "cache_read": 0.0734
+    "input": 0.8498,
+    "output": 1.6996,
+    "cache_read": 0.0708
    },
-   "in_diff_pct": 49.9
+   "in_diff_pct": 55.3
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.085,
-    "output": 0.17,
-    "cache_read": 0.017
+    "input": 0.0844,
+    "output": 0.1688,
+    "cache_read": 0.0169
    },
-   "in_diff_pct": 158.8
+   "in_diff_pct": 160.7
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.085,
-    "output": 0.17,
-    "cache_read": 0.017
+    "input": 0.0844,
+    "output": 0.1688,
+    "cache_read": 0.0169
    },
-   "in_diff_pct": 417.6
+   "in_diff_pct": 421.3
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Omen Alpha",
