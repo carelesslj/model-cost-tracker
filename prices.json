@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-06 13:24:06",
+ "updated_at": "2026-09-06 16:35:55",
  "go_page_date": "2026年9月6日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.6774,
-    "output": 1.3548,
-    "cache_read": 0.0564
+    "input": 0.6572,
+    "output": 1.3144,
+    "cache_read": 0.0548
    },
-   "in_diff_pct": -2.6
+   "in_diff_pct": 0.4
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.6774,
-    "output": 1.3548,
-    "cache_read": 0.0564
+    "input": 0.6572,
+    "output": 1.3144,
+    "cache_read": 0.0548
    },
-   "in_diff_pct": 94.9
+   "in_diff_pct": 100.9
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0802,
-    "output": 0.1604,
+    "input": 0.0799,
+    "output": 0.1599,
     "cache_read": 0.016
    },
-   "in_diff_pct": 174.3
+   "in_diff_pct": 175.3
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0802,
-    "output": 0.1604,
+    "input": 0.0799,
+    "output": 0.1599,
     "cache_read": 0.016
    },
-   "in_diff_pct": 448.6
+   "in_diff_pct": 450.7
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Omen Alpha",
