@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-05T22:30:11+00:00",
+ "generated_at": "2026-09-06T00:24:42+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -455,6 +455,95 @@
     }
    },
    "fetched_at": "22:30:11"
+  },
+  "2026-09-06": {
+   "cash": {
+    "硅基流动": {
+     "value": null,
+     "source": "manual_only",
+     "error": "官方余额 API 已下线"
+    },
+    "OpenAI": {
+     "value": null,
+     "source": "manual_only",
+     "error": "未配置 key"
+    },
+    "Agnes": {
+     "value": null,
+     "source": "manual_only",
+     "error": "免费平台无余额接口"
+    },
+    "DeepSeek": {
+     "value": 54.72,
+     "source": "auto",
+     "first_value": 55.0
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "百炼": {
+     "value": 206.98,
+     "source": "auto",
+     "first_value": 206.98
+    },
+    "Kimi": {
+     "value": 14.73,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 14.73
+     },
+     "first_value": 14.73
+    },
+    "智谱": {
+     "value": 70.3,
+     "source": "auto",
+     "first_value": 70.3
+    },
+    "MiniMax": {
+     "value": -0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": -0.0
+    }
+   },
+   "plans": {
+    "OpenCode Go": {
+     "rolling": {
+      "percent": 0,
+      "resets_at": "2026-09-06T05:24:41.005Z",
+      "status": "ok",
+      "first_percent": 1
+     },
+     "weekly": {
+      "percent": 77,
+      "resets_at": "2026-09-07T00:00:00.005Z",
+      "status": "ok",
+      "first_percent": 47
+     },
+     "monthly": {
+      "percent": 100,
+      "resets_at": "2026-09-17T07:40:12.005Z",
+      "status": "rate-limited",
+      "first_percent": 84
+     },
+     "source": "auto"
+    },
+    "Token Plan": {
+     "monthly_pct": 77.0,
+     "resets_at": "2026-09-08T01:02:00+00:00",
+     "source": "auto",
+     "first_pct": 28.6
+    }
+   },
+   "fetched_at": "00:24:42"
   }
  }
 }
