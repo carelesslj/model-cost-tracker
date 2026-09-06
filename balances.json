@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-06T16:35:54+00:00",
+ "generated_at": "2026-09-06T18:45:38+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -478,15 +478,15 @@
      "source": "auto",
      "first_value": 55.0
     },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
     "百炼": {
      "value": 206.98,
      "source": "auto",
      "first_value": 206.98
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
     },
     "Kimi": {
      "value": 14.73,
@@ -518,19 +518,19 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-06T21:35:53.041Z",
+      "resets_at": "2026-09-06T23:45:37.463Z",
       "status": "ok",
       "first_percent": 1
      },
      "weekly": {
       "percent": 77,
-      "resets_at": "2026-09-07T00:00:00.041Z",
+      "resets_at": "2026-09-07T00:00:00.463Z",
       "status": "ok",
       "first_percent": 47
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.041Z",
+      "resets_at": "2026-09-17T07:40:12.463Z",
       "status": "rate-limited",
       "first_percent": 84
      },
@@ -542,7 +542,7 @@
      "error": "Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_console.note）"
     }
    },
-   "fetched_at": "16:35:54"
+   "fetched_at": "18:45:38"
   }
  }
 }
