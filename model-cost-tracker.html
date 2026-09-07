@@ -218,7 +218,7 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
   </div>
 </div>
 
-<div class="sec" style="--acc:var(--blue)">🔌 API 模型余额<span class="sechint">大字 = 当前余额 · 下方 = 昨日用量</span></div>
+<div class="sec" style="--acc:var(--blue)">🔌 API 模型余额<span class="sechint">大字 = 当前余额 · 下方 = 今日 / 昨日用量</span></div>
 <div class="cards" id="totalCards"></div>
 <div class="cards" id="modelCards"></div>
 
@@ -418,10 +418,13 @@ setInterval(()=>{ if (window.BALANCE_DATA){ updateFreshness(); } }, 60000);
 function renderCards(latest, yesterday, totalBal, totalCons){
   const cardHtml = c =>
     `<div class="card" style="--acc:${c.acc}"><div class="k">${c.k}</div><div class="v"${c.dim?' style="color:var(--dim);font-size:21px"':''}>${c.v}</div>${c.u||""}<div class="d">${c.d||""}</div></div>`;
-  const yUse = yesterday ? totalCons(yesterday) : totalCons(latest);
+  const tUse = totalCons(latest);
+  const yUse = yesterday ? totalCons(yesterday) : null;
+  const useLine = (label,v)=> v==null ? "" :
+    `<div class="u" style="color:${v>0?"var(--amber)":"var(--dim)"}">${label} ¥${v.toFixed(2)}</div>`;
   $("totalCards").innerHTML = [{
     k:"💰 现金总余额", v:"¥"+totalBal(latest).toFixed(2), acc:"#34d399",
-    u:`<div class="u" style="color:${yUse>0?"var(--amber)":"var(--dim)"}">${yesterday?"昨日":"今日"}用量 ¥${yUse.toFixed(2)}</div>`,
+    u: useLine("今日用量",tUse) + useLine("昨日用量",yUse),
     d:"含 "+MODELS.length+" 个模型" + (yesterday?"（"+yesterday+"）":"（今日累计）"),
   }].map(cardHtml).join("");
 
@@ -436,9 +439,8 @@ function renderCards(latest, yesterday, totalBal, totalCons){
     else if(m==="Kimi"&&e.detail) sub="现金¥"+e.detail.cash+" + 赠款¥"+e.detail.voucher;
     else if(m==="MiniMax"&&e.detail) sub="现金¥"+e.detail.cash+" 赠款¥"+e.detail.voucher+(e.detail.owed>0?" 欠¥"+e.detail.owed:"");
     else sub={DeepSeek:"api.deepseek.com","智谱":"bigmodel.cn","百炼":"阿里云费用中心","火山":"billing.volcengineapi.com",MiniMax:"控制台会话"}[m]||"";
-    const u = yesterday ? CONS[yesterday][m] : CONS[latest][m];
-    const uHtml = u==null ? "" :
-      `<div class="u" style="color:${u>0?"var(--amber)":"var(--dim)"}">${yesterday?"昨日":"今日"}用量 ${u>0?"¥"+u.toFixed(2):"0"}</div>`;
+    const tU = CONS[latest][m], yU = yesterday ? CONS[yesterday][m] : null;
+    const uHtml = useLine("今日用量",tU) + useLine("昨日用量",yU);
     const disp = v!=null ? (v<0?`<span style="color:var(--red)">-¥${Math.abs(v).toFixed(2)}</span>`:"¥"+v.toFixed(2)) : "—";
     return {k:m, v:disp, u:uHtml, acc:COLORS[m], d:sub, dim:v==null};
   });
