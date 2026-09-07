@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-06 22:42:10",
+ "updated_at": "2026-09-07 00:32:05",
  "go_page_date": "2026年9月6日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -110,7 +110,7 @@
     "base": "glm 5.3",
     "input": 1.4,
     "output": 4.4,
-    "cache_read": 0.14
+    "cache_read": 0.26
    },
    "in_diff_pct": 0.0
   },
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.6167,
-    "output": 1.2333,
-    "cache_read": 0.0514
+    "input": 1.0353,
+    "output": 2.0706,
+    "cache_read": 0.0863
    },
-   "in_diff_pct": 7.0
+   "in_diff_pct": -36.3
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.6167,
-    "output": 1.2333,
-    "cache_read": 0.0514
+    "input": 1.0353,
+    "output": 2.0706,
+    "cache_read": 0.0863
    },
-   "in_diff_pct": 114.0
+   "in_diff_pct": 27.5
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0791,
-    "output": 0.1582,
-    "cache_read": 0.0158
+    "input": 0.0899,
+    "output": 0.1797,
+    "cache_read": 0.018
    },
-   "in_diff_pct": 178.1
+   "in_diff_pct": 144.7
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0791,
-    "output": 0.1582,
-    "cache_read": 0.0158
+    "input": 0.0899,
+    "output": 0.1797,
+    "cache_read": 0.018
    },
-   "in_diff_pct": 456.3
+   "in_diff_pct": 389.4
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Omen Alpha",

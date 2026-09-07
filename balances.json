@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-06T22:42:09+00:00",
+ "generated_at": "2026-09-07T00:32:04+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -543,6 +543,94 @@
     }
    },
    "fetched_at": "22:42:09"
+  },
+  "2026-09-07": {
+   "cash": {
+    "硅基流动": {
+     "value": null,
+     "source": "manual_only",
+     "error": "官方余额 API 已下线"
+    },
+    "OpenAI": {
+     "value": null,
+     "source": "manual_only",
+     "error": "未配置 key"
+    },
+    "Agnes": {
+     "value": null,
+     "source": "manual_only",
+     "error": "免费平台无余额接口"
+    },
+    "DeepSeek": {
+     "value": 49.91,
+     "source": "auto",
+     "first_value": 49.97
+    },
+    "百炼": {
+     "value": 206.98,
+     "source": "auto",
+     "first_value": 206.98
+    },
+    "智谱": {
+     "value": 70.3,
+     "source": "auto",
+     "first_value": 70.3
+    },
+    "Kimi": {
+     "value": 14.73,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 14.73
+     },
+     "first_value": 14.73
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "MiniMax": {
+     "value": -0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": -0.0
+    }
+   },
+   "plans": {
+    "OpenCode Go": {
+     "rolling": {
+      "percent": 0,
+      "resets_at": "2026-09-07T05:32:03.173Z",
+      "status": "ok",
+      "first_percent": 1
+     },
+     "weekly": {
+      "percent": 0,
+      "resets_at": "2026-09-14T00:00:00.173Z",
+      "status": "ok",
+      "first_percent": 47
+     },
+     "monthly": {
+      "percent": 100,
+      "resets_at": "2026-09-17T07:40:12.173Z",
+      "status": "rate-limited",
+      "first_percent": 84
+     },
+     "source": "auto"
+    },
+    "Token Plan": {
+     "monthly_pct": null,
+     "source": "error",
+     "error": "Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_console.note）"
+    }
+   },
+   "fetched_at": "00:32:04"
   }
  }
 }
