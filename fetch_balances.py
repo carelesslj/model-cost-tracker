@@ -521,8 +521,12 @@ def merge_day(hist, cash, plans):
                     else:
                         fp = pr.get("first_percent")
                         if fp is None:
-                            fp = pr.get("percent") if pr.get("percent") is not None \
-                                else cur["percent"]
+                            fp = pr.get("percent")
+                        if fp is None:
+                            # 同 TP：全天无有效值时回溯最近有效值，防用量抹 0
+                            good = _last_good_plan(hist, k, day)
+                            gfp = ((good or {}).get(win) or {}).get("percent")
+                            fp = gfp if gfp is not None else cur["percent"]
                     cur["first_percent"] = fp
                     vv[win] = cur
                 elif pr.get("percent") is not None:
@@ -536,8 +540,12 @@ def merge_day(hist, cash, plans):
                 else:
                     fp = est_prevp.get("first_pct")
                     if fp is None:
-                        fp = est_prevp.get("monthly_pct") \
-                            if est_prevp.get("monthly_pct") is not None else v["monthly_pct"]
+                        fp = est_prevp.get("monthly_pct")
+                    if fp is None:
+                        # 当天/前日都无有效值（如会话全天失效）→ 回溯最近有效值做锚，
+                        # 否则首值=当前值会把真实用量抹成 0（2026-09-07 TP 踩坑）
+                        good = _last_good_plan(hist, k, day)
+                        fp = good.get("monthly_pct") if good else v["monthly_pct"]
                 vv["first_pct"] = fp
             else:
                 good = _last_good_plan(hist, k, day)
