@@ -856,7 +856,10 @@ $("btnRefresh").addEventListener("click", async ()=>{
     const j=await r.json();
     if(j.ok){DATA=j.data;
       try{const pr=await fetch("/api/prices");if(pr.ok){const pj=await pr.json();if(pj&&pj.rows)window.PRICE_DATA=pj;}}catch(_){}
-      renderAll();b.textContent="✅ 已刷新";}
+      renderAll();
+      const cp=j.cloudPush;  // 本地刷新顺带推云端（Actions schedule 不可靠）
+      b.textContent = "✅ 已刷新" + (cp ? (cp.ok ? " · ☁️已同步" : " · ☁️推送失败") : "");
+      if(cp && !cp.ok) b.title = cp.msg; else b.title = ""; }
     else b.textContent="❌ "+String(j.error||"失败").slice(0,24);
   }catch(e){b.textContent="❌ 网络错误";}
   setTimeout(()=>{b.disabled=false;b.textContent="🔄 立即刷新"},1600);
