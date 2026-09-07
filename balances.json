@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-07T05:29:14+00:00",
+ "generated_at": "2026-09-07T11:08:07+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -566,16 +566,6 @@
      "source": "auto",
      "first_value": 49.97
     },
-    "百炼": {
-     "value": 206.98,
-     "source": "auto",
-     "first_value": 206.98
-    },
-    "智谱": {
-     "value": 70.3,
-     "source": "auto",
-     "first_value": 70.3
-    },
     "Kimi": {
      "value": 14.73,
      "source": "auto",
@@ -584,6 +574,21 @@
       "voucher": 14.73
      },
      "first_value": 14.73
+    },
+    "百炼": {
+     "value": 202.64,
+     "source": "auto",
+     "first_value": 206.98
+    },
+    "智谱": {
+     "value": 70.3,
+     "source": "auto",
+     "first_value": 70.3
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
     },
     "MiniMax": {
      "value": -0.0,
@@ -595,30 +600,25 @@
       "owed": 0.0
      },
      "first_value": -0.0
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
     }
    },
    "plans": {
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-07T10:29:12.732Z",
+      "resets_at": "2026-09-07T16:08:06.328Z",
       "status": "ok",
       "first_percent": 1
      },
      "weekly": {
       "percent": 0,
-      "resets_at": "2026-09-14T00:00:00.732Z",
+      "resets_at": "2026-09-14T00:00:00.328Z",
       "status": "ok",
       "first_percent": 47
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.732Z",
+      "resets_at": "2026-09-17T07:40:12.328Z",
       "status": "rate-limited",
       "first_percent": 84
      },
@@ -630,7 +630,7 @@
      "error": "Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_console.note）"
     }
    },
-   "fetched_at": "05:29:14"
+   "fetched_at": "11:08:07"
   }
  }
 }
