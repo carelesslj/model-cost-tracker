@@ -178,6 +178,7 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
     <span class="conn"><span class="dot" id="connDot"></span><span id="connTxt">检测中…</span></span>
     <button class="btn" id="btnManual">✏️ 手动补录</button>
     <button class="btn" id="btnCsv">📤 导出 CSV</button>
+    <button class="btn" id="btnCloudRun" style="display:none" title="GitHub Actions 无匿名触发接口：打开 Run workflow 页面后点绿色按钮，约 1 分钟完成，页面自动更新">☁️ 云端立即重拉</button>
     <button class="btn primary" id="btnRefresh">🔄 立即刷新</button>
   </div>
 </header>
@@ -891,6 +892,15 @@ $("rangeSel").addEventListener("change",e=>{WIN=Number(e.target.value)||0;render
 $("btnCsv").addEventListener("click",exportCsv);
 
 renderAll();
+/* ☁️ 云端立即重拉：GitHub 不给匿名触发接口，点了跳 Run workflow 页(需登录)，
+   按绿色按钮后约 1 分钟 Actions 完成，本页 5 分钟轮询会自动拿到新数据 */
+if (isCloud){
+  const cr = $("btnCloudRun");
+  cr.style.display = "";
+  cr.addEventListener("click", ()=> window.open(
+    "https://github.com/carelesslj/model-cost-tracker/actions/workflows/fetch.yml?query=branch%3Amain", "_blank"));
+}
+
 checkServer();
 setInterval(()=>{ if(isCloud){
   // 云端：周期性重载 data.js（Actions 每小时提交新数据）

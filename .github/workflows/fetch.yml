@@ -1,7 +1,7 @@
 name: Fetch Balances
 on:
   schedule:
-    - cron: '0 * * * *'  # Every hour
+    - cron: '*/15 * * * *'  # Every 15 min (public repo, free minutes)
   workflow_dispatch:       # Manual trigger
 
 permissions:

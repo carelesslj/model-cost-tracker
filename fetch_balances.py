@@ -40,11 +40,8 @@ DATA_JS = os.path.join(DIR, "data.js")
 MD_FILE = os.path.join(DIR, "00-模型实时费用.md")
 LOG_FILE = os.path.join(DIR, "fetch_log.txt")
 
-CASH_PROVIDERS = ["DeepSeek", "智谱", "Kimi", "百炼", "火山", "MiniMax",
-                  "硅基流动", "OpenAI", "Agnes"]
-MANUAL_ONLY = {"硅基流动": "官方余额 API 已下线",
-               "OpenAI": "未配置 key",
-               "Agnes": "免费平台无余额接口"}
+CASH_PROVIDERS = ["DeepSeek", "智谱", "Kimi", "百炼", "火山", "MiniMax"]
+MANUAL_ONLY = {}
 PLAN_PROVIDERS = ["OpenCode Go", "Token Plan"]
 TIMEOUT = 20
 MAX_RETRIES = 3          # 网络/5xx 重试次数（4xx 不重试）
@@ -188,7 +185,7 @@ def fetch_token_plan(creds):
             timeout=TIMEOUT)
         r.raise_for_status()
         return r.json()
-    j = with_retry(_do, "TokenPlan")
+    j = with_retry(_do, "TokenPlan")  # 注意：429 也会在这里被 with_retry 消化掉
     try:
         inner = j["data"]["DataV2"]["data"]
     except (KeyError, TypeError):
@@ -443,11 +440,33 @@ def load_history():
             "plan_providers": PLAN_PROVIDERS, "daily": {}}
 
 
+def _last_good_plan(hist, key, before_day):
+    """拉取失败时的兜底：回溯最近一个有效 plan 快照。
+    会话过期是常态（百炼 cookie 3~6 天必失效），error 进数据会污染
+    三端（主设备/Actions/Mac）；改为回填旧值并标 as_of，数据只旧不错。"""
+    if key == "Token Plan":
+        def ok(p):
+            return p.get("source") == "auto" and p.get("monthly_pct") is not None
+    elif key == "OpenCode Go":
+        def ok(p):
+            return p.get("source") == "auto" and all(
+                (p.get(w) or {}).get("percent") is not None
+                for w in ("rolling", "weekly", "monthly"))
+    else:
+        return None
+    for d in sorted([x for x in hist["daily"] if x < before_day], reverse=True):
+        p = hist["daily"][d]["plans"].get(key) or {}
+        if ok(p):
+            return dict(p, as_of=d)   # as_of：数值截止的真实日期
+    return None
+
+
 def merge_day(hist, cash, plans):
     """写入当日快照。规则：
     - source==manual 的值不被自动结果覆盖
     - source==skipped（本次未拉取）不覆盖已有值
     - 当天首次出现时，first_* 从前一天终值继承（而非等于当日当前值）
+    - 拉取失败（error/no_credentials）→ 回填最近有效快照，不写 error
     """
     day = today_key()
     old = hist["daily"].get(day, {})
@@ -497,10 +516,13 @@ def merge_day(hist, cash, plans):
                 cur = dict(vv.get(win) or {})
                 pr = est_prevp.get(win) or {}
                 if cur.get("percent") is not None:
-                    fp = pr.get("first_percent")
-                    if fp is None:
-                        fp = pr.get("percent") if pr.get("percent") is not None \
-                            else cur["percent"]
+                    if est_prevp.get("as_of"):
+                        fp = cur["percent"]   # 基准来自回填旧日→当日重锚，防跨重置假增量
+                    else:
+                        fp = pr.get("first_percent")
+                        if fp is None:
+                            fp = pr.get("percent") if pr.get("percent") is not None \
+                                else cur["percent"]
                     cur["first_percent"] = fp
                     vv[win] = cur
                 elif pr.get("percent") is not None:
@@ -509,14 +531,30 @@ def merge_day(hist, cash, plans):
         elif k == "Token Plan" and v.get("source") == "auto":
             vv = dict(v)
             if v.get("monthly_pct") is not None:
-                fp = est_prevp.get("first_pct")
-                if fp is None:
-                    fp = est_prevp.get("monthly_pct") if est_prevp.get("monthly_pct") is not None \
-                        else v["monthly_pct"]
+                if est_prevp.get("as_of"):
+                    fp = v["monthly_pct"]     # 基准来自回填旧日→当日重锚，防跨重置假增量
+                else:
+                    fp = est_prevp.get("first_pct")
+                    if fp is None:
+                        fp = est_prevp.get("monthly_pct") \
+                            if est_prevp.get("monthly_pct") is not None else v["monthly_pct"]
                 vv["first_pct"] = fp
-            elif est_prevp.get("monthly_pct") is not None:
-                vv = est_prevp            # 会话失败保留旧值
+            else:
+                good = _last_good_plan(hist, k, day)
+                if good:
+                    vv = good               # 回填最近有效快照
             merged_plans[k] = vv
+        elif v.get("source") in ("error", "no_credentials"):
+            # 拉取失败不写 error（否则污染三端数据链）：
+            # ① 当天已有有效值 → 不动；② 否则回填最近有效快照；
+            # ③ 历史完全无数据时才允许 error 条目出现
+            has_today = (prevp.get("monthly_pct") if k == "Token Plan"
+                         else (prevp.get("monthly") or {}).get("percent"))
+            if has_today is not None:
+                pass  # merged_plans 已含当天值
+            else:
+                good = _last_good_plan(hist, k, day)
+                merged_plans[k] = good if good else v
         else:
             merged_plans[k] = v
     hist["daily"][day] = {
@@ -679,12 +717,14 @@ def main():
         else:
             print(f"  📦 OpenCode Go: error [{og.get('error')}]")
         tp = plans["Token Plan"]
-        if tp.get("source") == "auto":
+        if tp.get("source") == "auto" and tp.get("monthly_pct") is not None:
             print(f"   Token Plan: 已用 {tp['monthly_pct']}%（{tp.get('resets_at','')} 重置）")
         elif tp.get("source") == "skipped":
             print("  🧩 Token Plan: （本次未拉取，保留旧值）")
         else:
-            print(f"  🧩 Token Plan: {tp.get('source')} [{tp.get('error')}]")
+            print(f"  🧩 Token Plan: 拉取失败 [{tp.get('error','')[:60]}]"
+                  f"\n    　→ 数据层已自动回填最近有效快照（不污染 data.js）"
+                  f"\n    　→ 若在本机：python3 bailian_reauth.py 一键重抓会话")
 
 
 if __name__ == "__main__":
