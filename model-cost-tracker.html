@@ -178,7 +178,6 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
     <span class="conn"><span class="dot" id="connDot"></span><span id="connTxt">检测中…</span></span>
     <button class="btn" id="btnManual">✏️ 手动补录</button>
     <button class="btn" id="btnCsv">📤 导出 CSV</button>
-    <button class="btn" id="btnCloudRun" style="display:none" title="GitHub Actions 无匿名触发接口：打开 Run workflow 页面后点绿色按钮，约 1 分钟完成，页面自动更新">☁️ 云端立即重拉</button>
     <button class="btn primary" id="btnRefresh">🔄 立即刷新</button>
   </div>
 </header>
@@ -408,7 +407,7 @@ function updateFreshness(){
   if (mins < 0){ txt = ""; }             // 时钟异常，忽略
   else if (mins <= t1){ cls = "fresh-ok"; txt = "新鲜 · " + mins + " 分钟前"; }
   else if (mins <= t2){ cls = "fresh-warn"; txt = "可能过期 · " + hm(mins) + "前"; }
-  else { cls = "fresh-stale"; txt = "已过期 · " + hm(mins) + "前 · " + (isCloud ? "点 ☁️ 云端立即重拉" : "去 GitHub Run workflow"); }
+  else { cls = "fresh-stale"; txt = "已过期 · " + hm(mins) + "前 · " + (isCloud ? "点此重拉" : "去 GitHub Run workflow"); }
   el.className = "freshness " + cls;
   el.textContent = txt;
 }
@@ -808,7 +807,7 @@ let hasServer = false;
 function checkServer(){
   if(isCloud){ // GitHub Pages：云模式
     $("connDot").className="dot on";
-    $("connTxt").textContent="云同步 · hourly 自动更新";
+    $("connTxt").textContent="云同步 · Mac 每小时自动推送";
     $("btnRefresh").disabled=false;
     $("btnRefresh").textContent="🔄 刷新本页数据";
     // 云端无本地后端：手动补录不可持久化，故隐藏（补录只在本机有意义）
@@ -900,12 +899,13 @@ $("rangeSel").addEventListener("change",e=>{WIN=Number(e.target.value)||0;render
 $("btnCsv").addEventListener("click",exportCsv);
 
 renderAll();
-/* ☁️ 云端立即重拉：GitHub 不给匿名触发接口，点了跳 Run workflow 页(需登录)，
-   按绿色按钮后约 1 分钟 Actions 完成，本页 5 分钟轮询会自动拿到新数据 */
+/* ☁️ 云端立即重拉：GitHub 不给匿名触发接口，点新鲜度胶囊跳 Run workflow 页
+   (需登录)，按绿色按钮约 1 分钟完成，本页 5 分钟轮询自动接住新数据 */
 if (isCloud){
-  const cr = $("btnCloudRun");
-  cr.style.display = "";
-  cr.addEventListener("click", ()=> window.open(
+  const fe = $("freshness");
+  fe.style.cursor = "pointer";
+  fe.title = "点击打开 GitHub Run workflow 立即重拉";
+  fe.addEventListener("click", ()=> window.open(
     "https://github.com/carelesslj/model-cost-tracker/actions/workflows/fetch.yml?query=branch%3Amain", "_blank"));
 }
 
