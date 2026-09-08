@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-08T23:20:03+08:00",
+ "generated_at": "2026-09-09T00:20:16+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -580,25 +580,6 @@
      "source": "auto",
      "first_value": 49.91
     },
-    "百炼": {
-     "value": 198.8,
-     "source": "auto",
-     "first_value": 199.34
-    },
-    "智谱": {
-     "value": 70.3,
-     "source": "auto",
-     "first_value": 70.3
-    },
-    "Kimi": {
-     "value": 7.55,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 7.55
-     },
-     "first_value": 14.73
-    },
     "MiniMax": {
      "value": -0.0,
      "source": "auto",
@@ -665,6 +646,80 @@
     }
    },
    "fetched_at": "23:20:03"
+  },
+  "2026-09-09": {
+   "cash": {
+    "DeepSeek": {
+     "value": 48.25,
+     "source": "auto",
+     "first_value": 49.85
+    },
+    "MiniMax": {
+     "value": -0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": -0.0
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "Kimi": {
+     "value": 7.55,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 7.55
+     },
+     "first_value": 7.55
+    },
+    "智谱": {
+     "value": 70.3,
+     "source": "auto",
+     "first_value": 70.3
+    },
+    "百炼": {
+     "value": 198.8,
+     "source": "auto",
+     "first_value": 198.8
+    }
+   },
+   "plans": {
+    "Token Plan": {
+     "monthly_pct": 10.5,
+     "resets_at": "2026-09-15T14:07:00+08:00",
+     "source": "auto",
+     "first_pct": 0.0
+    },
+    "OpenCode Go": {
+     "rolling": {
+      "percent": 0,
+      "resets_at": "2026-09-08T21:20:16.426Z",
+      "status": "ok",
+      "first_percent": 1
+     },
+     "weekly": {
+      "percent": 0,
+      "resets_at": "2026-09-14T00:00:00.426Z",
+      "status": "ok",
+      "first_percent": 47
+     },
+     "monthly": {
+      "percent": 100,
+      "resets_at": "2026-09-17T07:40:12.426Z",
+      "status": "rate-limited",
+      "first_percent": 84
+     },
+     "source": "auto"
+    }
+   },
+   "fetched_at": "00:20:16"
   }
  }
 }
