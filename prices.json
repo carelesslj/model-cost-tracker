@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-09-09 15:59:19",
- "go_page_date": "2026年9月8日",
+ "updated_at": "2026-09-09 19:13:39",
+ "go_page_date": "2026年9月9日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -84,7 +84,7 @@
    "output": 0.5,
    "cache_read": 0.03,
    "cache_write": null,
-   "quota": "$15",
+   "quota": "$60",
    "tier": null,
    "or": {
     "id": "z-ai/glm-5.3-flash",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0855,
-    "output": 0.1711,
-    "cache_read": 0.0171
+    "input": 0.07,
+    "output": 0.14,
+    "cache_read": 0.014
    },
-   "in_diff_pct": 157.3
+   "in_diff_pct": 214.3
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0855,
-    "output": 0.1711,
-    "cache_read": 0.0171
+    "input": 0.07,
+    "output": 0.14,
+    "cache_read": 0.014
    },
-   "in_diff_pct": 414.6
+   "in_diff_pct": 528.6
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Omen Alpha",
@@ -645,9 +645,9 @@
   },
   {
    "model": "GLM-5.3-Flash",
-   "h5": 1580,
-   "weekly": 3950,
-   "monthly": 7900
+   "h5": 6320,
+   "weekly": 15790,
+   "monthly": 31580
   },
   {
    "model": "GLM-5.3",
