@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-09T01:32:44+00:00",
+ "generated_at": "2026-09-09T10:20:06+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -654,30 +654,6 @@
      "source": "auto",
      "first_value": 49.85
     },
-    "百炼": {
-     "value": 198.8,
-     "source": "auto",
-     "first_value": 198.8
-    },
-    "智谱": {
-     "value": 70.3,
-     "source": "auto",
-     "first_value": 70.3
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
-    "Kimi": {
-     "value": 7.55,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 7.55
-     },
-     "first_value": 7.55
-    },
     "MiniMax": {
      "value": -0.0,
      "source": "auto",
@@ -688,11 +664,35 @@
       "owed": 0.0
      },
      "first_value": -0.0
+    },
+    "Kimi": {
+     "value": 7.55,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 7.55
+     },
+     "first_value": 7.55
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "智谱": {
+     "value": 70.3,
+     "source": "auto",
+     "first_value": 70.3
+    },
+    "百炼": {
+     "value": 198.8,
+     "source": "auto",
+     "first_value": 198.8
     }
    },
    "plans": {
     "Token Plan": {
-     "monthly_pct": 13.4,
+     "monthly_pct": 18.1,
      "resets_at": "2026-09-15T14:07:00+08:00",
      "source": "auto",
      "first_pct": 0.0
@@ -700,26 +700,26 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-09T06:32:43.348Z",
+      "resets_at": "2026-09-09T07:20:06.354Z",
       "status": "ok",
       "first_percent": 1
      },
      "weekly": {
       "percent": 0,
-      "resets_at": "2026-09-14T00:00:00.348Z",
+      "resets_at": "2026-09-14T00:00:00.354Z",
       "status": "ok",
       "first_percent": 47
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.348Z",
+      "resets_at": "2026-09-17T07:40:12.354Z",
       "status": "rate-limited",
       "first_percent": 84
      },
      "source": "auto"
     }
    },
-   "fetched_at": "01:32:44"
+   "fetched_at": "10:20:06"
   }
  }
 }
