@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-09 21:43:44",
+ "updated_at": "2026-09-09 23:31:40",
  "go_page_date": "2026年9月9日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -7,76 +7,15 @@
  },
  "rows": [
   {
-   "model": "Grok 4.6 (≤ 200K tokens)",
-   "input": 2.0,
-   "output": 6.0,
-   "cache_read": 0.5,
-   "cache_write": null,
-   "quota": "$15",
-   "tier": null,
-   "or": {
-    "id": "x-ai/grok-4.6",
-    "name": "SpaceXAI: Grok 4.6",
-    "base": "grok 4.6",
-    "input": 2.0,
-    "output": 6.0,
-    "cache_read": 0.5
-   },
-   "in_diff_pct": 0.0
-  },
-  {
-   "model": "Grok 4.6 (> 200K tokens)",
-   "input": 4.0,
-   "output": 12.0,
-   "cache_read": 1.0,
-   "cache_write": null,
-   "quota": "$15",
-   "tier": "长上下文档",
-   "or": {
-    "id": "x-ai/grok-4.6",
-    "name": "SpaceXAI: Grok 4.6",
-    "base": "grok 4.6",
-    "input": 2.0,
-    "output": 6.0,
-    "cache_read": 0.5
-   },
-   "in_diff_pct": 100.0
-  },
-  {
-   "model": "GPT 5.6 Luna (≤ 272K tokens)",
+   "model": "Omen Alpha",
    "input": 0.2,
-   "output": 1.2,
-   "cache_read": 0.02,
-   "cache_write": 0.25,
-   "quota": "$15",
-   "tier": null,
-   "or": {
-    "id": "openai/gpt-5.6-luna",
-    "name": "OpenAI: GPT-5.6 Luna",
-    "base": "gpt 5.6 luna",
-    "input": 0.2,
-    "output": 1.2,
-    "cache_read": 0.02
-   },
-   "in_diff_pct": 0.0
-  },
-  {
-   "model": "GPT 5.6 Luna (> 272K tokens)",
-   "input": 0.4,
-   "output": 1.8,
+   "output": 0.66,
    "cache_read": 0.04,
-   "cache_write": 0.5,
-   "quota": "$15",
-   "tier": "长上下文档",
-   "or": {
-    "id": "openai/gpt-5.6-luna",
-    "name": "OpenAI: GPT-5.6 Luna",
-    "base": "gpt 5.6 luna",
-    "input": 0.2,
-    "output": 1.2,
-    "cache_read": 0.02
-   },
-   "in_diff_pct": 100.0
+   "cache_write": null,
+   "quota": "$100",
+   "tier": null,
+   "or": null,
+   "in_diff_pct": null
   },
   {
    "model": "GLM-5.3-Flash",
@@ -90,11 +29,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.075,
-    "output": 0.25,
-    "cache_read": 0.015
+    "input": 0.07,
+    "output": 0.2333,
+    "cache_read": 0.014
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 114.3
   },
   {
    "model": "GLM-5.3",
@@ -619,29 +558,84 @@
    "in_diff_pct": 69.7
   },
   {
-   "model": "Omen Alpha",
-   "input": 0.2,
-   "output": 0.66,
-   "cache_read": 0.04,
+   "model": "Grok 4.6 (≤ 200K tokens)",
+   "input": 2.0,
+   "output": 6.0,
+   "cache_read": 0.5,
    "cache_write": null,
-   "quota": "$100",
+   "quota": "$15",
    "tier": null,
-   "or": null,
-   "in_diff_pct": null
+   "or": {
+    "id": "x-ai/grok-4.6",
+    "name": "SpaceXAI: Grok 4.6",
+    "base": "grok 4.6",
+    "input": 2.0,
+    "output": 6.0,
+    "cache_read": 0.5
+   },
+   "in_diff_pct": 0.0
+  },
+  {
+   "model": "Grok 4.6 (> 200K tokens)",
+   "input": 4.0,
+   "output": 12.0,
+   "cache_read": 1.0,
+   "cache_write": null,
+   "quota": "$15",
+   "tier": "长上下文档",
+   "or": {
+    "id": "x-ai/grok-4.6",
+    "name": "SpaceXAI: Grok 4.6",
+    "base": "grok 4.6",
+    "input": 2.0,
+    "output": 6.0,
+    "cache_read": 0.5
+   },
+   "in_diff_pct": 100.0
+  },
+  {
+   "model": "GPT 5.6 Luna (≤ 272K tokens)",
+   "input": 0.2,
+   "output": 1.2,
+   "cache_read": 0.02,
+   "cache_write": 0.25,
+   "quota": "$15",
+   "tier": null,
+   "or": {
+    "id": "openai/gpt-5.6-luna",
+    "name": "OpenAI: GPT-5.6 Luna",
+    "base": "gpt 5.6 luna",
+    "input": 0.2,
+    "output": 1.2,
+    "cache_read": 0.02
+   },
+   "in_diff_pct": 0.0
+  },
+  {
+   "model": "GPT 5.6 Luna (> 272K tokens)",
+   "input": 0.4,
+   "output": 1.8,
+   "cache_read": 0.04,
+   "cache_write": 0.5,
+   "quota": "$15",
+   "tier": "长上下文档",
+   "or": {
+    "id": "openai/gpt-5.6-luna",
+    "name": "OpenAI: GPT-5.6 Luna",
+    "base": "gpt 5.6 luna",
+    "input": 0.2,
+    "output": 1.2,
+    "cache_read": 0.02
+   },
+   "in_diff_pct": 100.0
   }
  ],
  "requests": [
   {
-   "model": "Grok 4.6",
-   "h5": 169,
-   "weekly": 423,
-   "monthly": 845
-  },
-  {
-   "model": "GPT 5.6 Luna",
-   "h5": 2050,
-   "weekly": 5100,
-   "monthly": 10250
+   "model": "Omen Alpha",
+   "h5": 11600,
+   "weekly": 29000,
+   "monthly": 57900
   },
   {
    "model": "GLM-5.3-Flash",
@@ -788,10 +782,16 @@
    "monthly": 21500
   },
   {
-   "model": "Omen Alpha",
-   "h5": 11600,
-   "weekly": 29000,
-   "monthly": 57900
+   "model": "Grok 4.6",
+   "h5": 169,
+   "weekly": 423,
+   "monthly": 845
+  },
+  {
+   "model": "GPT 5.6 Luna",
+   "h5": 2050,
+   "weekly": 5100,
+   "monthly": 10250
   }
  ]
 }
