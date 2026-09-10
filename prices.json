@@ -1,22 +1,11 @@
 {
- "updated_at": "2026-09-10 01:28:17",
- "go_page_date": "2026年9月9日",
+ "updated_at": "2026-09-10 06:34:50",
+ "go_page_date": "2026年9月10日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
  },
  "rows": [
-  {
-   "model": "Omen Alpha",
-   "input": 0.2,
-   "output": 0.66,
-   "cache_read": 0.04,
-   "cache_write": null,
-   "quota": "$100",
-   "tier": null,
-   "or": null,
-   "in_diff_pct": null
-  },
   {
    "model": "GLM-5.3-Flash",
    "input": 0.15,
@@ -29,11 +18,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.07,
-    "output": 0.2333,
-    "cache_read": 0.014
+    "input": 0.075,
+    "output": 0.25,
+    "cache_read": 0.015
    },
-   "in_diff_pct": 114.3
+   "in_diff_pct": 100.0
   },
   {
    "model": "GLM-5.3",
@@ -414,6 +403,28 @@
    "in_diff_pct": 515.4
   },
   {
+   "model": "DeepSeek V4.1 Flash (Off-Peak)",
+   "input": 0.15,
+   "output": 0.6,
+   "cache_read": 0.003,
+   "cache_write": null,
+   "quota": "$15",
+   "tier": "低峰价",
+   "or": null,
+   "in_diff_pct": null
+  },
+  {
+   "model": "DeepSeek V4.1 Flash (Peak)",
+   "input": 0.3,
+   "output": 1.2,
+   "cache_read": 0.006,
+   "cache_write": null,
+   "quota": "$15",
+   "tier": "高峰价",
+   "or": null,
+   "in_diff_pct": null
+  },
+  {
    "model": "DeepSeek V4 Pro (Off-Peak)",
    "input": 0.66,
    "output": 1.98,
@@ -451,9 +462,9 @@
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
-   "input": 0.22,
-   "output": 0.66,
-   "cache_read": 0.007,
+   "input": 0.15,
+   "output": 0.6,
+   "cache_read": 0.003,
    "cache_write": null,
    "quota": "$30",
    "tier": "低峰价",
@@ -465,13 +476,13 @@
     "output": 0.1772,
     "cache_read": 0.0177
    },
-   "in_diff_pct": 148.3
+   "in_diff_pct": 69.3
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
-   "input": 0.44,
-   "output": 1.32,
-   "cache_read": 0.014,
+   "input": 0.3,
+   "output": 1.2,
+   "cache_read": 0.006,
    "cache_write": null,
    "quota": "$30",
    "tier": "高峰价",
@@ -483,13 +494,13 @@
     "output": 0.1772,
     "cache_read": 0.0177
    },
-   "in_diff_pct": 396.6
+   "in_diff_pct": 238.6
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
-   "input": 0.22,
-   "output": 0.66,
-   "cache_read": 0.007,
+   "input": 0.15,
+   "output": 0.6,
+   "cache_read": 0.003,
    "cache_write": null,
    "quota": "$15",
    "tier": "低峰价",
@@ -501,13 +512,13 @@
     "output": 0.66,
     "cache_read": 0.007
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": -31.8
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Peak)",
-   "input": 0.44,
-   "output": 1.32,
-   "cache_read": 0.014,
+   "input": 0.3,
+   "output": 1.2,
+   "cache_read": 0.006,
    "cache_write": null,
    "quota": "$15",
    "tier": "高峰价",
@@ -519,7 +530,7 @@
     "output": 0.66,
     "cache_read": 0.007
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 36.4
   },
   {
    "model": "Hy4 preview",
@@ -631,12 +642,6 @@
   }
  ],
  "requests": [
-  {
-   "model": "Omen Alpha",
-   "h5": 11600,
-   "weekly": 29000,
-   "monthly": 57900
-  },
   {
    "model": "GLM-5.3-Flash",
    "h5": 6320,
@@ -752,6 +757,12 @@
    "monthly": 16300
   },
   {
+   "model": "DeepSeek V4.1 Flash",
+   "h5": 6500,
+   "weekly": 16250,
+   "monthly": 32500
+  },
+  {
    "model": "DeepSeek V4 Pro",
    "h5": 1050,
    "weekly": 2600,
@@ -759,15 +770,15 @@
   },
   {
    "model": "DeepSeek V4 Flash",
-   "h5": 7600,
-   "weekly": 18900,
-   "monthly": 37800
+   "h5": 13000,
+   "weekly": 32500,
+   "monthly": 65000
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp",
-   "h5": 3800,
-   "weekly": 9450,
-   "monthly": 18900
+   "h5": 6500,
+   "weekly": 16250,
+   "monthly": 32500
   },
   {
    "model": "Hy4 preview",
