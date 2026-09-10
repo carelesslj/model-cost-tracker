@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-11T06:21:33+08:00",
+ "generated_at": "2026-09-10T23:24:16+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -724,30 +724,9 @@
   "2026-09-10": {
    "cash": {
     "DeepSeek": {
-     "value": 48.09,
+     "value": 48.06,
      "source": "auto",
      "first_value": 48.18
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
-    "百炼": {
-     "value": 198.1,
-     "source": "auto",
-     "first_value": 198.1
-    },
-    "MiniMax": {
-     "value": -0.0,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 0.0,
-      "credit": 0.0,
-      "owed": 0.0
-     },
-     "first_value": -0.0
     },
     "Kimi": {
      "value": 7.55,
@@ -762,6 +741,27 @@
      "value": 70.3,
      "source": "auto",
      "first_value": 70.3
+    },
+    "MiniMax": {
+     "value": -0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": -0.0
+    },
+    "百炼": {
+     "value": 198.1,
+     "source": "auto",
+     "first_value": 198.1
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
     }
    },
    "plans": {
@@ -775,26 +775,26 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-11T02:30:46.793Z",
+      "resets_at": "2026-09-11T04:24:14.933Z",
       "status": "ok",
       "first_percent": 0
      },
      "weekly": {
       "percent": 0,
-      "resets_at": "2026-09-14T00:00:00.793Z",
+      "resets_at": "2026-09-14T00:00:00.933Z",
       "status": "ok",
       "first_percent": 0
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.793Z",
+      "resets_at": "2026-09-17T07:40:12.933Z",
       "status": "rate-limited",
       "first_percent": 100
      },
      "source": "auto"
     }
    },
-   "fetched_at": "21:30:48"
+   "fetched_at": "23:24:16"
   },
   "2026-09-11": {
    "cash": {
