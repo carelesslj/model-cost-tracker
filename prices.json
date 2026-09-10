@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-10 13:00:09",
+ "updated_at": "2026-09-10 11:50:41",
  "go_page_date": "2026年9月10日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -18,11 +18,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.075,
-    "output": 0.25,
-    "cache_read": 0.015
+    "input": 0.15,
+    "output": 0.5,
+    "cache_read": 0.03
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "GLM-5.3",
@@ -410,8 +410,15 @@
    "cache_write": null,
    "quota": "$15",
    "tier": "低峰价",
-   "or": null,
-   "in_diff_pct": null
+   "or": {
+    "id": "deepseek/deepseek-v4.1-flash",
+    "name": "DeepSeek: DeepSeek V4.1 Flash",
+    "base": "deepseek v4.1 flash",
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.003
+   },
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -421,8 +428,15 @@
    "cache_write": null,
    "quota": "$15",
    "tier": "高峰价",
-   "or": null,
-   "in_diff_pct": null
+   "or": {
+    "id": "deepseek/deepseek-v4.1-flash",
+    "name": "DeepSeek: DeepSeek V4.1 Flash",
+    "base": "deepseek v4.1 flash",
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.003
+   },
+   "in_diff_pct": 100.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
