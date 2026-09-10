@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-10 11:50:41",
+ "updated_at": "2026-09-10 21:22:05",
  "go_page_date": "2026年9月10日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.966,
-    "output": 3.036,
-    "cache_read": 0.1932
+    "input": 0.4875,
+    "output": 1.56,
+    "cache_read": 0.091
    },
-   "in_diff_pct": 44.9
+   "in_diff_pct": 187.2
   },
   {
    "model": "GLM-5.1",
