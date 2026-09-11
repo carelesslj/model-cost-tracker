@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-11 01:20:04",
+ "updated_at": "2026-09-11 10:20:14",
  "go_page_date": "2026年9月10日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -90,11 +90,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 2.6,
-    "output": 13.0,
-    "cache_read": 0.29
+    "input": 2.34,
+    "output": 11.7,
+    "cache_read": 0.261
    },
-   "in_diff_pct": 15.4
+   "in_diff_pct": 28.2
   },
   {
    "model": "Kimi K2.7 Code",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.084,
-    "output": 0.168,
-    "cache_read": 0.0168
+    "input": 0.0886,
+    "output": 0.1772,
+    "cache_read": 0.0177
    },
-   "in_diff_pct": 78.6
+   "in_diff_pct": 69.3
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.084,
-    "output": 0.168,
-    "cache_read": 0.0168
+    "input": 0.0886,
+    "output": 0.1772,
+    "cache_read": 0.0177
    },
-   "in_diff_pct": 257.1
+   "in_diff_pct": 238.6
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
