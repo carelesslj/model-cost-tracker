@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-11T11:20:05+08:00",
+ "generated_at": "2026-09-11T13:20:04+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -823,20 +823,20 @@
      },
      "first_value": 7.55
     },
-    "百炼": {
-     "value": 198.1,
+    "智谱": {
+     "value": 70.3,
      "source": "auto",
-     "first_value": 198.1
+     "first_value": 70.3
     },
     "DeepSeek": {
      "value": 48.06,
      "source": "auto",
      "first_value": 48.09
     },
-    "智谱": {
-     "value": 70.3,
+    "百炼": {
+     "value": 198.1,
      "source": "auto",
-     "first_value": 70.3
+     "first_value": 198.1
     }
    },
    "plans": {
@@ -850,26 +850,26 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-11T08:20:05.221Z",
+      "resets_at": "2026-09-11T10:20:04.520Z",
       "status": "ok",
       "first_percent": 0
      },
      "weekly": {
       "percent": 0,
-      "resets_at": "2026-09-14T00:00:00.221Z",
+      "resets_at": "2026-09-14T00:00:00.520Z",
       "status": "ok",
       "first_percent": 0
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.221Z",
+      "resets_at": "2026-09-17T07:40:12.520Z",
       "status": "rate-limited",
       "first_percent": 100
      },
      "source": "auto"
     }
    },
-   "fetched_at": "11:20:05"
+   "fetched_at": "13:20:04"
   }
  }
 }
