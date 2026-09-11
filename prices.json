@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0886,
-    "output": 0.1772,
-    "cache_read": 0.0177
+    "input": 0.084,
+    "output": 0.168,
+    "cache_read": 0.0168
    },
-   "in_diff_pct": 69.3
+   "in_diff_pct": 78.6
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0886,
-    "output": 0.1772,
-    "cache_read": 0.0177
+    "input": 0.084,
+    "output": 0.168,
+    "cache_read": 0.0168
    },
-   "in_diff_pct": 238.6
+   "in_diff_pct": 257.1
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
