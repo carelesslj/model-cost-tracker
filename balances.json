@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-11T16:20:12+08:00",
+ "generated_at": "2026-09-11T17:20:07+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -798,6 +798,16 @@
   },
   "2026-09-11": {
    "cash": {
+    "DeepSeek": {
+     "value": 48.06,
+     "source": "auto",
+     "first_value": 48.09
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
     "MiniMax": {
      "value": -0.0,
      "source": "auto",
@@ -809,11 +819,6 @@
      },
      "first_value": -0.0
     },
-    "DeepSeek": {
-     "value": 48.06,
-     "source": "auto",
-     "first_value": 48.09
-    },
     "Kimi": {
      "value": 7.55,
      "source": "auto",
@@ -822,11 +827,6 @@
       "voucher": 7.55
      },
      "first_value": 7.55
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
     },
     "智谱": {
      "value": 70.3,
@@ -850,26 +850,26 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-11T13:20:12.591Z",
+      "resets_at": "2026-09-11T14:20:07.276Z",
       "status": "ok",
       "first_percent": 0
      },
      "weekly": {
       "percent": 0,
-      "resets_at": "2026-09-14T00:00:00.591Z",
+      "resets_at": "2026-09-14T00:00:00.276Z",
       "status": "ok",
       "first_percent": 0
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.591Z",
+      "resets_at": "2026-09-17T07:40:12.276Z",
       "status": "rate-limited",
       "first_percent": 100
      },
      "source": "auto"
     }
    },
-   "fetched_at": "16:20:12"
+   "fetched_at": "17:20:07"
   }
  }
 }
