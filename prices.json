@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-12 22:30:58",
+ "updated_at": "2026-09-12 17:09:52",
  "go_page_date": "2026年9月10日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -18,11 +18,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.075,
-    "output": 0.25,
-    "cache_read": 0.015
+    "input": 0.15,
+    "output": 0.5,
+    "cache_read": 0.03
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "GLM-5.3",
@@ -90,11 +90,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 2.3027,
-    "output": 11.5502,
-    "cache_read": 0.2632
+    "input": 2.6481,
+    "output": 13.2827,
+    "cache_read": 0.3026
    },
-   "in_diff_pct": 30.3
+   "in_diff_pct": 13.3
   },
   {
    "model": "Kimi K2.7 Code",
@@ -450,11 +450,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.7586,
-    "output": 1.5173,
-    "cache_read": 0.0632
+    "input": 1.6,
+    "output": 3.2,
+    "cache_read": 0.135
    },
-   "in_diff_pct": -13.0
+   "in_diff_pct": -58.8
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -468,11 +468,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.7586,
-    "output": 1.5173,
-    "cache_read": 0.0632
+    "input": 1.6,
+    "output": 3.2,
+    "cache_read": 0.135
    },
-   "in_diff_pct": 74.0
+   "in_diff_pct": -17.5
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0662,
-    "output": 0.1324,
+    "input": 0.0659,
+    "output": 0.1319,
     "cache_read": 0.0132
    },
-   "in_diff_pct": 126.6
+   "in_diff_pct": 127.6
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0662,
-    "output": 0.1324,
+    "input": 0.0659,
+    "output": 0.1319,
     "cache_read": 0.0132
    },
-   "in_diff_pct": 353.2
+   "in_diff_pct": 355.2
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -576,11 +576,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Grok 4.6 (≤ 200K tokens)",
