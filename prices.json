@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-09-13 19:20:06",
- "go_page_date": "2026年9月11日",
+ "updated_at": "2026-09-13 16:33:08",
+ "go_page_date": "2026年9月13日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -18,11 +18,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.15,
-    "output": 0.5,
-    "cache_read": 0.03
+    "input": 0.075,
+    "output": 0.25,
+    "cache_read": 0.015
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 100.0
   },
   {
    "model": "GLM-5.3",
@@ -408,7 +408,7 @@
    "output": 0.6,
    "cache_read": 0.003,
    "cache_write": null,
-   "quota": "$15",
+   "quota": "$15 $60 4x · 9 月 20 日结束",
    "tier": "低峰价",
    "or": {
     "id": "deepseek/deepseek-v4.1-flash",
@@ -426,7 +426,7 @@
    "output": 1.2,
    "cache_read": 0.006,
    "cache_write": null,
-   "quota": "$15",
+   "quota": "$15 $60 4x · 9 月 20 日结束",
    "tier": "高峰价",
    "or": {
     "id": "deepseek/deepseek-v4.1-flash",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.049,
-    "output": 0.098,
-    "cache_read": 0.0098
+    "input": 0.0482,
+    "output": 0.0963,
+    "cache_read": 0.0096
    },
-   "in_diff_pct": 206.1
+   "in_diff_pct": 211.2
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.049,
-    "output": 0.098,
-    "cache_read": 0.0098
+    "input": 0.0482,
+    "output": 0.0963,
+    "cache_read": 0.0096
    },
-   "in_diff_pct": 512.2
+   "in_diff_pct": 522.4
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -576,11 +576,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Grok 4.6 (≤ 200K tokens)",
@@ -771,7 +771,7 @@
    "monthly": 16300
   },
   {
-   "model": "DeepSeek V4.1 Flash",
+   "model": "DeepSeek V4.1 Flash 4x · 9 月 20 日结束",
    "h5": 6500,
    "weekly": 16250,
    "monthly": 32500
