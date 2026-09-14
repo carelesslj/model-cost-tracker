@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-14T17:20:06+08:00",
+ "generated_at": "2026-09-14T13:23:52+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -1023,21 +1023,25 @@
   },
   "2026-09-14": {
    "cash": {
-    "MiniMax": {
-     "value": -0.0,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 0.0,
-      "credit": 0.0,
-      "owed": 0.0
-     },
-     "first_value": -0.0
-    },
     "DeepSeek": {
      "value": 43.39,
      "source": "auto",
      "first_value": 43.42
+    },
+    "智谱": {
+     "value": 70.3,
+     "source": "auto",
+     "first_value": 70.3
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "百炼": {
+     "value": 198.06,
+     "source": "auto",
+     "first_value": 198.06
     },
     "Kimi": {
      "value": 7.55,
@@ -1048,20 +1052,16 @@
      },
      "first_value": 7.55
     },
-    "火山": {
-     "value": 10.0,
+    "MiniMax": {
+     "value": -0.0,
      "source": "auto",
-     "first_value": 10.0
-    },
-    "智谱": {
-     "value": 70.3,
-     "source": "auto",
-     "first_value": 70.3
-    },
-    "百炼": {
-     "value": 198.06,
-     "source": "auto",
-     "first_value": 198.06
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": -0.0
     }
    },
    "plans": {
@@ -1075,26 +1075,26 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-14T14:20:06.090Z",
+      "resets_at": "2026-09-14T18:23:51.229Z",
       "status": "ok",
       "first_percent": 0
      },
      "weekly": {
       "percent": 0,
-      "resets_at": "2026-09-21T00:00:00.090Z",
+      "resets_at": "2026-09-21T00:00:00.229Z",
       "status": "ok",
       "first_percent": 0
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.090Z",
+      "resets_at": "2026-09-17T07:40:12.229Z",
       "status": "rate-limited",
       "first_percent": 100
      },
      "source": "auto"
     }
    },
-   "fetched_at": "17:20:06"
+   "fetched_at": "13:23:52"
   }
  }
 }
