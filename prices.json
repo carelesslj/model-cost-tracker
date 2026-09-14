@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-14 02:20:08",
+ "updated_at": "2026-09-14 08:20:30",
  "go_page_date": "2026年9月13日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -18,11 +18,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.075,
-    "output": 0.25,
-    "cache_read": 0.015
+    "input": 0.15,
+    "output": 0.5,
+    "cache_read": 0.03
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "GLM-5.3",
@@ -36,11 +36,11 @@
     "id": "z-ai/glm-5.3",
     "name": "Z.ai: GLM 5.3",
     "base": "glm 5.3",
-    "input": 1.092,
-    "output": 3.432,
-    "cache_read": 0.2028
+    "input": 1.4,
+    "output": 4.4,
+    "cache_read": 0.26
    },
-   "in_diff_pct": 28.2
+   "in_diff_pct": 0.0
   },
   {
    "model": "GLM-5.2",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.6,
-    "output": 2.0,
-    "cache_read": 0.15
+    "input": 0.6832,
+    "output": 2.1472,
+    "cache_read": 0.1269
    },
-   "in_diff_pct": 133.3
+   "in_diff_pct": 104.9
   },
   {
    "model": "GLM-5.1",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0476,
-    "output": 0.0952,
-    "cache_read": 0.0095
+    "input": 0.0899,
+    "output": 0.1797,
+    "cache_read": 0.018
    },
-   "in_diff_pct": 215.1
+   "in_diff_pct": 66.9
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0476,
-    "output": 0.0952,
-    "cache_read": 0.0095
+    "input": 0.0899,
+    "output": 0.1797,
+    "cache_read": 0.018
    },
-   "in_diff_pct": 530.3
+   "in_diff_pct": 233.7
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -576,11 +576,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Grok 4.6 (≤ 200K tokens)",
