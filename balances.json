@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-15T00:20:02+08:00",
+ "generated_at": "2026-09-15T01:20:05+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -1098,24 +1098,10 @@
   },
   "2026-09-15": {
    "cash": {
-    "Kimi": {
-     "value": 7.55,
+    "DeepSeek": {
+     "value": 43.36,
      "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 7.55
-     },
-     "first_value": 7.55
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
-    "智谱": {
-     "value": 70.3,
-     "source": "auto",
-     "first_value": 70.3
+     "first_value": 43.39
     },
     "MiniMax": {
      "value": -0.0,
@@ -1128,15 +1114,29 @@
      },
      "first_value": -0.0
     },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "Kimi": {
+     "value": 7.55,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 7.55
+     },
+     "first_value": 7.55
+    },
+    "智谱": {
+     "value": 70.3,
+     "source": "auto",
+     "first_value": 70.3
+    },
     "百炼": {
      "value": 198.06,
      "source": "auto",
      "first_value": 198.06
-    },
-    "DeepSeek": {
-     "value": 43.39,
-     "source": "auto",
-     "first_value": 43.39
     }
    },
    "plans": {
@@ -1150,26 +1150,26 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-14T21:20:02.661Z",
+      "resets_at": "2026-09-14T22:20:05.896Z",
       "status": "ok",
       "first_percent": 0
      },
      "weekly": {
       "percent": 0,
-      "resets_at": "2026-09-21T00:00:00.661Z",
+      "resets_at": "2026-09-21T00:00:00.896Z",
       "status": "ok",
       "first_percent": 0
      },
      "monthly": {
       "percent": 100,
-      "resets_at": "2026-09-17T07:40:12.661Z",
+      "resets_at": "2026-09-17T07:40:12.896Z",
       "status": "rate-limited",
       "first_percent": 100
      },
      "source": "auto"
     }
    },
-   "fetched_at": "00:20:02"
+   "fetched_at": "01:20:05"
   }
  }
 }
