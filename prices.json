@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-09-16 14:58:51",
- "go_page_date": "2026年9月16日",
+ "updated_at": "2026-09-16 22:20:12",
+ "go_page_date": "2026年9月14日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -583,17 +583,6 @@
    "in_diff_pct": 6.1
   },
   {
-   "model": "Union Alpha",
-   "input": null,
-   "output": null,
-   "cache_read": null,
-   "cache_write": null,
-   "quota": "无限制 限时",
-   "tier": null,
-   "or": null,
-   "in_diff_pct": null
-  },
-  {
    "model": "Grok 4.6 (≤ 200K tokens)",
    "input": 2.0,
    "output": 6.0,
@@ -816,12 +805,6 @@
    "h5": 4300,
    "weekly": 10750,
    "monthly": 21500
-  },
-  {
-   "model": "Union Alpha",
-   "h5": null,
-   "weekly": null,
-   "monthly": null
   },
   {
    "model": "Grok 4.6",
