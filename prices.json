@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-09-16 18:49:01",
- "go_page_date": "2026年9月16日",
+ "updated_at": "2026-09-16 22:20:12",
+ "go_page_date": "2026年9月14日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -90,11 +90,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 3.0,
-    "output": 15.0,
-    "cache_read": 0.3
+    "input": 2.6481,
+    "output": 13.2827,
+    "cache_read": 0.3026
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 13.3
   },
   {
    "model": "Kimi K2.7 Code",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.084,
-    "output": 0.168,
-    "cache_read": 0.0168
+    "input": 0.0871,
+    "output": 0.1742,
+    "cache_read": 0.0174
    },
-   "in_diff_pct": 78.6
+   "in_diff_pct": 72.2
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.084,
-    "output": 0.168,
-    "cache_read": 0.0168
+    "input": 0.0871,
+    "output": 0.1742,
+    "cache_read": 0.0174
    },
-   "in_diff_pct": 257.1
+   "in_diff_pct": 244.4
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -576,22 +576,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
-  },
-  {
-   "model": "Union Alpha Free",
-   "input": null,
-   "output": null,
-   "cache_read": null,
-   "cache_write": null,
-   "quota": "无限制 限时",
-   "tier": null,
-   "or": null,
-   "in_diff_pct": null
+   "in_diff_pct": 6.1
   },
   {
    "model": "Grok 4.6 (≤ 200K tokens)",
@@ -816,12 +805,6 @@
    "h5": 4300,
    "weekly": 10750,
    "monthly": 21500
-  },
-  {
-   "model": "Union Alpha Free",
-   "h5": null,
-   "weekly": null,
-   "monthly": null
   },
   {
    "model": "Grok 4.6",
