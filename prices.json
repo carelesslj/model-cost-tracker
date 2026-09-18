@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-18 13:05:00",
+ "updated_at": "2026-09-18 17:00:11",
  "go_page_date": "2026年9月18日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.5614,
-    "output": 1.7644,
-    "cache_read": 0.1043
+    "input": 0.5625,
+    "output": 1.8,
+    "cache_read": 0.105
    },
-   "in_diff_pct": 149.4
+   "in_diff_pct": 148.9
   },
   {
    "model": "GLM-5.1",
@@ -414,11 +414,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": -50.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -432,11 +432,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.049,
-    "output": 0.098,
-    "cache_read": 0.0098
+    "input": 0.0886,
+    "output": 0.1772,
+    "cache_read": 0.0177
    },
-   "in_diff_pct": 206.1
+   "in_diff_pct": 69.3
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.049,
-    "output": 0.098,
-    "cache_read": 0.0098
+    "input": 0.0886,
+    "output": 0.1772,
+    "cache_read": 0.0177
    },
-   "in_diff_pct": 512.2
+   "in_diff_pct": 238.6
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -581,6 +581,17 @@
     "cache_read": 0.033
    },
    "in_diff_pct": 6.1
+  },
+  {
+   "model": "Union Alpha Free",
+   "input": null,
+   "output": null,
+   "cache_read": null,
+   "cache_write": null,
+   "quota": "无限制 限时",
+   "tier": null,
+   "or": null,
+   "in_diff_pct": null
   },
   {
    "model": "Grok 4.6 (≤ 200K tokens)",
@@ -805,6 +816,12 @@
    "h5": 4300,
    "weekly": 10750,
    "monthly": 21500
+  },
+  {
+   "model": "Union Alpha Free",
+   "h5": null,
+   "weekly": null,
+   "monthly": null
   },
   {
    "model": "Grok 4.6",
