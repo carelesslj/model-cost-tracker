@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-18 02:20:40",
+ "updated_at": "2026-09-18 09:20:11",
  "go_page_date": "2026年9月17日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -90,11 +90,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 3.0,
-    "output": 15.0,
-    "cache_read": 0.3
+    "input": 2.1,
+    "output": 10.95,
+    "cache_read": 0.23
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 42.9
   },
   {
    "model": "Kimi K2.7 Code",
@@ -414,11 +414,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": -50.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -432,11 +432,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash-vision-exp",
     "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
     "base": "deepseek v4 flash vision exp",
-    "input": 0.22,
-    "output": 0.66,
-    "cache_read": 0.007
+    "input": 0.2156,
+    "output": 0.6468,
+    "cache_read": 0.0069
    },
-   "in_diff_pct": -31.8
+   "in_diff_pct": -30.4
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash-vision-exp",
     "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
     "base": "deepseek v4 flash vision exp",
-    "input": 0.22,
-    "output": 0.66,
-    "cache_read": 0.007
+    "input": 0.2156,
+    "output": 0.6468,
+    "cache_read": 0.0069
    },
-   "in_diff_pct": 36.4
+   "in_diff_pct": 39.1
   },
   {
    "model": "Hy4 preview",
@@ -576,11 +576,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Union Alpha Free",
