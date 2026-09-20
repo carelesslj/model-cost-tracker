@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-20T08:27:12+08:00",
+ "generated_at": "2026-09-20T01:08:52+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -1474,9 +1474,33 @@
   "2026-09-20": {
    "cash": {
     "DeepSeek": {
-     "value": 37.47,
+     "value": 35.46,
      "source": "auto",
      "first_value": 38.47
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "智谱": {
+     "value": 70.2,
+     "source": "auto",
+     "first_value": 70.2
+    },
+    "百炼": {
+     "value": 196.01,
+     "source": "auto",
+     "first_value": 196.18
+    },
+    "Kimi": {
+     "value": 7.55,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 7.55
+     },
+     "first_value": 7.55
     },
     "MiniMax": {
      "value": -0.0,
@@ -1488,30 +1512,6 @@
       "owed": 0.0
      },
      "first_value": -0.0
-    },
-    "Kimi": {
-     "value": 7.55,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 7.55
-     },
-     "first_value": 7.55
-    },
-    "智谱": {
-     "value": 70.2,
-     "source": "auto",
-     "first_value": 70.2
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
-    "百炼": {
-     "value": 196.01,
-     "source": "auto",
-     "first_value": 196.18
     }
    },
    "plans": {
@@ -1525,26 +1525,26 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-20T05:27:12.614Z",
+      "resets_at": "2026-09-20T06:08:50.606Z",
       "status": "ok",
       "first_percent": 0
      },
      "weekly": {
       "percent": 0,
-      "resets_at": "2026-09-21T00:00:00.614Z",
+      "resets_at": "2026-09-21T00:00:00.606Z",
       "status": "ok",
       "first_percent": 0
      },
      "monthly": {
       "percent": 0,
-      "resets_at": "2026-10-17T07:40:12.614Z",
+      "resets_at": "2026-10-17T07:40:12.606Z",
       "status": "ok",
       "first_percent": 100
      },
      "source": "auto"
     }
    },
-   "fetched_at": "08:27:12"
+   "fetched_at": "01:08:52"
   }
  }
 }
