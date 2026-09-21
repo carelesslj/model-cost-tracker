@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-21 05:30:36",
+ "updated_at": "2026-09-21 10:00:09",
  "go_page_date": "2026年9月21日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -414,11 +414,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": -50.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -432,11 +432,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -450,11 +450,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9553,
-    "output": 1.9105,
-    "cache_read": 0.0796
+    "input": 0.9483,
+    "output": 1.8966,
+    "cache_read": 0.079
    },
-   "in_diff_pct": -30.9
+   "in_diff_pct": -30.4
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -468,11 +468,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9553,
-    "output": 1.9105,
-    "cache_read": 0.0796
+    "input": 0.9483,
+    "output": 1.8966,
+    "cache_read": 0.079
    },
-   "in_diff_pct": 38.2
+   "in_diff_pct": 39.2
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0886,
-    "output": 0.1772,
-    "cache_read": 0.0177
+    "input": 0.0899,
+    "output": 0.1797,
+    "cache_read": 0.018
    },
-   "in_diff_pct": 69.3
+   "in_diff_pct": 66.9
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0886,
-    "output": 0.1772,
-    "cache_read": 0.0177
+    "input": 0.0899,
+    "output": 0.1797,
+    "cache_read": 0.018
    },
-   "in_diff_pct": 238.6
+   "in_diff_pct": 233.7
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
