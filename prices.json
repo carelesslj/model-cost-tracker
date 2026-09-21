@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-22 01:50:30",
+ "updated_at": "2026-09-21 21:04:16",
  "go_page_date": "2026年9月21日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -18,11 +18,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.09,
-    "output": 0.3,
-    "cache_read": 0.018
+    "input": 0.075,
+    "output": 0.25,
+    "cache_read": 0.02
    },
-   "in_diff_pct": 66.7
+   "in_diff_pct": 100.0
   },
   {
    "model": "GLM-5.3",
@@ -151,7 +151,43 @@
    "in_diff_pct": 0.0
   },
   {
-   "model": "MiMo V2.5",
+   "model": "MiMo-V2.6-Flash",
+   "input": 0.14,
+   "output": 0.28,
+   "cache_read": 0.0028,
+   "cache_write": null,
+   "quota": "$60",
+   "tier": null,
+   "or": {
+    "id": "xiaomi/mimo-v2.6-flash",
+    "name": "Xiaomi: MiMo-V2.6-Flash",
+    "base": "mimo v2.6 flash",
+    "input": 0.14,
+    "output": 0.28,
+    "cache_read": 0.0028
+   },
+   "in_diff_pct": 0.0
+  },
+  {
+   "model": "MiMo-V2.6-Pro",
+   "input": 0.435,
+   "output": 0.87,
+   "cache_read": 0.003625,
+   "cache_write": null,
+   "quota": "$15",
+   "tier": null,
+   "or": {
+    "id": "xiaomi/mimo-v2.6-pro",
+    "name": "Xiaomi: MiMo-V2.6-Pro",
+    "base": "mimo v2.6 pro",
+    "input": 0.435,
+    "output": 0.87,
+    "cache_read": 0.0036
+   },
+   "in_diff_pct": 0.0
+  },
+  {
+   "model": "MiMo-V2.5",
    "input": 0.14,
    "output": 0.28,
    "cache_read": 0.0028,
@@ -169,7 +205,7 @@
    "in_diff_pct": 0.0
   },
   {
-   "model": "MiMo V2.5 Pro",
+   "model": "MiMo-V2.5-Pro",
    "input": 0.435,
    "output": 0.87,
    "cache_read": 0.003625,
@@ -450,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9278,
-    "output": 1.8555,
-    "cache_read": 0.0773
+    "input": 0.9074,
+    "output": 1.8148,
+    "cache_read": 0.0756
    },
-   "in_diff_pct": -28.9
+   "in_diff_pct": -27.3
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -468,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9278,
-    "output": 1.8555,
-    "cache_read": 0.0773
+    "input": 0.9074,
+    "output": 1.8148,
+    "cache_read": 0.0756
    },
-   "in_diff_pct": 42.3
+   "in_diff_pct": 45.5
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -691,5 +727,186 @@
    "in_diff_pct": 100.0
   }
  ],
- "requests": []
+ "requests": [
+  {
+   "model": "GLM-5.3-Flash",
+   "h5": 6320,
+   "weekly": 15790,
+   "monthly": 31580
+  },
+  {
+   "model": "GLM-5.3",
+   "h5": 220,
+   "weekly": 540,
+   "monthly": 1080
+  },
+  {
+   "model": "GLM-5.2",
+   "h5": 880,
+   "weekly": 2150,
+   "monthly": 4300
+  },
+  {
+   "model": "GLM-5.1",
+   "h5": 880,
+   "weekly": 2150,
+   "monthly": 4300
+  },
+  {
+   "model": "Kimi K3",
+   "h5": 110,
+   "weekly": 250,
+   "monthly": 490
+  },
+  {
+   "model": "Kimi K2.7 Code",
+   "h5": 1350,
+   "weekly": 3380,
+   "monthly": 6750
+  },
+  {
+   "model": "Kimi K2.6",
+   "h5": 1150,
+   "weekly": 2880,
+   "monthly": 5750
+  },
+  {
+   "model": "LongCat-2.0",
+   "h5": 11400,
+   "weekly": 28600,
+   "monthly": 57200
+  },
+  {
+   "model": "MiMo-V2.6-Flash",
+   "h5": 30100,
+   "weekly": 75200,
+   "monthly": 150400
+  },
+  {
+   "model": "MiMo-V2.6-Pro",
+   "h5": 3250,
+   "weekly": 8150,
+   "monthly": 16300
+  },
+  {
+   "model": "MiMo-V2.5",
+   "h5": 30100,
+   "weekly": 75200,
+   "monthly": 150400
+  },
+  {
+   "model": "MiMo-V2.5-Pro",
+   "h5": 3250,
+   "weekly": 8150,
+   "monthly": 16300
+  },
+  {
+   "model": "MiniMax M3",
+   "h5": 3200,
+   "weekly": 8000,
+   "monthly": 16000
+  },
+  {
+   "model": "MiniMax M2.7",
+   "h5": 3400,
+   "weekly": 8500,
+   "monthly": 17000
+  },
+  {
+   "model": "Muse Spark 1.3 Contributor",
+   "h5": 45300,
+   "weekly": 113300,
+   "monthly": 226600
+  },
+  {
+   "model": "Muse Spark 1.2 Contributor",
+   "h5": 45300,
+   "weekly": 113300,
+   "monthly": 226600
+  },
+  {
+   "model": "Qwen3.8 Max",
+   "h5": 160,
+   "weekly": 400,
+   "monthly": 810
+  },
+  {
+   "model": "Qwen3.8 Flash",
+   "h5": 5400,
+   "weekly": 13500,
+   "monthly": 27000
+  },
+  {
+   "model": "Qwen3.7 Max",
+   "h5": 170,
+   "weekly": 420,
+   "monthly": 840
+  },
+  {
+   "model": "Qwen3.7 Plus",
+   "h5": 4300,
+   "weekly": 10800,
+   "monthly": 21600
+  },
+  {
+   "model": "Qwen3.6 Plus",
+   "h5": 3300,
+   "weekly": 8200,
+   "monthly": 16300
+  },
+  {
+   "model": "DeepSeek V4.1 Flash 4x · 9 月 27 日结束",
+   "h5": 6500,
+   "weekly": 16250,
+   "monthly": 32500
+  },
+  {
+   "model": "DeepSeek V4 Pro",
+   "h5": 1050,
+   "weekly": 2600,
+   "monthly": 5200
+  },
+  {
+   "model": "DeepSeek V4 Flash",
+   "h5": 13000,
+   "weekly": 32500,
+   "monthly": 65000
+  },
+  {
+   "model": "DeepSeek V4 Flash Vision Exp",
+   "h5": 6500,
+   "weekly": 16250,
+   "monthly": 32500
+  },
+  {
+   "model": "Hy4 preview",
+   "h5": 1350,
+   "weekly": 3380,
+   "monthly": 6770
+  },
+  {
+   "model": "Hy3",
+   "h5": 4300,
+   "weekly": 10750,
+   "monthly": 21500
+  },
+  {
+   "model": "Grok 4.7",
+   "h5": 169,
+   "weekly": 423,
+   "monthly": 845
+  },
+  {
+   "model": "Grok 4.6",
+   "h5": 169,
+   "weekly": 423,
+   "monthly": 845
+  },
+  {
+   "model": "GPT 5.6 Luna",
+   "h5": 2050,
+   "weekly": 5100,
+   "monthly": 10250
+  }
+ ]
 }
