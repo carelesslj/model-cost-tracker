@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-21 16:20:06",
+ "updated_at": "2026-09-21 17:03:39",
  "go_page_date": "2026年9月21日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -414,11 +414,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.3,
-    "output": 1.2,
-    "cache_read": 0.006
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.003
    },
-   "in_diff_pct": -50.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -432,11 +432,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.3,
-    "output": 1.2,
-    "cache_read": 0.006
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.003
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 100.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -450,11 +450,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9553,
-    "output": 1.9105,
-    "cache_read": 0.0796
+    "input": 0.9311,
+    "output": 1.8621,
+    "cache_read": 0.0776
    },
-   "in_diff_pct": -30.9
+   "in_diff_pct": -29.1
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -468,11 +468,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9553,
-    "output": 1.9105,
-    "cache_read": 0.0796
+    "input": 0.9311,
+    "output": 1.8621,
+    "cache_read": 0.0776
    },
-   "in_diff_pct": 38.2
+   "in_diff_pct": 41.8
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0886,
-    "output": 0.1772,
-    "cache_read": 0.0177
+    "input": 0.0554,
+    "output": 0.1109,
+    "cache_read": 0.0111
    },
-   "in_diff_pct": 69.3
+   "in_diff_pct": 170.8
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0886,
-    "output": 0.1772,
-    "cache_read": 0.0177
+    "input": 0.0554,
+    "output": 0.1109,
+    "cache_read": 0.0111
    },
-   "in_diff_pct": 238.6
+   "in_diff_pct": 441.5
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -576,11 +576,47 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
+  },
+  {
+   "model": "Grok 4.7 (≤ 200K tokens)",
+   "input": 2.0,
+   "output": 6.0,
+   "cache_read": 0.5,
+   "cache_write": null,
+   "quota": "$15",
+   "tier": null,
+   "or": {
+    "id": "x-ai/grok-4.7",
+    "name": "SpaceXAI: Grok 4.7",
+    "base": "grok 4.7",
+    "input": 1.6,
+    "output": 4.8,
+    "cache_read": 0.4
+   },
+   "in_diff_pct": 25.0
+  },
+  {
+   "model": "Grok 4.7 (> 200K tokens)",
+   "input": 4.0,
+   "output": 12.0,
+   "cache_read": 1.0,
+   "cache_write": null,
+   "quota": "$15",
+   "tier": "长上下文档",
+   "or": {
+    "id": "x-ai/grok-4.7",
+    "name": "SpaceXAI: Grok 4.7",
+    "base": "grok 4.7",
+    "input": 1.6,
+    "output": 4.8,
+    "cache_read": 0.4
+   },
+   "in_diff_pct": 150.0
   },
   {
    "model": "Grok 4.6 (≤ 200K tokens)",
@@ -805,6 +841,12 @@
    "h5": 4300,
    "weekly": 10750,
    "monthly": 21500
+  },
+  {
+   "model": "Grok 4.7",
+   "h5": 169,
+   "weekly": 423,
+   "monthly": 845
   },
   {
    "model": "Grok 4.6",
