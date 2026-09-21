@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-21T17:03:39+00:00",
+ "generated_at": "2026-09-22T01:32:06+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -1623,30 +1623,6 @@
   },
   "2026-09-22": {
    "cash": {
-    "DeepSeek": {
-     "value": 26.73,
-     "source": "auto",
-     "first_value": 26.73
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
-    "智谱": {
-     "value": null,
-     "source": "error",
-     "error": "身份验证失败。"
-    },
-    "Kimi": {
-     "value": 7.55,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 7.55
-     },
-     "first_value": 7.55
-    },
     "MiniMax": {
      "value": -0.0,
      "source": "auto",
@@ -1657,6 +1633,30 @@
       "owed": 0.0
      },
      "first_value": -0.0
+    },
+    "DeepSeek": {
+     "value": 26.73,
+     "source": "auto",
+     "first_value": 26.73
+    },
+    "Kimi": {
+     "value": 7.55,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 7.55
+     },
+     "first_value": 7.55
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "智谱": {
+     "value": null,
+     "source": "error",
+     "error": "身份验证失败。"
     },
     "百炼": {
      "value": 196.01,
@@ -1675,26 +1675,26 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-21T21:24:59.787Z",
+      "resets_at": "2026-09-21T22:32:05.969Z",
       "status": "ok",
       "first_percent": 0
      },
      "weekly": {
       "percent": 54,
-      "resets_at": "2026-09-28T00:00:00.787Z",
+      "resets_at": "2026-09-28T00:00:00.969Z",
       "status": "ok",
       "first_percent": 0
      },
      "monthly": {
       "percent": 27,
-      "resets_at": "2026-10-17T07:40:12.787Z",
+      "resets_at": "2026-10-17T07:40:12.969Z",
       "status": "ok",
       "first_percent": 100
      },
      "source": "auto"
     }
    },
-   "fetched_at": "00:24:59"
+   "fetched_at": "01:32:06"
   }
  }
 }
