@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-09-21 00:31:52",
- "go_page_date": "2026年9月20日",
+ "updated_at": "2026-09-21 10:00:09",
+ "go_page_date": "2026年9月21日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -408,17 +408,17 @@
    "output": 0.6,
    "cache_read": 0.003,
    "cache_write": null,
-   "quota": "$15 $60 4x · 9 月 20 日结束",
+   "quota": "$15 $60 4x · 9 月 27 日结束",
    "tier": "低峰价",
    "or": {
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": -50.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -426,17 +426,17 @@
    "output": 1.2,
    "cache_read": 0.006,
    "cache_write": null,
-   "quota": "$15 $60 4x · 9 月 20 日结束",
+   "quota": "$15 $60 4x · 9 月 27 日结束",
    "tier": "高峰价",
    "or": {
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -771,7 +771,7 @@
    "monthly": 16300
   },
   {
-   "model": "DeepSeek V4.1 Flash 4x · 9 月 20 日结束",
+   "model": "DeepSeek V4.1 Flash 4x · 9 月 27 日结束",
    "h5": 6500,
    "weekly": 16250,
    "monthly": 32500
