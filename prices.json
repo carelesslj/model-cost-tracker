@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-22 14:11:59",
+ "updated_at": "2026-09-22 18:06:14",
  "go_page_date": "2026年9月21日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9481,
-    "output": 1.8963,
-    "cache_read": 0.079
+    "input": 0.9074,
+    "output": 1.8148,
+    "cache_read": 0.0756
    },
-   "in_diff_pct": -30.4
+   "in_diff_pct": -27.3
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9481,
-    "output": 1.8963,
-    "cache_read": 0.079
+    "input": 0.9074,
+    "output": 1.8148,
+    "cache_read": 0.0756
    },
-   "in_diff_pct": 39.2
+   "in_diff_pct": 45.5
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0871,
-    "output": 0.1742,
-    "cache_read": 0.0174
+    "input": 0.049,
+    "output": 0.098,
+    "cache_read": 0.0098
    },
-   "in_diff_pct": 72.2
+   "in_diff_pct": 206.1
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0871,
-    "output": 0.1742,
-    "cache_read": 0.0174
+    "input": 0.049,
+    "output": 0.098,
+    "cache_read": 0.0098
    },
-   "in_diff_pct": 244.4
+   "in_diff_pct": 512.2
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Grok 4.7 (≤ 200K tokens)",
