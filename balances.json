@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-22T11:25:11+08:00",
+ "generated_at": "2026-09-22T11:32:03+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -1623,15 +1623,15 @@
   },
   "2026-09-22": {
    "cash": {
+    "智谱": {
+     "value": 70.2,
+     "source": "auto",
+     "first_value": 70.2
+    },
     "DeepSeek": {
      "value": 26.71,
      "source": "auto",
      "first_value": 26.73
-    },
-    "智谱": {
-     "value": null,
-     "source": "error",
-     "error": "身份验证失败。"
     },
     "Kimi": {
      "value": 7.55,
@@ -1693,7 +1693,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "11:25:11"
+   "fetched_at": "11:32:03"
   }
  }
 }
