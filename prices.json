@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-22 18:22:23",
+ "updated_at": "2026-09-22 19:00:08",
  "go_page_date": "2026年9月21日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -109,7 +109,7 @@
     "name": "MoonshotAI: Kimi K2.7 Code",
     "base": "kimi k2.7 code",
     "input": 0.7062,
-    "output": 3.21,
+    "output": 3.3,
     "cache_read": 0.18
    },
    "in_diff_pct": 34.5
