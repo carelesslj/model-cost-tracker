@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-09-22 18:06:14",
- "go_page_date": "2026年9月21日",
+ "updated_at": "2026-09-22 21:18:51",
+ "go_page_date": "2026年9月22日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9074,
-    "output": 1.8148,
-    "cache_read": 0.0756
+    "input": 0.8771,
+    "output": 1.7543,
+    "cache_read": 0.0731
    },
-   "in_diff_pct": -27.3
+   "in_diff_pct": -24.8
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9074,
-    "output": 1.8148,
-    "cache_read": 0.0756
+    "input": 0.8771,
+    "output": 1.7543,
+    "cache_read": 0.0731
    },
-   "in_diff_pct": 45.5
+   "in_diff_pct": 50.5
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
