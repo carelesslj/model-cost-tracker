@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-23T20:20:05+08:00",
+ "generated_at": "2026-09-23T12:54:41+00:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -1702,16 +1702,10 @@
      "source": "auto",
      "first_value": 26.71
     },
-    "MiniMax": {
-     "value": -0.0,
+    "百炼": {
+     "value": 195.04,
      "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 0.0,
-      "credit": 0.0,
-      "owed": 0.0
-     },
-     "first_value": -0.0
+     "first_value": 195.07
     },
     "火山": {
      "value": 10.0,
@@ -1732,10 +1726,16 @@
      "source": "auto",
      "first_value": 70.2
     },
-    "百炼": {
-     "value": 195.04,
+    "MiniMax": {
+     "value": -0.0,
      "source": "auto",
-     "first_value": 195.07
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": -0.0
     }
    },
    "plans": {
@@ -1749,7 +1749,7 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-23T17:20:05.580Z",
+      "resets_at": "2026-09-23T17:54:40.170Z",
       "status": "ok",
       "first_percent": 0
      },
@@ -1768,7 +1768,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "20:20:05"
+   "fetched_at": "12:54:41"
   }
  }
 }
