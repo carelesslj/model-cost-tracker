@@ -450,11 +450,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.039,
-    "output": 0.6,
-    "cache_read": 0.038
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.01
    },
-   "in_diff_pct": 284.6
+   "in_diff_pct": 50.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -468,11 +468,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.039,
-    "output": 0.6,
-    "cache_read": 0.038
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.01
    },
-   "in_diff_pct": 669.2
+   "in_diff_pct": 200.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
