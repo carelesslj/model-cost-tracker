@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-24 02:29:29",
+ "updated_at": "2026-09-23 20:42:09",
  "go_page_date": "2026年9月23日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9481,
-    "output": 1.8963,
-    "cache_read": 0.079
+    "input": 0.9464,
+    "output": 1.8928,
+    "cache_read": 0.0789
    },
-   "in_diff_pct": -30.4
+   "in_diff_pct": -30.3
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9481,
-    "output": 1.8963,
-    "cache_read": 0.079
+    "input": 0.9464,
+    "output": 1.8928,
+    "cache_read": 0.0789
    },
-   "in_diff_pct": 39.2
+   "in_diff_pct": 39.5
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0825,
-    "output": 0.1649,
-    "cache_read": 0.0165
+    "input": 0.0778,
+    "output": 0.1557,
+    "cache_read": 0.0156
    },
-   "in_diff_pct": 81.8
+   "in_diff_pct": 92.8
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0825,
-    "output": 0.1649,
-    "cache_read": 0.0165
+    "input": 0.0778,
+    "output": 0.1557,
+    "cache_read": 0.0156
    },
-   "in_diff_pct": 263.6
+   "in_diff_pct": 285.6
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -698,6 +698,42 @@
     "input": 2.0,
     "output": 6.0,
     "cache_read": 0.5
+   },
+   "in_diff_pct": 100.0
+  },
+  {
+   "model": "GPT 6 Luna (≤ 272K tokens)",
+   "input": 0.1,
+   "output": 0.5,
+   "cache_read": 0.01,
+   "cache_write": 0.125,
+   "quota": "$15",
+   "tier": null,
+   "or": {
+    "id": "openai/gpt-6-luna",
+    "name": "OpenAI: GPT-6 Luna",
+    "base": "gpt 6 luna",
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.01
+   },
+   "in_diff_pct": 0.0
+  },
+  {
+   "model": "GPT 6 Luna (> 272K tokens)",
+   "input": 0.2,
+   "output": 0.75,
+   "cache_read": 0.02,
+   "cache_write": 0.25,
+   "quota": "$15",
+   "tier": "长上下文档",
+   "or": {
+    "id": "openai/gpt-6-luna",
+    "name": "OpenAI: GPT-6 Luna",
+    "base": "gpt 6 luna",
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.01
    },
    "in_diff_pct": 100.0
   },
@@ -918,6 +954,12 @@
    "h5": 169,
    "weekly": 423,
    "monthly": 845
+  },
+  {
+   "model": "GPT 6 Luna",
+   "h5": 4230,
+   "weekly": 10560,
+   "monthly": 21130
   },
   {
    "model": "GPT 5.6 Luna",
