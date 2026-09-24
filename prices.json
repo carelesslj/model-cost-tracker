@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-24 23:20:19",
+ "updated_at": "2026-09-24 20:32:24",
  "go_page_date": "2026年9月24日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -18,11 +18,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.15,
-    "output": 0.5,
-    "cache_read": 0.05
+    "input": 0.045,
+    "output": 0.6,
+    "cache_read": 0.0285
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 233.3
   },
   {
    "model": "GLM-5.3",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9192,
-    "output": 1.8385,
-    "cache_read": 0.0766
+    "input": 0.8719,
+    "output": 1.7438,
+    "cache_read": 0.0727
    },
-   "in_diff_pct": -28.2
+   "in_diff_pct": -24.3
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9192,
-    "output": 1.8385,
-    "cache_read": 0.0766
+    "input": 0.8719,
+    "output": 1.7438,
+    "cache_read": 0.0727
    },
-   "in_diff_pct": 43.6
+   "in_diff_pct": 51.4
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.084,
-    "output": 0.168,
-    "cache_read": 0.0168
+    "input": 0.0686,
+    "output": 0.1372,
+    "cache_read": 0.0137
    },
-   "in_diff_pct": 78.6
+   "in_diff_pct": 118.7
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.084,
-    "output": 0.168,
-    "cache_read": 0.0168
+    "input": 0.0686,
+    "output": 0.1372,
+    "cache_read": 0.0137
    },
-   "in_diff_pct": 257.1
+   "in_diff_pct": 337.3
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Space Bunny Free",
