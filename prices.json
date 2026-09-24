@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-24 17:15:06",
+ "updated_at": "2026-09-24 23:20:19",
  "go_page_date": "2026年9月24日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9008,
-    "output": 1.8016,
-    "cache_read": 0.0751
+    "input": 0.9192,
+    "output": 1.8385,
+    "cache_read": 0.0766
    },
-   "in_diff_pct": -26.7
+   "in_diff_pct": -28.2
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9008,
-    "output": 1.8016,
-    "cache_read": 0.0751
+    "input": 0.9192,
+    "output": 1.8385,
+    "cache_read": 0.0766
    },
-   "in_diff_pct": 46.5
+   "in_diff_pct": 43.6
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -522,11 +522,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0809,
-    "output": 0.1618,
-    "cache_read": 0.0162
+    "input": 0.084,
+    "output": 0.168,
+    "cache_read": 0.0168
    },
-   "in_diff_pct": 85.4
+   "in_diff_pct": 78.6
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -540,11 +540,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0809,
-    "output": 0.1618,
-    "cache_read": 0.0162
+    "input": 0.084,
+    "output": 0.168,
+    "cache_read": 0.0168
    },
-   "in_diff_pct": 270.8
+   "in_diff_pct": 257.1
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Space Bunny Free",
