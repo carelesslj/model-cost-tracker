@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-25 07:09:33",
+ "updated_at": "2026-09-25 13:20:05",
  "go_page_date": "2026年9月24日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -19,8 +19,8 @@
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
     "input": 0.045,
-    "output": 0.14,
-    "cache_read": 0.01
+    "output": 0.6,
+    "cache_read": 0.0285
    },
    "in_diff_pct": 233.3
   },
@@ -90,11 +90,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 3.0,
-    "output": 15.0,
-    "cache_read": 0.3
+    "input": 0.8845,
+    "output": 10.5346,
+    "cache_read": 0.33
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 239.2
   },
   {
    "model": "Kimi K2.7 Code",
@@ -450,11 +450,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.3,
-    "output": 1.2,
-    "cache_read": 0.006
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.003
    },
-   "in_diff_pct": -50.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -468,11 +468,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.3,
-    "output": 1.2,
-    "cache_read": 0.006
+    "input": 0.15,
+    "output": 0.6,
+    "cache_read": 0.003
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 100.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.783,
-    "output": 1.566,
-    "cache_read": 0.0653
+    "input": 0.8011,
+    "output": 1.6022,
+    "cache_read": 0.0668
    },
-   "in_diff_pct": -15.7
+   "in_diff_pct": -17.6
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.783,
-    "output": 1.566,
-    "cache_read": 0.0653
+    "input": 0.8011,
+    "output": 1.6022,
+    "cache_read": 0.0668
    },
-   "in_diff_pct": 68.6
+   "in_diff_pct": 64.8
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
