@@ -11,13 +11,16 @@
 任一命中即放弃本次推送并返回错误——数据文件绝不允许带上凭证。
 """
 import os
+import platform
 import re
 import shutil
 import subprocess
 from datetime import datetime
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-DEPLOY = os.path.expanduser(
+IS_WIN = platform.system() == "Windows"
+# Mac: 推送到专用部署克隆；Windows(E:\Project 迁移后): 本目录本身就是 git 克隆
+DEPLOY = DIR if IS_WIN else os.path.expanduser(
     "~/Library/Application Support/ModelCostTracker/deploy")
 KEY = os.path.expanduser("~/.ssh/id_ed25519_github_photiq")
 # 只推这些文件（白名单；仓库里的 README/fetch.yml 等不在本地维护，不动）
@@ -31,7 +34,10 @@ LEAK = re.compile(
 
 
 def _git(*args, timeout=60):
-    env = dict(os.environ, GIT_SSH_COMMAND=f"ssh -i {KEY} -o IdentitiesOnly=yes")
+    env = dict(os.environ)
+    if not IS_WIN:
+        env["GIT_SSH_COMMAND"] = f"ssh -i {KEY} -o IdentitiesOnly=yes"
+    # Windows: 走 HTTPS + git credential helper（gh auth setup-git 已配置）
     return subprocess.run(["git", "-C", DEPLOY, *args],
                           capture_output=True, text=True, env=env, timeout=timeout)
 
@@ -47,7 +53,9 @@ def push():
                 continue
             if LEAK.search(open(src, encoding="utf-8").read()):
                 return False, f"泄漏扫描拦截: {f} 含凭证特征"
-            shutil.copy2(src, os.path.join(DEPLOY, f))
+            dst = os.path.join(DEPLOY, f)
+            if os.path.abspath(src) != os.path.abspath(dst):
+                shutil.copy2(src, dst)
         _git("add", "-A")
         if _git("diff", "--cached", "--quiet").returncode == 0:
             return True, "无变化，跳过推送"

@@ -124,11 +124,16 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--no-browser", action="store_true", help="不自动弹浏览器（计划任务用）")
+    args, _ = ap.parse_known_args()
     os.chdir(DIR)
-    server = http.server.HTTPServer(("127.0.0.1", PORT), Handler)
+    server = http.server.ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
     print(f"📊 同步服务已启动: http://localhost:{PORT}/model-cost-tracker.html")
     print("按 Ctrl+C 停止")
-    threading.Timer(1.5, lambda: webbrowser.open(f"http://localhost:{PORT}/model-cost-tracker.html")).start()
+    if not args.no_browser:
+        threading.Timer(1.5, lambda: webbrowser.open(f"http://localhost:{PORT}/model-cost-tracker.html")).start()
     try:
         server.serve_forever()
     except KeyboardInterrupt:

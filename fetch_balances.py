@@ -51,6 +51,10 @@ _log_lock = threading.Lock()
 
 
 def load_secrets():
+    if not os.path.exists(SECRETS):
+        raise RuntimeError(
+            f"凭证文件缺失: {SECRETS}\n"
+            "  → 复制 .secrets.example.json 为 .secrets/model_keys.json 并填入有效 key")
     with open(SECRETS, "r", encoding="utf-8") as f:
         return json.load(f)
 
