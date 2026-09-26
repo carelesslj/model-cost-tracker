@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-25 23:57:54",
+ "updated_at": "2026-09-26 08:30:45",
  "go_page_date": "2026年9月25日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -450,11 +450,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.14,
+    "output": 0.42,
+    "cache_read": 0.0042
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 7.1
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -468,11 +468,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.15,
-    "output": 0.6,
-    "cache_read": 0.003
+    "input": 0.14,
+    "output": 0.42,
+    "cache_read": 0.0042
    },
-   "in_diff_pct": 100.0
+   "in_diff_pct": 114.3
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -486,11 +486,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.4696,
-    "output": 0.9393,
-    "cache_read": 0.0391
+    "input": 0.4392,
+    "output": 0.8784,
+    "cache_read": 0.0366
    },
-   "in_diff_pct": 40.5
+   "in_diff_pct": 50.3
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -504,11 +504,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.4696,
-    "output": 0.9393,
-    "cache_read": 0.0391
+    "input": 0.4392,
+    "output": 0.8784,
+    "cache_read": 0.0366
    },
-   "in_diff_pct": 181.1
+   "in_diff_pct": 200.5
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -612,11 +612,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Space Bunny Free",
