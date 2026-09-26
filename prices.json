@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-26 09:00:08",
+ "updated_at": "2026-09-26 16:25:30",
  "go_page_date": "2026年9月25日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -18,11 +18,11 @@
     "id": "z-ai/glm-5.3-flash",
     "name": "Z.ai: GLM 5.3 Flash",
     "base": "glm 5.3 flash",
-    "input": 0.045,
-    "output": 0.14,
-    "cache_read": 0.01
+    "input": 0.04,
+    "output": 0.5,
+    "cache_read": 0.015
    },
-   "in_diff_pct": 233.3
+   "in_diff_pct": 275.0
   },
   {
    "model": "GLM-5.3",
@@ -36,11 +36,11 @@
     "id": "z-ai/glm-5.3",
     "name": "Z.ai: GLM 5.3",
     "base": "glm 5.3",
-    "input": 1.4,
-    "output": 4.4,
-    "cache_read": 0.26
+    "input": 0.3794,
+    "output": 1.1924,
+    "cache_read": 0.0705
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 269.0
   },
   {
    "model": "GLM-5.2",
@@ -450,11 +450,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.14,
-    "output": 0.42,
-    "cache_read": 0.0042
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 7.1
+   "in_diff_pct": -50.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -468,11 +468,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.14,
-    "output": 0.42,
-    "cache_read": 0.0042
+    "input": 0.3,
+    "output": 1.2,
+    "cache_read": 0.006
    },
-   "in_diff_pct": 114.3
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
