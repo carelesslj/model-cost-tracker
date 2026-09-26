@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-26 17:37:25",
+ "updated_at": "2026-09-26 20:08:28",
  "go_page_date": "2026年9月26日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -450,11 +450,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.3,
-    "output": 1.2,
-    "cache_read": 0.006
+    "input": 0.035,
+    "output": 0.29,
+    "cache_read": 0.001
    },
-   "in_diff_pct": -50.0
+   "in_diff_pct": 328.6
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -468,11 +468,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.3,
-    "output": 1.2,
-    "cache_read": 0.006
+    "input": 0.035,
+    "output": 0.29,
+    "cache_read": 0.001
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 757.1
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
