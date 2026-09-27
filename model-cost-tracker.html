@@ -443,7 +443,19 @@ function renderCards(latest, yesterday, totalBal, totalCons){
     else if(m==="MiniMax"&&e.detail) sub="现金¥"+e.detail.cash+" 赠款¥"+e.detail.voucher+(e.detail.owed>0?" 欠¥"+e.detail.owed:"");
     else sub={DeepSeek:"api.deepseek.com","智谱":"bigmodel.cn","百炼":"阿里云费用中心","火山":"billing.volcengineapi.com",MiniMax:"控制台会话"}[m]||"";
     const tU = CONS[latest][m], yU = yesterday ? CONS[yesterday][m] : null;
-    const uHtml = useLine("今日用量",tU) + useLine("昨日用量",yU);
+    let uHtml = useLine("今日用量",tU) + useLine("昨日用量",yU);
+    // 耗尽预测：近 7 日日均消费（含零消耗日，缺数据日剔除）→ 余额/日均 = 可撑天数
+    if(v!=null && v>0){
+      const hist = ALL_DATES.slice(-8,-0);   // 最近 7 天（不含当日不完整）
+      let sum=0, ndays=0;
+      hist.forEach(dd=>{ const c=(CONS[dd]||{})[m]; if(c!=null){ sum+=c; ndays++; } });
+      if(ndays>=3 && sum>0){
+        const daily = sum/ndays;
+        const days = Math.floor(v/daily);
+        const warn = days<=7;
+        uHtml += `<div class="u" style="color:${warn?"var(--red)":"var(--dim)"}">按${ndays}日均耗 ¥${daily.toFixed(2)}/天 ≈ ${days>=99?">99":days} 天${warn?" 见底 ⚠":""}</div>`;
+      }
+    }
     const disp = v!=null ? (v<0?`<span style="color:var(--red)">-¥${Math.abs(v).toFixed(2)}</span>`:"¥"+v.toFixed(2)) : "—";
     return {k:m, v:disp, u:uHtml, acc:COLORS[m], d:sub, dim:v==null};
   });
