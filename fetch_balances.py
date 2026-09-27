@@ -193,8 +193,10 @@ def fetch_token_plan(creds):
     if not inner.get("success"):
         raise RuntimeError("Token Plan 接口失败: " + str(inner.get("msg"))[:120])
     d = inner["data"]
-    pct = round(float(d["per1WeekPercentage"]) * 100, 1)
-    reset_ms = d.get("per1WeekResetTime")
+    # 2026-09-22 官方个人版改版：周限额 per1WeekPercentage 已废弃，返回月口径 per1Month*
+    pct_key = "per1MonthPercentage" if d.get("per1MonthPercentage") is not None else "per1WeekPercentage"
+    pct = round(float(d[pct_key]) * 100, 1)
+    reset_ms = d.get("per1MonthResetTime") or d.get("per1WeekResetTime")
     resets_at = None
     if reset_ms:
         resets_at = datetime.fromtimestamp(reset_ms / 1000, timezone.utc) \
