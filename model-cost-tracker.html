@@ -247,6 +247,9 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
 <div class="sec" style="--acc:var(--violet)">🧾 月度账单<span class="sechint">现金消耗 = Σ当日(首末差) · 订阅 = 月费 ÷ 当月应出勤日 × 已过天数 · 仅统计 data.js 覆盖范围</span></div>
 <div class="panel"><div class="billwrap" id="billPanel"></div></div>
 
+<div class="sec" style="--acc:var(--cyan)">🤖 仪表盘自身开销<span class="sechint">驱动本仪表盘 Agent 的模型调用（Hermes 用量库实测）· 数据仅本机可见，不上云</span></div>
+<div class="panel"><div class="billwrap" id="selfCostPanel"><span class="dim">（本机数据，仅 sync_server 模式可加载）</span></div></div>
+
 <div class="sec" style="--acc:var(--cyan)">⚡ OpenCode Go 预估请求数<span class="sechint">条长=真实线性比例 · ■ 5小时 / ■ 周 / ■ 月 · 越长=同额度下请求数越多越经济</span></div>
 <div class="panel" id="reqPanel" style="display:none">
   <h2>Go 各模型预估请求数<span class="hint">基于 Go 文档页典型使用模式 · 同 $ 额度下请求数越多越省</span></h2>
@@ -393,6 +396,7 @@ function renderAll(){
   renderPlans(latest);
   renderPlanUsage(allDates.slice(-10));
   renderBill(allDates);
+  tryLoadSelfCost();
   renderReqGantt();
   renderPriceGantt();
 }
@@ -773,6 +777,39 @@ function ganttBar(rows,{W=980,labelW=265,H,rowH=24,t=20,showSeg=true,endSpace=11
 }
 
 /* 板块A：Go 各模型预估请求数，一条线三段（5h 浅 → 周 中 → 月 深） */
+/* 自身开销：selfcost.js 只在本地 sync_server 下存在（gitignored，不上云）；云端 404 则保留占位 */
+function tryLoadSelfCost(){
+  if (isCloud) return;                       // 云端根本不试，省一次 404
+  const s = document.createElement("script");
+  s.src = "selfcost.js";
+  s.onload = () => renderSelfCost(window.SELFCOST_DATA);
+  document.head.appendChild(s);
+}
+function renderSelfCost(d){
+  const el = $("selfCostPanel");
+  if(!el || !d || !d.months) return;
+  const months = Object.keys(d.months).sort().slice(-4);
+  let h = `<table><tr><th>月份</th><th>模型</th><th>调用</th><th>输入</th><th>输出(含思维链)</th><th>缓存读</th><th>Credits</th><th>TP折算</th><th>按量当量</th></tr>`;
+  months.forEach(mk=>{
+    const mo = d.months[mk];
+    const names = Object.keys(mo.models).sort();
+    names.forEach((n,i)=>{
+      const e = mo.models[n];
+      h += `<tr>${i===0?`<td rowspan="${names.length+1}" style="color:var(--muted)">${mk}</td>`:""}<td>${n}</td>
+        <td>${e.calls}</td><td>${(e.input/1000).toFixed(0)}K</td><td>${(e.output/1000).toFixed(0)}K</td>
+        <td>${(e.cache_read/1000000).toFixed(1)}M</td><td>${e.credits.toFixed(0)}</td>
+        <td><b>¥${e.yuan_tp.toFixed(2)}</b></td><td>¥${e.yuan_api.toFixed(2)}</td></tr>`;
+    });
+    h += `<tr><td><b>合计</b></td><td colspan="4"></td><td><b>${mo.total_credits.toFixed(0)}</b></td><td><b>¥${mo.total_yuan_tp.toFixed(2)}</b></td><td>¥${mo.total_yuan_api.toFixed(2)}</td></tr>`;
+    Object.entries(mo.unpriced||{}).forEach(([k,e])=>{
+      h += `<tr><td style="color:var(--dim)">${k}（未计价）</td><td>${e.calls}</td><td>${(e.input/1000).toFixed(0)}K</td>
+            <td>${(e.output/1000).toFixed(0)}K</td><td>${(e.cache_read/1000000).toFixed(1)}M</td><td>—</td><td>—</td><td>—</td></tr>`;
+    });
+  });
+  h += `</table><div class="pinfo">${d.note}<br>更新于 ${d.updated_at}</div>`;
+  el.innerHTML = h;
+}
+
 function renderBill(allDates){
   const el = $("billPanel"); if(!el) return;
   // 按月分组统计：现金 = Σ当日消费(CONS)；订阅 = 月费按日摊销（已过天数/当月天数）

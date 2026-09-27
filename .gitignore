@@ -9,5 +9,7 @@ __pycache__/
 1[01]-*.md
 Agent API*.md
 alert_state.json
+selfcost.json
+selfcost.js
 reauth_run*.log
 reauth_keepalive.log
