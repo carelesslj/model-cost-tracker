@@ -446,7 +446,7 @@ function renderCards(latest, yesterday, totalBal, totalCons){
     let uHtml = useLine("今日用量",tU) + useLine("昨日用量",yU);
     // 耗尽预测：近 7 日日均消费（含零消耗日，缺数据日剔除）→ 余额/日均 = 可撑天数
     if(v!=null && v>0){
-      const hist = ALL_DATES.slice(-8,-0);   // 最近 7 天（不含当日不完整）
+      const hist = ALL_DATES.slice(Math.max(0, ALL_DATES.length-8), ALL_DATES.length-1);   // 最近7个完整日
       let sum=0, ndays=0;
       hist.forEach(dd=>{ const c=(CONS[dd]||{})[m]; if(c!=null){ sum+=c; ndays++; } });
       if(ndays>=3 && sum>0){
@@ -613,13 +613,17 @@ function renderTopPick(){
   const tp=planOf(latest)["Token Plan"]||{};
   const tpp=tp.monthly_pct;
   const peak = isDeepSeekPeak();
-  // 一句话策略（用户定稿）：主力 V4 Flash，搞不定换 Qwen3.8 Max / Kimi K3
-  const eff = gm!=null && gm>=90 ? "Go 月度将满 → K3/Qwen3.8Max 改走 OpenRouter 兜底"
-          : (tpp!=null && tpp>=90) ? "TP 月额度将满 → 升级 Qwen3.8Max 走百炼按量"
-          : "Go/TP 额度充足，放心用";
-  return `<li class="top-pick"><span class="tag-p p0 tp-head">⭐ 模型策略</span>`
-    + `<div class="tp-line">主力：<b>DeepSeek V4-Flash</b> — 日常聊天/编程全用它<span class="tp-sub">${peak?"，高峰价格翻倍→重活挪非高峰或走 NVIDIA/百炼":"，低峰官方 ¥ 最省"}</span></div>`
-    + `<div class="tp-line">搞不定再换：<b>Qwen3.8 Max</b>（Token Plan，夜间 5 折）或 <b>Kimi K3</b>（NVIDIA 免费）</div>`
+  // 用户定稿（2026-09-27）：三 Flash 主力 + 按任务分线；重要项目 Codex；Flash 反复卡壳才升档
+  const eff = gm!=null && gm>=90 ? "Go 月度将满 → 编程线改走 NVIDIA 免费兜底"
+          : (tpp!=null && tpp>=90) ? "TP 月额度将满 → 日常线改走百炼按量"
+          : "Go/TP 额度充足，按任务放心分线";
+  return `<li class="top-pick"><span class="tag-p p0 tp-head">⭐ 模型策略 · 三 Flash 分线（2026-09 定稿）</span>`
+    + `<div class="tp-line">💬 <b>日常问答/闲聊/文案</b>：<b>千问3.8 Flash</b><span class="tp-sub">最便宜（输出$0.47/M）· 能看图 · TP月额内，夜间4折</span></div>`
+    + `<div class="tp-line">⌨️ <b>编程</b>：<b>DeepSeek V4.1 Flash</b><span class="tp-sub">推理/代码强，缓存$0.003/M全网白菜·Go档$60${peak?" · 当前高峰价翻倍→大活挪到22点后":""} · 重要项目交 <b>Codex</b></span></div>`
+    + `<div class="tp-line">🤖 <b>机器人(RobotEasy)</b>：<b>GLM-5.3 Flash</b> 或 3.8 Flash<span class="tp-sub">同为$0.15/$0.5档，GLM 配额$60更宽 · 常驻便宜量大</span></div>`
+    + `<div class="tp-line">📚 <b>给 Shawn 讲题</b>：<b>千问3.8 Flash</b> 拍题先转录再答<span class="tp-sub">同一道题两次讲不通 → 升 3.8 Max（$2/$6，TP夜间4折），不要换小模型省钱</span></div>`
+    + `<div class="tp-line">🧾 <b>记账/日记</b>：<b>千问3.8 Flash</b><span class="tp-sub">票据拍照识别够用，夜间批量跑最省</span></div>`
+    + `<div class="tp-line">🔝 <b>升档阶梯</b>：三Flash 卡壳 → <b>中型</b>：K2.7 Code $60 / GLM-5.3 $15 / 3.8 Max $15 → <b>重炮</b>：Kimi K3（$3/$15 太贵，NVIDIA 免费Key兜底）→ <b>重要项目</b>：Codex<span class="tp-sub">K2.6 与 K2.7 Code 同价（官方 2.7 省 30% 思维token）· 无 3.8 Plus 档，Plus 线停在 3.7</span></div>`
     + `<div class="dim tp-meta">${eff} · Go ${gm!=null?gm+"%":"?"}（剩 $${left!=null?left:"?"}）· TP ${tpp!=null?tpp+"%":"?"}</div></li>`;
 }
 
