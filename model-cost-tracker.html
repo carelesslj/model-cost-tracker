@@ -802,7 +802,7 @@ function renderSelfCost(d){
     });
     h += `<tr><td><b>合计</b></td><td colspan="4"></td><td><b>${mo.total_credits.toFixed(0)}</b></td><td><b>¥${mo.total_yuan_tp.toFixed(2)}</b></td><td>¥${mo.total_yuan_api.toFixed(2)}</td></tr>`;
     Object.entries(mo.unpriced||{}).forEach(([k,e])=>{
-      h += `<tr><td style="color:var(--dim)">${k}（未计价）</td><td>${e.calls}</td><td>${(e.input/1000).toFixed(0)}K</td>
+      h += `<tr><td></td><td style="color:var(--dim)">${k}（未计价）</td><td>${e.calls}</td><td>${(e.input/1000).toFixed(0)}K</td>
             <td>${(e.output/1000).toFixed(0)}K</td><td>${(e.cache_read/1000000).toFixed(1)}M</td><td>—</td><td>—</td><td>—</td></tr>`;
     });
   });
