@@ -230,6 +230,7 @@ def main():
     if shutil.which("node") is None:
         sys.exit("需要 node（Chrome DevTools Protocol 客户端）")
     wait_sec = int(sys.argv[1]) if len(sys.argv) > 1 else LOGIN_WAIT_SEC
+    headless = "--headless" in sys.argv   # 每日续命用：种子无窗口跑，失败才需要人工
     keys = json.load(open(SECRETS, encoding="utf-8"))
     old = keys.get("aliyun_console", {})
 
@@ -250,9 +251,12 @@ def main():
     proc = subprocess.Popen(
         [CHROME, f"--remote-debugging-port={PORT}",
          f"--user-data-dir={PERSIST}", "--no-first-run",
-         "--no-default-browser-check", PLAN_URL],
+         "--no-default-browser-check"]
+        + (["--headless=new", "--disable-gpu"] if headless else [])
+        + [PLAN_URL],
         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    print("🌐 调试 Chrome 已弹出（持久 profile），等待页面加载…")
+    print("🌐 调试 Chrome 已弹出（持久 profile），等待页面加载…" if not headless
+          else "🤖 headless 续命模式（无窗口）")
     try:
         if not wait_port(PORT):
             sys.exit("❌ CDP 端口未就绪：本脚本需在登录 GUI 会话运行（cron/ssh 弹不出窗口）")
@@ -267,7 +271,7 @@ def main():
         while time.time() < deadline:
             g = grab(PORT)
             if not (g and g.get("ready")):
-                if not hint and time.time() - t0 > 25:
+                if not hint and time.time() - t0 > 25 and not headless:
                     print("🔑 页面未就绪（大概率停在登录页）——请在弹出的 Chrome 窗口完成登录，"
                           f"脚本自动继续（最长 {LOGIN_WAIT_SEC // 60} 分钟）。"
                           "\n   本次登录后，以后每天自动续命，无需再登。")
