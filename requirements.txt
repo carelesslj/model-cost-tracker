@@ -1,0 +1,4 @@
+# 模型费用仪表盘 拉取脚本依赖（Windows 本机 .venv 实测版本，2026-09-27）
+# 装法：python -m venv .venv && .venv/Scripts/pip install -r requirements.txt
+requests==2.34.2
+beautifulsoup4==4.15.0
