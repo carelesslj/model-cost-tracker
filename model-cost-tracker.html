@@ -244,6 +244,9 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
 <div class="sec" style="--acc:var(--amber)">📋 订阅每日用量<span class="sechint">用量 = 当日已用% − 前日已用%（窗口重置当日按新窗口已用%计）</span></div>
 <div class="panel"><div class="scrolly"><table id="planUsageTable"></table></div></div>
 
+<div class="sec" style="--acc:var(--violet)">🧾 月度账单<span class="sechint">现金消耗 = Σ当日(首末差) · 订阅 = 月费 ÷ 当月应出勤日 × 已过天数 · 仅统计 data.js 覆盖范围</span></div>
+<div class="panel"><div class="billwrap" id="billPanel"></div></div>
+
 <div class="sec" style="--acc:var(--cyan)">⚡ OpenCode Go 预估请求数<span class="sechint">条长=真实线性比例 · ■ 5小时 / ■ 周 / ■ 月 · 越长=同额度下请求数越多越经济</span></div>
 <div class="panel" id="reqPanel" style="display:none">
   <h2>Go 各模型预估请求数<span class="hint">基于 Go 文档页典型使用模式 · 同 $ 额度下请求数越多越省</span></h2>
@@ -389,6 +392,7 @@ function renderAll(){
   renderUsageTable(allDates.slice(-10), totalCons);
   renderPlans(latest);
   renderPlanUsage(allDates.slice(-10));
+  renderBill(allDates);
   renderReqGantt();
   renderPriceGantt();
 }
@@ -551,13 +555,14 @@ function renderPlans(latest){
   let html="";
   if(go.rolling||go.weekly||go.monthly){
     const rst = w => go[w]&&go[w].resets_at ? fmtReset(go[w].resets_at)+"重置" : "—";
-    html+=`<div class="pcard"><div class="pt">OpenCode Go<span>$10/月 · 数字为已用%</span></div>
+    const goStale = go.as_of && go.as_of !== latest;   // 同 TP：回填快照必须说出来
+    html+=`<div class="pcard"><div class="pt">OpenCode Go<span>$10/月 · 数字为已用%${goStale?' · <b style="color:var(--amber)">⏳陈旧</b>':(go.source==="auto"?" · 自动":" · 手动")}</span></div>
       <div class="rings">
-        ${ring(go.rolling&&go.rolling.percent,"5h已用",go.rolling&&go.rolling.resets_at)}
-        ${ring(go.weekly&&go.weekly.percent,"本周已用",go.weekly&&go.weekly.resets_at)}
-        ${ring(go.monthly&&go.monthly.percent,"本月已用",go.monthly&&go.monthly.resets_at)}
+        ${ring(go.rolling&&go.rolling.percent,goStale?"5h已用*":"5h已用",go.rolling&&go.rolling.resets_at)}
+        ${ring(go.weekly&&go.weekly.percent,goStale?"本周已用*":"本周已用",go.weekly&&go.weekly.resets_at)}
+        ${ring(go.monthly&&go.monthly.percent,goStale?"本月已用*":"本月已用",go.monthly&&go.monthly.resets_at)}
       </div>
-      <div class="pinfo">窗口重置：5h ${rst("rolling")} · 本周 ${rst("weekly")} · 本月 ${rst("monthly")}<br>Go 价格恒定不分峰谷</div></div>`;
+      <div class="pinfo" style="${go.source==="auto"&&!goStale?"":"color:var(--amber)"}">${goStale?`⏳ <b>快照 @${go.as_of}，非实时</b> · `:""}窗口重置：5h ${rst("rolling")} · 本周 ${rst("weekly")} · 本月 ${rst("monthly")}<br>Go 价格恒定不分峰谷</div></div>`;
   }else{
     html+=`<div class="pcard"><div class="pt">OpenCode Go</div><div class="empty" style="padding:18px">${go.error||"无数据"}</div></div>`;
   }
@@ -752,6 +757,45 @@ function ganttBar(rows,{W=980,labelW=265,H,rowH=24,t=20,showSeg=true,endSpace=11
 }
 
 /* 板块A：Go 各模型预估请求数，一条线三段（5h 浅 → 周 中 → 月 深） */
+function renderBill(allDates){
+  const el = $("billPanel"); if(!el) return;
+  // 按月分组统计：现金 = Σ当日消费(CONS)；订阅 = 月费按日摊销（已过天数/当月天数）
+  const FX = 6.71;                       // USD→CNY，2026-09 行情；调价手改此值
+  const SUBS = [                         // 订阅月费（USD 则×FX）
+    {name:"Token Plan Standard", cny:139},
+    {name:"OpenCode Go", cny:10*FX},
+  ];
+  const byMonth = {};
+  allDates.forEach(d=>{ const m=d.slice(0,7); (byMonth[m]=byMonth[m]||[]).push(d); });
+  const months = Object.keys(byMonth).sort().slice(-4);   // 最多展示 4 个月
+  let h = `<table><tr><th>月份</th><th>数据覆盖</th><th>现金消耗</th><th>订阅摊销</th><th>合计</th></tr>`;
+  months.forEach(mk=>{
+    const days = byMonth[mk];
+    let cash = 0, cashMissing = 0;
+    days.forEach(d=>MODELS.forEach(mm=>{ const c = CONS[d] && CONS[d][mm];
+      if (c!=null) cash += c; }));
+    const y = +mk.slice(0,4), mo = +mk.slice(6,8);
+    const daysInMonth = new Date(y, mo, 0).getDate();
+    const covered = days.length;
+    let sub = 0;
+    SUBS.forEach(s=>{ sub += s.cny / daysInMonth * covered; });
+    const tot = cash + sub;
+    h += `<tr><td style="color:var(--muted)">${mk}${cashMissing?" *":""}</td><td>${covered}/${daysInMonth} 天</td>
+      <td>¥${cash.toFixed(2)}</td><td>¥${sub.toFixed(2)}</td>
+      <td><b>¥${tot.toFixed(2)}</b></td></tr>`;
+  });
+  h += "</table>";
+  // 本月现金 Top3 渠道
+  const cur = months[months.length-1];
+  if (cur){
+    const per = MODELS.map(mm=>({m:mm, v: byMonth[cur].reduce((s,d)=>s+((CONS[d]||{})[mm]||0),0)}))
+      .filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,3);
+    if (per.length)
+      h += `<div class="pinfo" style="margin-top:8px">本月现金大头：${per.map(x=>`${x.m} ¥${x.v.toFixed(2)}`).join(" · ")}</div>`;
+  }
+  el.innerHTML = h;
+}
+
 function renderReqGantt(){
   const P=window.PRICE_DATA;
   const req=(P&&P.requests)||[];
