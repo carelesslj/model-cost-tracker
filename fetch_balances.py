@@ -321,12 +321,21 @@ def _make_cash_task(name, secrets):
     def task():
         try:
             if name == "DeepSeek":
+                if not secrets.get("deepseek", {}).get("primary"):
+                    return name, {"value": None, "source": "no_credentials",
+                                  "error": "本机未配置 DeepSeek key"}
                 return name, {"value": fetch_deepseek(secrets["deepseek"]["primary"]),
                               "source": "auto"}
             if name == "智谱":
+                if not secrets.get("zhipu", {}).get("primary"):
+                    return name, {"value": None, "source": "no_credentials",
+                                  "error": "本机未配置智谱 key"}
                 return name, {"value": fetch_zhipu(secrets["zhipu"]["primary"]),
                               "source": "auto"}
             if name == "Kimi":
+                if not secrets.get("kimi", {}).get("primary"):
+                    return name, {"value": None, "source": "no_credentials",
+                                  "error": "本机未配置 Kimi key"}
                 val, detail = fetch_kimi(secrets["kimi"]["primary"])
                 return name, {"value": val, "source": "auto", "detail": detail}
             if name == "百炼":
@@ -360,6 +369,9 @@ def _make_cash_task(name, secrets):
 
 def _make_plan_task(secrets):
     def task():
+        if not secrets.get("opencode_go", {}).get("primary"):
+            return {"rolling": None, "weekly": None, "monthly": None,
+                    "source": "no_credentials", "error": "本机未配置 OpenCode Go key"}
         try:
             return dict(fetch_opencode_go(secrets["opencode_go"]["primary"]),
                         source="auto")

@@ -207,9 +207,29 @@ def seed_cookies(port, cookie_str):
                 pass
 
 
+def graceful_close(port, proc):
+    """CDP Browser.close 让 Chrome 优雅退出（强杀会把 cookie 落盘弄丢→
+    持久 profile 永远没有登录态→下次过期又要人工扫码）。失败才兜底 taskkill。"""
+    js = ("fetch('http://127.0.0.1:%d/json/version').then(r=>r.json()).then("
+          "j=>{const w=new WebSocket(j.webSocketDebuggerUrl);"
+          "w.onopen=()=>w.send(JSON.stringify({id:1,method:'Browser.close'}));"
+          "setTimeout(()=>process.exit(0),2000)}).catch(()=>process.exit(1))" % port)
+    sh("node", "-e", js, timeout=15)
+    try:
+        proc.wait(timeout=15)
+        return True
+    except subprocess.TimeoutExpired:
+        if IS_WIN:
+            sh("taskkill", "/F", "/T", "/PID", str(proc.pid))
+        else:
+            proc.kill()
+        return False
+
+
 def main():
     if shutil.which("node") is None:
         sys.exit("需要 node（Chrome DevTools Protocol 客户端）")
+    wait_sec = int(sys.argv[1]) if len(sys.argv) > 1 else LOGIN_WAIT_SEC
     keys = json.load(open(SECRETS, encoding="utf-8"))
     old = keys.get("aliyun_console", {})
 
@@ -241,7 +261,7 @@ def main():
         print("   ↳ 若页面停在登录页，请【在这个窗口里登录阿里云】——登录态将永久留存于此 profile")
         time.sleep(8)
 
-        deadline = time.time() + LOGIN_WAIT_SEC
+        deadline = time.time() + wait_sec
         hint = False
         t0 = time.time()
         while time.time() < deadline:
@@ -270,15 +290,8 @@ def main():
             time.sleep(5)
         sys.exit("❌ 超时未拿到有效会话")
     finally:
-        # 只关浏览器，profile 保留（这就是"续命"的关键）
-        if IS_WIN:
-            sh("taskkill", "/F", "/T", "/PID", str(proc.pid))
-        else:
-            proc.terminate()
-            try:
-                proc.wait(timeout=10)
-            except subprocess.TimeoutExpired:
-                proc.kill()
+        # 优雅关闭：让 Chrome 自己把 cookie 落盘进持久 profile（下次免扫码）
+        graceful_close(PORT, proc)
 
 
 if __name__ == "__main__":
