@@ -60,7 +60,8 @@ def push():
         if _git("diff", "--cached", "--quiet").returncode == 0:
             return True, "无变化，跳过推送"
         ts = datetime.now().strftime("%Y-%m-%d %H:%M")
-        c = _git("commit", "-m", f"mac-sync: {ts}")
+        import platform as _p
+        c = _git("commit", "-m", f"{_p.system().lower()}-sync: {ts}")
         if c.returncode != 0:
             return False, "commit 失败: " + c.stderr[:120]
         # Actions 可能已先行提交（其数据较旧）：rebase 远端，冲突文件取本机侧
