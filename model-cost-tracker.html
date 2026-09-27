@@ -682,7 +682,7 @@ function renderAlerts(allDates){
   const tp=(DATA.daily[latest].plans||{})["Token Plan"]||{};
   const tpv=tp.monthly_pct;
   if(tpv!=null&&tpv>=90)chips.push({t:"err",m:"🧩 Token Plan 月额度已用 "+tpv+"%，接近上限"});
-  if(tp.source==="error")chips.push({t:"warn",m:"🔑 Token Plan 会话失效："+String(tp.error||"").slice(0,40)+" — 重新登录控制台后让 Claudian 重抓"});
+  if(tp.source==="error"||tp.source==="no_credentials")chips.push({t:"warn",m:"🔑 Token Plan 会话失效："+String(tp.error||"").slice(0,44)+" — 在 Windows 主机跑 bailian_reauth.py 重新登录"});
   const el=$("alerts");
   if(!chips.length){el.style.display="none";el.innerHTML="";return;}
   el.style.display="flex";

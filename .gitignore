@@ -8,3 +8,6 @@ __pycache__/
 0[1-9]-*.md
 1[01]-*.md
 Agent API*.md
+alert_state.json
+reauth_run*.log
+reauth_keepalive.log
