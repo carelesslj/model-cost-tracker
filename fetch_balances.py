@@ -193,10 +193,8 @@ def fetch_token_plan(creds):
     if not inner.get("success"):
         raise RuntimeError("Token Plan 接口失败: " + str(inner.get("msg"))[:120])
     d = inner["data"]
-    # 2026-09-22 官方个人版改版：周限额 per1WeekPercentage 已废弃，返回月口径 per1Month*
-    pct_key = "per1MonthPercentage" if d.get("per1MonthPercentage") is not None else "per1WeekPercentage"
-    pct = round(float(d[pct_key]) * 100, 1)
-    reset_ms = d.get("per1MonthResetTime") or d.get("per1WeekResetTime")
+    pct = round(float(d["per1WeekPercentage"]) * 100, 1)
+    reset_ms = d.get("per1WeekResetTime")
     resets_at = None
     if reset_ms:
         resets_at = datetime.fromtimestamp(reset_ms / 1000, timezone.utc) \
@@ -324,21 +322,12 @@ def _make_cash_task(name, secrets):
     def task():
         try:
             if name == "DeepSeek":
-                if not secrets.get("deepseek", {}).get("primary"):
-                    return name, {"value": None, "source": "no_credentials",
-                                  "error": "本机未配置 DeepSeek key"}
                 return name, {"value": fetch_deepseek(secrets["deepseek"]["primary"]),
                               "source": "auto"}
             if name == "智谱":
-                if not secrets.get("zhipu", {}).get("primary"):
-                    return name, {"value": None, "source": "no_credentials",
-                                  "error": "本机未配置智谱 key"}
                 return name, {"value": fetch_zhipu(secrets["zhipu"]["primary"]),
                               "source": "auto"}
             if name == "Kimi":
-                if not secrets.get("kimi", {}).get("primary"):
-                    return name, {"value": None, "source": "no_credentials",
-                                  "error": "本机未配置 Kimi key"}
                 val, detail = fetch_kimi(secrets["kimi"]["primary"])
                 return name, {"value": val, "source": "auto", "detail": detail}
             if name == "百炼":
@@ -372,9 +361,6 @@ def _make_cash_task(name, secrets):
 
 def _make_plan_task(secrets):
     def task():
-        if not secrets.get("opencode_go", {}).get("primary"):
-            return {"rolling": None, "weekly": None, "monthly": None,
-                    "source": "no_credentials", "error": "本机未配置 OpenCode Go key"}
         try:
             return dict(fetch_opencode_go(secrets["opencode_go"]["primary"]),
                         source="auto")
