@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-27T12:28:10+00:00",
+ "generated_at": "2026-09-27T20:49:50+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2040,7 +2040,7 @@
    },
    "plans": {
     "Token Plan": {
-     "monthly_pct": 35.3,
+     "monthly_pct": 35.4,
      "resets_at": "2026-10-23T00:00:00+08:00",
      "source": "auto",
      "first_pct": 35.2
@@ -2067,7 +2067,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "12:28:10"
+   "fetched_at": "20:49:50"
   }
  }
 }
