@@ -244,12 +244,6 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
 <div class="sec" style="--acc:var(--amber)">📋 订阅每日用量<span class="sechint">用量 = 当日已用% − 前日已用%（窗口重置当日按新窗口已用%计）</span></div>
 <div class="panel"><div class="scrolly"><table id="planUsageTable"></table></div></div>
 
-<div class="sec" style="--acc:var(--violet)">🧾 月度账单<span class="sechint">现金消耗 = Σ当日(首末差) · 订阅 = 月费 ÷ 当月应出勤日 × 已过天数 · 仅统计 data.js 覆盖范围</span></div>
-<div class="panel"><div class="billwrap" id="billPanel"></div></div>
-
-<div class="sec" style="--acc:var(--cyan)">🤖 仪表盘自身开销<span class="sechint">驱动本仪表盘 Agent 的模型调用（Hermes 用量库实测）· 数据仅本机可见，不上云</span></div>
-<div class="panel"><div class="billwrap" id="selfCostPanel"><span class="dim">（本机数据，仅 sync_server 模式可加载）</span></div></div>
-
 <div class="sec" style="--acc:var(--cyan)">⚡ OpenCode Go 预估请求数<span class="sechint">条长=真实线性比例 · ■ 5小时 / ■ 周 / ■ 月 · 越长=同额度下请求数越多越经济</span></div>
 <div class="panel" id="reqPanel" style="display:none">
   <h2>Go 各模型预估请求数<span class="hint">基于 Go 文档页典型使用模式 · 同 $ 额度下请求数越多越省</span></h2>
@@ -395,8 +389,6 @@ function renderAll(){
   renderUsageTable(allDates.slice(-10), totalCons);
   renderPlans(latest);
   renderPlanUsage(allDates.slice(-10));
-  renderBill(allDates);
-  tryLoadSelfCost();
   renderReqGantt();
   renderPriceGantt();
 }
@@ -447,19 +439,7 @@ function renderCards(latest, yesterday, totalBal, totalCons){
     else if(m==="MiniMax"&&e.detail) sub="现金¥"+e.detail.cash+" 赠款¥"+e.detail.voucher+(e.detail.owed>0?" 欠¥"+e.detail.owed:"");
     else sub={DeepSeek:"api.deepseek.com","智谱":"bigmodel.cn","百炼":"阿里云费用中心","火山":"billing.volcengineapi.com",MiniMax:"控制台会话"}[m]||"";
     const tU = CONS[latest][m], yU = yesterday ? CONS[yesterday][m] : null;
-    let uHtml = useLine("今日用量",tU) + useLine("昨日用量",yU);
-    // 耗尽预测：近 7 日日均消费（含零消耗日，缺数据日剔除）→ 余额/日均 = 可撑天数
-    if(v!=null && v>0){
-      const hist = ALL_DATES.slice(Math.max(0, ALL_DATES.length-8), ALL_DATES.length-1);   // 最近7个完整日
-      let sum=0, ndays=0;
-      hist.forEach(dd=>{ const c=(CONS[dd]||{})[m]; if(c!=null){ sum+=c; ndays++; } });
-      if(ndays>=3 && sum>0){
-        const daily = sum/ndays;
-        const days = Math.floor(v/daily);
-        const warn = days<=7;
-        uHtml += `<div class="u" style="color:${warn?"var(--red)":"var(--dim)"}">按${ndays}日均耗 ¥${daily.toFixed(2)}/天 ≈ ${days>=99?">99":days} 天${warn?" 见底 ⚠":""}</div>`;
-      }
-    }
+    const uHtml = useLine("今日用量",tU) + useLine("昨日用量",yU);
     const disp = v!=null ? (v<0?`<span style="color:var(--red)">-¥${Math.abs(v).toFixed(2)}</span>`:"¥"+v.toFixed(2)) : "—";
     return {k:m, v:disp, u:uHtml, acc:COLORS[m], d:sub, dim:v==null};
   });
@@ -571,14 +551,13 @@ function renderPlans(latest){
   let html="";
   if(go.rolling||go.weekly||go.monthly){
     const rst = w => go[w]&&go[w].resets_at ? fmtReset(go[w].resets_at)+"重置" : "—";
-    const goStale = go.as_of && go.as_of !== latest;   // 同 TP：回填快照必须说出来
-    html+=`<div class="pcard"><div class="pt">OpenCode Go<span>$10/月 · 数字为已用%${goStale?' · <b style="color:var(--amber)">⏳陈旧</b>':(go.source==="auto"?" · 自动":" · 手动")}</span></div>
+    html+=`<div class="pcard"><div class="pt">OpenCode Go<span>$10/月 · 数字为已用%</span></div>
       <div class="rings">
-        ${ring(go.rolling&&go.rolling.percent,goStale?"5h已用*":"5h已用",go.rolling&&go.rolling.resets_at)}
-        ${ring(go.weekly&&go.weekly.percent,goStale?"本周已用*":"本周已用",go.weekly&&go.weekly.resets_at)}
-        ${ring(go.monthly&&go.monthly.percent,goStale?"本月已用*":"本月已用",go.monthly&&go.monthly.resets_at)}
+        ${ring(go.rolling&&go.rolling.percent,"5h已用",go.rolling&&go.rolling.resets_at)}
+        ${ring(go.weekly&&go.weekly.percent,"本周已用",go.weekly&&go.weekly.resets_at)}
+        ${ring(go.monthly&&go.monthly.percent,"本月已用",go.monthly&&go.monthly.resets_at)}
       </div>
-      <div class="pinfo" style="${go.source==="auto"&&!goStale?"":"color:var(--amber)"}">${goStale?`⏳ <b>快照 @${go.as_of}，非实时</b> · `:""}窗口重置：5h ${rst("rolling")} · 本周 ${rst("weekly")} · 本月 ${rst("monthly")}<br>Go 价格恒定不分峰谷</div></div>`;
+      <div class="pinfo">窗口重置：5h ${rst("rolling")} · 本周 ${rst("weekly")} · 本月 ${rst("monthly")}<br>Go 价格恒定不分峰谷</div></div>`;
   }else{
     html+=`<div class="pcard"><div class="pt">OpenCode Go</div><div class="empty" style="padding:18px">${go.error||"无数据"}</div></div>`;
   }
@@ -771,78 +750,6 @@ function ganttBar(rows,{W=980,labelW=265,H,rowH=24,t=20,showSeg=true,endSpace=11
 }
 
 /* 板块A：Go 各模型预估请求数，一条线三段（5h 浅 → 周 中 → 月 深） */
-/* 自身开销：selfcost.js 只在本地 sync_server 下存在（gitignored，不上云）；云端 404 则保留占位 */
-function tryLoadSelfCost(){
-  if (isCloud) return;                       // 云端根本不试，省一次 404
-  const s = document.createElement("script");
-  s.src = "selfcost.js";
-  s.onload = () => renderSelfCost(window.SELFCOST_DATA);
-  document.head.appendChild(s);
-}
-function renderSelfCost(d){
-  const el = $("selfCostPanel");
-  if(!el || !d || !d.months) return;
-  const months = Object.keys(d.months).sort().slice(-4);
-  let h = `<table><tr><th>月份</th><th>模型</th><th>调用</th><th>输入</th><th>输出(含思维链)</th><th>缓存读</th><th>Credits</th><th>TP折算</th><th>按量当量</th></tr>`;
-  months.forEach(mk=>{
-    const mo = d.months[mk];
-    const names = Object.keys(mo.models).sort();
-    names.forEach((n,i)=>{
-      const e = mo.models[n];
-      h += `<tr>${i===0?`<td rowspan="${names.length+1}" style="color:var(--muted)">${mk}</td>`:""}<td>${n}</td>
-        <td>${e.calls}</td><td>${(e.input/1000).toFixed(0)}K</td><td>${(e.output/1000).toFixed(0)}K</td>
-        <td>${(e.cache_read/1000000).toFixed(1)}M</td><td>${e.credits.toFixed(0)}</td>
-        <td><b>¥${e.yuan_tp.toFixed(2)}</b></td><td>¥${e.yuan_api.toFixed(2)}</td></tr>`;
-    });
-    h += `<tr><td><b>合计</b></td><td colspan="4"></td><td><b>${mo.total_credits.toFixed(0)}</b></td><td><b>¥${mo.total_yuan_tp.toFixed(2)}</b></td><td>¥${mo.total_yuan_api.toFixed(2)}</td></tr>`;
-    Object.entries(mo.unpriced||{}).forEach(([k,e])=>{
-      h += `<tr><td></td><td style="color:var(--dim)">${k}（未计价）</td><td>${e.calls}</td><td>${(e.input/1000).toFixed(0)}K</td>
-            <td>${(e.output/1000).toFixed(0)}K</td><td>${(e.cache_read/1000000).toFixed(1)}M</td><td>—</td><td>—</td><td>—</td></tr>`;
-    });
-  });
-  h += `</table><div class="pinfo">${d.note}<br>更新于 ${d.updated_at}</div>`;
-  el.innerHTML = h;
-}
-
-function renderBill(allDates){
-  const el = $("billPanel"); if(!el) return;
-  // 按月分组统计：现金 = Σ当日消费(CONS)；订阅 = 月费按日摊销（已过天数/当月天数）
-  const FX = 6.71;                       // USD→CNY，2026-09 行情；调价手改此值
-  const SUBS = [                         // 订阅月费（USD 则×FX）
-    {name:"Token Plan Standard", cny:139},
-    {name:"OpenCode Go", cny:10*FX},
-  ];
-  const byMonth = {};
-  allDates.forEach(d=>{ const m=d.slice(0,7); (byMonth[m]=byMonth[m]||[]).push(d); });
-  const months = Object.keys(byMonth).sort().slice(-4);   // 最多展示 4 个月
-  let h = `<table><tr><th>月份</th><th>数据覆盖</th><th>现金消耗</th><th>订阅摊销</th><th>合计</th></tr>`;
-  months.forEach(mk=>{
-    const days = byMonth[mk];
-    let cash = 0, cashMissing = 0;
-    days.forEach(d=>MODELS.forEach(mm=>{ const c = CONS[d] && CONS[d][mm];
-      if (c!=null) cash += c; }));
-    const y = +mk.slice(0,4), mo = +mk.slice(6,8);
-    const daysInMonth = new Date(y, mo, 0).getDate();
-    const covered = days.length;
-    let sub = 0;
-    SUBS.forEach(s=>{ sub += s.cny / daysInMonth * covered; });
-    const tot = cash + sub;
-    h += `<tr><td style="color:var(--muted)">${mk}${cashMissing?" *":""}</td><td>${covered}/${daysInMonth} 天</td>
-      <td>¥${cash.toFixed(2)}</td><td>¥${sub.toFixed(2)}</td>
-      <td><b>¥${tot.toFixed(2)}</b></td></tr>`;
-  });
-  h += "</table>";
-  // 本月现金 Top3 渠道
-  const cur = months[months.length-1];
-  if (cur){
-    const per = MODELS.map(mm=>({m:mm, v: byMonth[cur].reduce((s,d)=>s+((CONS[d]||{})[mm]||0),0)}))
-      .filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,3);
-    if (per.length)
-      h += `<div class="pinfo" style="margin-top:8px">本月现金大头：${per.map(x=>`${x.m} ¥${x.v.toFixed(2)}`).join(" · ")}</div>`;
-  }
-  el.innerHTML = h;
-}
-
 function renderReqGantt(){
   const P=window.PRICE_DATA;
   const req=(P&&P.requests)||[];

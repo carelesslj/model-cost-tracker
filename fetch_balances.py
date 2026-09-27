@@ -305,14 +305,11 @@ def fetch_minimax(creds):
         if "token" in str(msg).lower() or "login" in str(msg).lower():
             msg += "（会话过期，需重新登录抓取）"
         raise RuntimeError("minimax: " + str(msg)[:120])
-    def z(x):   # 归一化：-0.0→0.0；欠费阈值以下的真负数保留
-        v = round(float(x), 2)
-        return 0.0 if v == 0 else v
-    return z(d.get("available_amount", 0)), {
-        "cash": z(d.get("cash_balance", 0)),
-        "voucher": z(d.get("voucher_balance", 0)),
-        "credit": z(d.get("credit_balance", 0)),
-        "owed": z(d.get("owed_amount", 0)),
+    return round(float(d.get("available_amount", 0)), 2), {
+        "cash": round(float(d.get("cash_balance", 0)), 2),
+        "voucher": round(float(d.get("voucher_balance", 0)), 2),
+        "credit": round(float(d.get("credit_balance", 0)), 2),
+        "owed": round(float(d.get("owed_amount", 0)), 2),
     }
 
 
@@ -376,18 +373,6 @@ def _make_token_plan_task(secrets):
         if not creds.get("cookie") or not creds.get("sec_token"):
             return {"monthly_pct": None, "source": "no_credentials",
                     "error": "未抓取百炼控制台会话"}
-        # 陈旧凭证守卫（2026-09-27）：captured_at 超 7 天 = 本设备会话早死了，
-        # 抓也白抓，回填只会用本机的老快照污染主控新值（Mac 的 41.3 事故）。
-        # 守卫触发时本设备让出 TP 写入权（merge_day 的 no_credentials 分支保旧值）。
-        cap = creds.get("captured_at")
-        if cap:
-            try:
-                age_days = (datetime.now() - datetime.strptime(cap, "%Y-%m-%d %H:%M")).days
-                if age_days > 7:
-                    return {"monthly_pct": None, "source": "no_credentials",
-                            "error": f"本机会话凭证已 {age_days} 天未刷新，TP 写入权让渡主控设备"}
-            except ValueError:
-                pass
         try:
             pct, resets_at = fetch_token_plan(creds)
             return {"monthly_pct": pct, "resets_at": resets_at, "source": "auto"}
@@ -419,11 +404,7 @@ def query_all(secrets, only=None):
                 tasks[pool.submit(_make_cash_task(p, secrets))] = ("cash", p)
         if selected("OpenCode Go"):
             tasks[pool.submit(_make_plan_task(secrets))] = ("plan", "OpenCode Go")
-        # TP_SKIP=1：本设备不写 Token Plan（防回填污染主控的新值）。
-        # 2026-09-27 教训：Mac 会话 09-09 死后，merge_day 回填把它 09-08 的 41.3 旧快照
-        # 反复写进云端 18 天，压掉 Windows 主控拉到的真值。Mac 应设 TP_SKIP=1（其
-        # launchd/cron 环境变量里），TP 唯一写入者 = 持活会话的 Windows。
-        if selected("Token Plan") and not os.environ.get("TP_SKIP"):
+        if selected("Token Plan"):
             tasks[pool.submit(_make_token_plan_task(secrets))] = ("plan_tp", "Token Plan")
         for fut in as_completed(tasks):
             kind, name = tasks[fut]
