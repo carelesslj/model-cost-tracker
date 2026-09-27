@@ -1,7 +1,8 @@
 name: Fetch Balances
 on:
-  schedule:
-    - cron: '*/15 * * * *'  # Every 15 min (public repo, free minutes)
+  # 2026-09-27 停用定时（原 */15）：它注入的 TP_COOKIE/TP_SEC 是静态死值，每次跑都在往
+  # data.js 回填陈旧快照，污染主控（Windows cron，持有活会话）的新数据。
+  # 恢复定时：加回 schedule 并同步更新 repo secrets；workflow_dispatch 手动档保留。
   workflow_dispatch:       # Manual trigger
 
 permissions:
