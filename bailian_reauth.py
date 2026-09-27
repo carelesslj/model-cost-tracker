@@ -50,7 +50,7 @@ PERSIST = os.path.join(DIR, ".secrets", "bailian-profile")
 PLAN_URL = ("https://bailian.console.aliyun.com/cn-beijing"
             "?tab=plan#/efm/subscription/token-plan/personal")
 PORT = 9333  # 避开日常可能用到的 9222
-LOGIN_WAIT_SEC = 600  # 短信验证/扫码可能慢，给 10 分钟
+LOGIN_WAIT_SEC = 1800  # 短信验证/扫码可能慢，给 10 分钟
 
 # 只复制会话必需文件，最小化敏感数据落盘面
 COPY_FILES = ["Local State",
@@ -116,6 +116,8 @@ ws.close();
 
 
 def sh(*args, **kw):
+    kw.setdefault("encoding", "utf-8")
+    kw.setdefault("errors", "replace")
     return subprocess.run(args, capture_output=True, text=True, **kw)
 
 
