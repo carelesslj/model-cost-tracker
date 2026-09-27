@@ -307,11 +307,14 @@ def fetch_minimax(creds):
         if "token" in str(msg).lower() or "login" in str(msg).lower():
             msg += "（会话过期，需重新登录抓取）"
         raise RuntimeError("minimax: " + str(msg)[:120])
-    return round(float(d.get("available_amount", 0)), 2), {
-        "cash": round(float(d.get("cash_balance", 0)), 2),
-        "voucher": round(float(d.get("voucher_balance", 0)), 2),
-        "credit": round(float(d.get("credit_balance", 0)), 2),
-        "owed": round(float(d.get("owed_amount", 0)), 2),
+    def z(x):   # 归一化：-0.0→0.0；欠费阈值以下的真负数保留
+        v = round(float(x), 2)
+        return 0.0 if v == 0 else v
+    return z(d.get("available_amount", 0)), {
+        "cash": z(d.get("cash_balance", 0)),
+        "voucher": z(d.get("voucher_balance", 0)),
+        "credit": z(d.get("credit_balance", 0)),
+        "owed": z(d.get("owed_amount", 0)),
     }
 
 
