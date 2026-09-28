@@ -175,3 +175,4 @@
 [2026-09-28 20:55:43] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=ERR(本机未配置 OpenCode Go key) | TP=56.9%
 [2026-09-28 21:55:11] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=ERR(本机未配置 OpenCode Go key) | TP=57.0%
 [2026-09-28 21:56:43] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=ERR(本机未配置 OpenCode Go key) | TP=57.0%
+[2026-09-28 21:59:28] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=ERR(本机未配置 OpenCode Go key) | TP=57.0%
