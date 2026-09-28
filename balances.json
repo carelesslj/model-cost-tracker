@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-28T19:20:34+08:00",
+ "generated_at": "2026-09-28T20:04:30+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2073,44 +2073,34 @@
   "2026-09-28": {
    "cash": {
     "DeepSeek": {
-     "value": 25.14,
-     "source": "auto",
-     "first_value": 25.18
+     "value": null,
+     "source": "error",
+     "error": "'deepseek'"
     },
     "MiniMax": {
-     "value": -0.0,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 0.0,
-      "credit": 0.0,
-      "owed": 0.0
-     },
-     "first_value": -0.0
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
+     "value": null,
+     "source": "no_credentials",
+     "error": "未抓取 MiniMax 控制台会话"
     },
     "智谱": {
-     "value": 0.0,
-     "source": "auto",
-     "first_value": 0.0
-    },
-    "Kimi": {
-     "value": 7.55,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 7.55
-     },
-     "first_value": 7.55
+     "value": null,
+     "source": "error",
+     "error": "'zhipu'"
     },
     "百炼": {
-     "value": 187.54,
-     "source": "auto",
-     "first_value": 187.54
+     "value": null,
+     "source": "no_credentials",
+     "error": "未配置阿里云 AK/SK"
+    },
+    "火山": {
+     "value": null,
+     "source": "no_credentials",
+     "error": "未配置火山引擎 AK/SK"
+    },
+    "Kimi": {
+     "value": null,
+     "source": "error",
+     "error": "'kimi'"
     }
    },
    "plans": {
@@ -2143,7 +2133,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "19:20:34"
+   "fetched_at": "20:04:30"
   }
  }
 }
