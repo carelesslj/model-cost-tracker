@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-28T21:26:42+08:00",
+ "generated_at": "2026-09-28T21:27:13+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2072,35 +2072,35 @@
   },
   "2026-09-28": {
    "cash": {
-    "智谱": {
+    "百炼": {
      "value": null,
      "source": "no_credentials",
-     "error": "本机未配置智谱 key"
-    },
-    "DeepSeek": {
-     "value": 25.14,
-     "source": "auto",
-     "first_value": 25.18
-    },
-    "Kimi": {
-     "value": null,
-     "source": "no_credentials",
-     "error": "本机未配置 Kimi key"
-    },
-    "MiniMax": {
-     "value": null,
-     "source": "no_credentials",
-     "error": "未抓取 MiniMax 控制台会话"
+     "error": "未配置阿里云 AK/SK"
     },
     "火山": {
      "value": null,
      "source": "no_credentials",
      "error": "未配置火山引擎 AK/SK"
     },
-    "百炼": {
+    "DeepSeek": {
+     "value": 25.14,
+     "source": "auto",
+     "first_value": 25.18
+    },
+    "智谱": {
+     "value": null,
+     "source": "error",
+     "error": "'zhipu'"
+    },
+    "Kimi": {
+     "value": null,
+     "source": "error",
+     "error": "'kimi'"
+    },
+    "MiniMax": {
      "value": null,
      "source": "no_credentials",
-     "error": "未配置阿里云 AK/SK"
+     "error": "未抓取 MiniMax 控制台会话"
     }
    },
    "plans": {
@@ -2132,7 +2132,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "21:26:42"
+   "fetched_at": "21:27:13"
   }
  }
 }
