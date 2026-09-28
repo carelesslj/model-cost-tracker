@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-28T21:27:13+08:00",
+ "generated_at": "2026-09-28T21:29:53+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2072,48 +2072,59 @@
   },
   "2026-09-28": {
    "cash": {
-    "百炼": {
-     "value": null,
-     "source": "no_credentials",
-     "error": "未配置阿里云 AK/SK"
+    "MiniMax": {
+     "value": 0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": -0.0
+    },
+    "Kimi": {
+     "value": 7.55,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 7.55
+     },
+     "first_value": 7.55
     },
     "火山": {
-     "value": null,
-     "source": "no_credentials",
-     "error": "未配置火山引擎 AK/SK"
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "智谱": {
+     "value": 0.0,
+     "source": "auto",
+     "first_value": 0.0
     },
     "DeepSeek": {
      "value": 25.14,
      "source": "auto",
      "first_value": 25.18
     },
-    "智谱": {
-     "value": null,
-     "source": "error",
-     "error": "'zhipu'"
-    },
-    "Kimi": {
-     "value": null,
-     "source": "error",
-     "error": "'kimi'"
-    },
-    "MiniMax": {
-     "value": null,
-     "source": "no_credentials",
-     "error": "未抓取 MiniMax 控制台会话"
+    "百炼": {
+     "value": 187.54,
+     "source": "auto",
+     "first_value": 187.54
     }
    },
    "plans": {
     "Token Plan": {
-     "monthly_pct": 56.9,
-     "resets_at": "2026-10-23T00:00:00+08:00",
+     "monthly_pct": 23.1,
+     "resets_at": "2026-09-29T08:06:00+08:00",
      "source": "auto",
-     "first_pct": 56.9
+     "first_pct": 4.2,
+     "as_of": "2026-09-27"
     },
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-09-28T18:21:06.841Z",
+      "resets_at": "2026-09-28T18:29:53.530Z",
       "status": "ok",
       "first_percent": 0
      },
@@ -2132,7 +2143,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "21:27:13"
+   "fetched_at": "21:29:53"
   }
  }
 }
