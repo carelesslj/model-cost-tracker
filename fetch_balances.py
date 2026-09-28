@@ -523,6 +523,11 @@ def merge_day(hist, cash, plans):
             merged_cash[p] = prev          # 手动值优先
         elif v.get("value") is None and prev.get("value") is not None:
             merged_cash[p] = prev          # 本次拉取失败，保留今日已有值
+        elif v.get("value") is None:
+            # 当日尚无值（或曾被无 key 设备写了 None 占位）→ 继承前日终值，
+            # 绝不写 None（2026-09-28 事故：Windows 缺 key 首写把 09-28 现金打成归零）
+            inherit = (prev_hist.get("cash", {}).get(p) or {})
+            merged_cash[p] = inherit if inherit.get("value") is not None else v
         else:
             if v.get("value") is not None:
                 # 记录当日首次值（消费=首次值−当前值）
