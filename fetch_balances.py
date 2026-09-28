@@ -540,12 +540,24 @@ def merge_day(hist, cash, plans):
     old_plans = old.get("plans", {})
     prev_plans = prev_hist.get("plans", {})
     merged_plans = dict(old_plans)
+
+    def has_val(kk, p):
+        """该 plans 条目是否有有效数值（TP=monthly_pct，Go=三窗口 percent）"""
+        if kk == "Token Plan":
+            return p.get("monthly_pct") is not None
+        return all(((p.get(w) or {}).get("percent") is not None)
+                   for w in ("rolling", "weekly", "monthly"))
+
     for k, v in plans.items():
         prevp = old_plans.get(k) or {}
         # 当天首次出现时，用前一天的 plans 作为继承基准（first_*）
         est_prevp = prevp if prevp else (prev_plans.get(k) or {})
-        if v.get("source") == "skipped" and k in old_plans:
-            continue                        # 本次未拉，保留旧值
+        if v.get("source") == "skipped":
+            if k in old_plans:
+                continue                    # 本次未拉，保留旧值
+            inh = prev_plans.get(k)
+            merged_plans[k] = dict(inh, as_of=prev_day) if inh and has_val(k, inh) else v
+            continue                        # 无当日值→继承前日并如实标 as_of
         if k == "Token Plan" and prevp.get("source") == "manual":
             continue                        # Token Plan 手动值优先
         if k == "OpenCode Go" and v.get("source") == "auto":
@@ -590,7 +602,7 @@ def merge_day(hist, cash, plans):
                 if good:
                     vv = good               # 回填最近有效快照
             merged_plans[k] = vv
-        elif v.get("source") in ("error", "no_credentials"):
+        elif v.get("source") in ("error", "no_credentials", "stale_credentials"):
             # 拉取失败不写 error（否则污染三端数据链）：
             # ① 当天已有有效值 → 不动；② 否则回填最近有效快照；
             # ③ 历史完全无数据时才允许 error 条目出现
