@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-09-29T15:47:24+08:00",
+ "generated_at": "2026-09-29T15:49:09+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2163,20 +2163,10 @@
      "source": "auto",
      "first_value": 25.14
     },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
     "百炼": {
      "value": 186.71,
      "source": "auto",
      "first_value": 186.71
-    },
-    "智谱": {
-     "value": 0.0,
-     "source": "auto",
-     "first_value": 0.0
     },
     "Kimi": {
      "value": 7.55,
@@ -2186,11 +2176,21 @@
       "voucher": 7.55
      },
      "first_value": 7.55
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "智谱": {
+     "value": 0.0,
+     "source": "auto",
+     "first_value": 0.0
     }
    },
    "plans": {
     "Token Plan": {
-     "monthly_pct": 60.6,
+     "monthly_pct": 60.8,
      "resets_at": "2026-10-23T00:00:00+08:00",
      "source": "auto",
      "first_pct": 59.5
@@ -2217,7 +2217,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "15:47:24"
+   "fetched_at": "15:49:09"
   }
  }
 }
