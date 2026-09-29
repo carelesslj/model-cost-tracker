@@ -1,4 +1,6 @@
+# ===== 凭证与私有数据（绝不入库）=====
 .secrets/
+.secrets
 __pycache__/
 *.log
 
@@ -13,3 +15,15 @@ selfcost.json
 selfcost.js
 reauth_run*.log
 reauth_keepalive.log
+
+# ===== 2026-09-29 迁移后新增 =====
+# 密钥实体在 ~/Library/Application Support/ModelCostTracker/.secrets，
+# 项目内 .secrets 仅软链（目录写法 .secrets/ 不匹配软链，故另起一行）
+.secrets
+# Obsidian 笔记：含 8 个带 API key 的 MD，永不入库
+docs/
+# 迁移前旧版工具 / 旧 HTML / 旧日志，仅本地留存
+archive/
+# 本地运行日志
+logs/
+.DS_Store
