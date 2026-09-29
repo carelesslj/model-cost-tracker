@@ -37,7 +37,11 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 SECRETS = os.path.join(DIR, ".secrets", "model_keys.json")
 BALANCES_JSON = os.path.join(DIR, "balances.json")
 DATA_JS = os.path.join(DIR, "data.js")
-MD_FILE = os.path.join(DIR, "docs", "00-模型实时费用.md")
+# 2026-09-29：笔记已按用户要求恢复回 Obsidian 原址，MD 回写目标随之改回 vault；
+# vault 里那份不存在时回退到项目内 docs/（避免 sync_md 静默 return、笔记停更）
+_VAULT_NOTE = os.path.expanduser(
+    "~/Documents/Obsidian_Vault/Vault_基础设施/02-AI基础设施/01-大模型API/00-模型实时费用.md")
+MD_FILE = _VAULT_NOTE if os.path.exists(_VAULT_NOTE) else os.path.join(DIR, "docs", "00-模型实时费用.md")
 LOG_FILE = os.path.join(DIR, "fetch_log.txt")
 
 CASH_PROVIDERS = ["DeepSeek", "智谱", "Kimi", "百炼", "火山", "MiniMax"]
