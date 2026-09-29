@@ -176,8 +176,12 @@ def fetch_token_plan(creds):
         "switchAgent": creds.get("switch_agent", 11526723), "switchUserType": 3,
         "domain": "bailian.console.aliyun.com", "consoleSite": "BAILIAN_ALIYUN",
         "xsp_lang": "zh-CN"}}}
+    # 2026-09-29：新版控制台不再校验 sec_token（纯 cookie 认证）；
+    # 有则带上（兼容老契约），没有就不带——实测两种都返回真实用量
     body = ("params=" + urllib.parse.quote(json.dumps(po, ensure_ascii=False))
-            + "&region=cn-beijing&sec_token=" + creds["sec_token"])
+            + "&region=cn-beijing")
+    if creds.get("sec_token"):
+        body += "&sec_token=" + creds["sec_token"]
 
     def _do():
         r = requests.post(url, data=body, headers={
@@ -391,7 +395,9 @@ def _make_plan_task(secrets):
 def _make_token_plan_task(secrets):
     def task():
         creds = secrets.get("aliyun_console", {})
-        if not creds.get("cookie") or not creds.get("sec_token"):
+        # 2026-09-29：新版控制台不再校验 sec_token（纯 cookie 认证）→ 守卫只看 cookie。
+        # 旧写法要求 sec_token 非空，导致会话有效也被判为「未抓取」，是 TP 连日失败的一环。
+        if not creds.get("cookie"):
             return {"monthly_pct": None, "source": "no_credentials",
                     "error": "未抓取百炼控制台会话"}
         # 陈旧凭证守卫（2026-09-27）：captured_at 超 7 天 = 本设备会话早死了，

@@ -109,8 +109,10 @@ const seen = new Set(), uniq = [];
 for (const c of rel) { const k = c.name + c.domain;
   if (!seen.has(k)) { seen.add(k); uniq.push(c); } }  // 同名跨域去重
 const cs = uniq.map(c => `${c.name}=${c.value}`).join('; ');
-console.log(JSON.stringify({ready: !!ev.result.value && uniq.length > 0,
-  secToken: ev.result.value, cookieStr: cs}));
+// 2026-09-29：新版控制台已移除 window.ALIYUN_CONSOLE_CONFIG.SEC_TOKEN，纯 cookie 认证即可，
+// 故 ready 只看 cookie 数量（secToken 允许为空）；旧写法要求 SEC_TOKEN 非空会让它永远 ready=false 空转到超时。
+console.log(JSON.stringify({ready: uniq.length > 0,
+  secToken: ev.result.value || "", cookieStr: cs}));
 ws.close();
 """
 
