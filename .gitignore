@@ -27,3 +27,5 @@ archive/
 # 本地运行日志
 logs/
 .DS_Store
+# 项目规范（含密钥位置与账号号，公开仓库不放）
+AGENTS.md
