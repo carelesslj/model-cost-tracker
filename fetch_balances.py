@@ -37,7 +37,7 @@ DIR = os.path.dirname(os.path.abspath(__file__))
 SECRETS = os.path.join(DIR, ".secrets", "model_keys.json")
 BALANCES_JSON = os.path.join(DIR, "balances.json")
 DATA_JS = os.path.join(DIR, "data.js")
-MD_FILE = os.path.join(DIR, "00-模型实时费用.md")
+MD_FILE = os.path.join(DIR, "docs", "00-模型实时费用.md")
 LOG_FILE = os.path.join(DIR, "fetch_log.txt")
 
 CASH_PROVIDERS = ["DeepSeek", "智谱", "Kimi", "百炼", "火山", "MiniMax"]
