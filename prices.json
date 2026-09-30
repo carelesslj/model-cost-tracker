@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-09-30 06:49:36",
+ "updated_at": "2026-09-30 13:24:02",
  "go_page_date": "2026年9月29日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.1949,
+    "input": 0.25,
     "output": 3.99,
-    "cache_read": 0.1559
+    "cache_read": 0.2
    },
-   "in_diff_pct": 618.3
+   "in_diff_pct": 460.0
   },
   {
    "model": "Kimi K3",
@@ -90,11 +90,11 @@
     "id": "moonshotai/kimi-k2.7-code",
     "name": "MoonshotAI: Kimi K2.7 Code",
     "base": "kimi k2.7 code",
-    "input": 0.6562,
-    "output": 3.3,
+    "input": 0.6712,
+    "output": 3.35,
     "cache_read": 0.18
    },
-   "in_diff_pct": 44.8
+   "in_diff_pct": 41.5
   },
   {
    "model": "Kimi K2.6",
@@ -407,11 +407,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9159,
-    "output": 1.8319,
-    "cache_read": 0.0763
+    "input": 0.9553,
+    "output": 1.9105,
+    "cache_read": 0.0796
    },
-   "in_diff_pct": -27.9
+   "in_diff_pct": -30.9
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -425,11 +425,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9159,
-    "output": 1.8319,
-    "cache_read": 0.0763
+    "input": 0.9553,
+    "output": 1.9105,
+    "cache_read": 0.0796
    },
-   "in_diff_pct": 44.1
+   "in_diff_pct": 38.2
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -443,11 +443,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0763,
-    "output": 0.1526,
-    "cache_read": 0.0153
+    "input": 0.14,
+    "output": 0.28,
+    "cache_read": 0.028
    },
-   "in_diff_pct": 96.6
+   "in_diff_pct": 7.1
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -461,11 +461,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0763,
-    "output": 0.1526,
-    "cache_read": 0.0153
+    "input": 0.14,
+    "output": 0.28,
+    "cache_read": 0.028
    },
-   "in_diff_pct": 293.2
+   "in_diff_pct": 114.3
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -533,11 +533,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Space Bunny Free",
