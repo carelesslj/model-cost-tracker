@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-01 16:20:24",
- "go_page_date": "2026年9月29日",
+ "updated_at": "2026-10-01 23:10:57",
+ "go_page_date": "2026年10月1日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -37,7 +37,7 @@
     "name": "Z.ai: GLM 5.3",
     "base": "glm 5.3",
     "input": 0.2219,
-    "output": 4.4,
+    "output": 3.39,
     "cache_read": 0.1775
    },
    "in_diff_pct": 530.9
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 1.4,
-    "output": 4.4,
+    "input": 0.41,
+    "output": 3.99,
     "cache_read": 0.26
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 241.5
   },
   {
    "model": "Kimi K3",
@@ -72,11 +72,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 0.6605,
+    "input": 0.6572,
     "output": 10.0,
-    "cache_read": 0.6605
+    "cache_read": 0.6572
    },
-   "in_diff_pct": 354.2
+   "in_diff_pct": 356.5
   },
   {
    "model": "Kimi K2.7 Code",
@@ -108,11 +108,11 @@
     "id": "moonshotai/kimi-k2.6",
     "name": "MoonshotAI: Kimi K2.6",
     "base": "kimi k2.6",
-    "input": 0.65,
-    "output": 3.41,
-    "cache_read": 0.15
+    "input": 0.4341,
+    "output": 1.828,
+    "cache_read": 0.0731
    },
-   "in_diff_pct": 46.2
+   "in_diff_pct": 118.8
   },
   {
    "model": "LongCat-2.0",
@@ -371,11 +371,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.027,
-    "output": 0.6,
-    "cache_read": 0.027
+    "input": 0.03,
+    "output": 0.5,
+    "cache_read": 0.01
    },
-   "in_diff_pct": 455.6
+   "in_diff_pct": 400.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -389,11 +389,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.027,
-    "output": 0.6,
-    "cache_read": 0.027
+    "input": 0.03,
+    "output": 0.5,
+    "cache_read": 0.01
    },
-   "in_diff_pct": 1011.1
+   "in_diff_pct": 900.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -443,11 +443,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.042,
-    "output": 0.084,
+    "input": 0.0419,
+    "output": 0.0837,
     "cache_read": 0.0084
    },
-   "in_diff_pct": 257.1
+   "in_diff_pct": 258.0
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -461,11 +461,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.042,
-    "output": 0.084,
+    "input": 0.0419,
+    "output": 0.0837,
     "cache_read": 0.0084
    },
-   "in_diff_pct": 614.3
+   "in_diff_pct": 616.0
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
