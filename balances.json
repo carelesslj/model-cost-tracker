@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-02T17:24:28+08:00",
+ "generated_at": "2026-10-02T18:25:33+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2390,6 +2390,11 @@
      },
      "first_value": 0.0
     },
+    "智谱": {
+     "value": 0.0,
+     "source": "auto",
+     "first_value": 0.0
+    },
     "Kimi": {
      "value": 7.55,
      "source": "auto",
@@ -2398,11 +2403,6 @@
       "voucher": 7.55
      },
      "first_value": 7.55
-    },
-    "智谱": {
-     "value": 0.0,
-     "source": "auto",
-     "first_value": 0.0
     },
     "百炼": {
      "value": 186.65,
@@ -2421,7 +2421,7 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-10-02T14:24:28.204Z",
+      "resets_at": "2026-10-02T15:25:33.048Z",
       "status": "ok",
       "first_percent": 0
      },
@@ -2440,7 +2440,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "17:24:28"
+   "fetched_at": "18:25:33"
   }
  }
 }
