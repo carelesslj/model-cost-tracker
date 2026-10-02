@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-02T14:20:58+08:00",
+ "generated_at": "2026-10-02T16:20:36+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2369,25 +2369,10 @@
   },
   "2026-10-02": {
    "cash": {
-    "智谱": {
-     "value": 0.0,
-     "source": "auto",
-     "first_value": 0.0
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
     "DeepSeek": {
      "value": 24.95,
      "source": "auto",
      "first_value": 24.99
-    },
-    "百炼": {
-     "value": 186.65,
-     "source": "auto",
-     "first_value": 186.71
     },
     "MiniMax": {
      "value": 0.0,
@@ -2400,6 +2385,11 @@
      },
      "first_value": 0.0
     },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
     "Kimi": {
      "value": 7.55,
      "source": "auto",
@@ -2408,6 +2398,16 @@
       "voucher": 7.55
      },
      "first_value": 7.55
+    },
+    "智谱": {
+     "value": 0.0,
+     "source": "auto",
+     "first_value": 0.0
+    },
+    "百炼": {
+     "value": 186.65,
+     "source": "auto",
+     "first_value": 186.71
     }
    },
    "plans": {
@@ -2421,7 +2421,7 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-10-02T11:20:58.853Z",
+      "resets_at": "2026-10-02T13:20:36.326Z",
       "status": "ok",
       "first_percent": 0
      },
@@ -2440,7 +2440,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "14:20:58"
+   "fetched_at": "16:20:36"
   }
  }
 }
