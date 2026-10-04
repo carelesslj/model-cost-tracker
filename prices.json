@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-04 03:03:51",
+ "updated_at": "2026-10-04 09:22:24",
  "go_page_date": "2026年10月3日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.41,
-    "output": 3.99,
+    "input": 0.3,
+    "output": 3.49,
     "cache_read": 0.26
    },
-   "in_diff_pct": 241.5
+   "in_diff_pct": 366.7
   },
   {
    "model": "Kimi K3",
@@ -72,11 +72,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 0.74,
+    "input": 0.499,
     "output": 13.0,
-    "cache_read": 0.7
+    "cache_read": 0.49
    },
-   "in_diff_pct": 305.4
+   "in_diff_pct": 501.2
   },
   {
    "model": "Kimi K2.7 Code",
@@ -515,11 +515,11 @@
     "id": "tencent/hy4-preview",
     "name": "Tencent: Hy4 preview",
     "base": "hy4 preview",
-    "input": 0.7506,
-    "output": 2.2509,
-    "cache_read": 0.0378
+    "input": 0.834,
+    "output": 2.501,
+    "cache_read": 0.042
    },
-   "in_diff_pct": 11.1
+   "in_diff_pct": 0.0
   },
   {
    "model": "Hy3",
@@ -533,11 +533,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Space Bunny Free",
