@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-06 01:49:49",
+ "updated_at": "2026-10-06 07:55:53",
  "go_page_date": "2026年10月3日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -36,11 +36,11 @@
     "id": "z-ai/glm-5.3",
     "name": "Z.ai: GLM 5.3",
     "base": "glm 5.3",
-    "input": 0.05,
+    "input": 0.07,
     "output": 7.0,
-    "cache_read": 0.045
+    "cache_read": 0.065
    },
-   "in_diff_pct": 2700.0
+   "in_diff_pct": 1900.0
   },
   {
    "model": "GLM-5.2",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.0264,
-    "output": 16.0,
-    "cache_read": 0.0264
+    "input": 0.052,
+    "output": 12.0,
+    "cache_read": 0.052
    },
-   "in_diff_pct": 5203.0
+   "in_diff_pct": 2592.3
   },
   {
    "model": "Kimi K3",
@@ -72,11 +72,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 1.39,
+    "input": 1.19,
     "output": 14.0,
-    "cache_read": 0.46
+    "cache_read": 0.39
    },
-   "in_diff_pct": 115.8
+   "in_diff_pct": 152.1
   },
   {
    "model": "Kimi K2.7 Code",
