@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-05 05:31:49",
+ "updated_at": "2026-10-05 12:20:22",
  "go_page_date": "2026年10月3日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.104,
-    "output": 8.0,
-    "cache_read": 0.1
+    "input": 0.016,
+    "output": 16.0,
+    "cache_read": 0.016
    },
-   "in_diff_pct": 1246.2
+   "in_diff_pct": 8650.0
   },
   {
    "model": "Kimi K3",
@@ -72,11 +72,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 0.72,
+    "input": 0.67,
     "output": 14.0,
-    "cache_read": 0.7
+    "cache_read": 0.22
    },
-   "in_diff_pct": 316.7
+   "in_diff_pct": 347.8
   },
   {
    "model": "Kimi K2.7 Code",
@@ -443,11 +443,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0224,
+    "input": 0.0292,
     "output": 1.28,
-    "cache_read": 0.0224
+    "cache_read": 0.0292
    },
-   "in_diff_pct": 569.6
+   "in_diff_pct": 413.7
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -461,11 +461,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0224,
+    "input": 0.0292,
     "output": 1.28,
-    "cache_read": 0.0224
+    "cache_read": 0.0292
    },
-   "in_diff_pct": 1239.3
+   "in_diff_pct": 927.4
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -515,11 +515,11 @@
     "id": "tencent/hy4-preview",
     "name": "Tencent: Hy4 preview",
     "base": "hy4 preview",
-    "input": 0.7506,
-    "output": 2.2509,
-    "cache_read": 0.0378
+    "input": 0.834,
+    "output": 2.501,
+    "cache_read": 0.042
    },
-   "in_diff_pct": 11.1
+   "in_diff_pct": 0.0
   },
   {
    "model": "Hy3",
@@ -533,11 +533,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Space Bunny Free",
