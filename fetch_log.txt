@@ -1,4 +1,3 @@
-[2026-09-18 07:00:04] DeepSeek=42.95 | 智谱=70.2 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=197.64 | 火山=10.0 | ⚠火山余额低 | MiniMax=-0.0 | ⚠MiniMax余额低 | Go=0/0/0% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
 [2026-09-18 08:00:04] DeepSeek=42.53 | 智谱=70.2 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=197.64 | 火山=10.0 | ⚠火山余额低 | MiniMax=-0.0 | ⚠MiniMax余额低 | Go=0/0/0% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
 [2026-09-18 09:00:04] DeepSeek=42.53 | 智谱=70.2 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=197.64 | 火山=10.0 | ⚠火山余额低 | MiniMax=-0.0 | ⚠MiniMax余额低 | Go=0/0/0% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
 [2026-09-18 10:00:05] DeepSeek=42.53 | 智谱=70.2 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=197.64 | 火山=10.0 | ⚠火山余额低 | MiniMax=-0.0 | ⚠MiniMax余额低 | Go=0/0/0% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
@@ -498,3 +497,4 @@
 [2026-10-06 21:20:22] DeepSeek=23.47 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.4 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=0/0/58% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
 [2026-10-06 22:20:20] DeepSeek=23.47 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.4 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=0/0/58% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
 [2026-10-06 23:20:22] DeepSeek=23.47 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.4 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=0/0/58% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
+[2026-10-07 00:20:24] DeepSeek=23.47 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.4 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=0/0/58% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
