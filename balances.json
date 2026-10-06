@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-06T12:20:16+08:00",
+ "generated_at": "2026-10-06T13:20:20+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2721,7 +2721,7 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-10-06T09:20:16.686Z",
+      "resets_at": "2026-10-06T10:20:20.199Z",
       "status": "ok",
       "first_percent": 0
      },
@@ -2740,7 +2740,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "12:20:16"
+   "fetched_at": "13:20:20"
   }
  }
 }
