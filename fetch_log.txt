@@ -180,3 +180,4 @@
 [2026-09-29 05:47:53] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=ERR(本机未配置 OpenCode Go key) | TP=57.1%
 [2026-10-07 22:47:22] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=ERR(本机未配置 OpenCode Go key) | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
 [2026-10-07 22:48:54] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=ERR(本机未配置 OpenCode Go key) | TP=skip
+[2026-10-07 22:49:22] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=skip | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
