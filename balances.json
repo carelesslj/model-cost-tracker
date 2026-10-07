@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-07T23:29:13+08:00",
+ "generated_at": "2026-10-08T00:20:28+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2769,7 +2769,7 @@
      "first_value": 0.0
     },
     "百炼": {
-     "value": 186.71,
+     "value": 186.38,
      "source": "auto",
      "first_value": 187.54
     },
@@ -2783,30 +2783,6 @@
       "owed": 0.0
      },
      "first_value": -0.0
-    },
-    "Kimi": {
-     "value": 7.55,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 7.55
-     },
-     "first_value": 7.55
-    },
-    "智谱": {
-     "value": 0.0,
-     "source": "auto",
-     "first_value": 0.0
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
-    "百炼": {
-     "value": 186.38,
-     "source": "auto",
-     "first_value": 187.54
     }
    },
    "plans": {
@@ -2839,6 +2815,81 @@
     }
    },
    "fetched_at": "23:29:13"
+  },
+  "2026-10-08": {
+   "cash": {
+    "DeepSeek": {
+     "value": 23.45,
+     "source": "auto",
+     "first_value": 23.45
+    },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
+    "MiniMax": {
+     "value": 0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": 0.0
+    },
+    "Kimi": {
+     "value": 7.55,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 7.55
+     },
+     "first_value": 7.55
+    },
+    "智谱": {
+     "value": 0.0,
+     "source": "auto",
+     "first_value": 0.0
+    },
+    "百炼": {
+     "value": 186.38,
+     "source": "auto",
+     "first_value": 186.38
+    }
+   },
+   "plans": {
+    "Token Plan": {
+     "monthly_pct": 100.0,
+     "resets_at": "2026-10-23T00:00:00+08:00",
+     "source": "auto",
+     "first_pct": 100.0,
+     "as_of": "2026-10-07"
+    },
+    "OpenCode Go": {
+     "rolling": {
+      "percent": 3,
+      "resets_at": "2026-10-07T19:34:52.000Z",
+      "status": "ok",
+      "first_percent": 2
+     },
+     "weekly": {
+      "percent": 1,
+      "resets_at": "2026-10-12T00:00:00.000Z",
+      "status": "ok",
+      "first_percent": 1
+     },
+     "monthly": {
+      "percent": 58,
+      "resets_at": "2026-10-17T07:38:53.000Z",
+      "status": "ok",
+      "first_percent": 58
+     },
+     "source": "auto"
+    }
+   },
+   "fetched_at": "00:20:28"
   }
  }
 }
