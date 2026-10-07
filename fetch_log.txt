@@ -183,3 +183,4 @@
 [2026-10-07 22:49:22] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=skip | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
 [2026-10-07 22:50:42] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=skip | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
 [2026-10-07 22:51:12] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=skip | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
+[2026-10-07 22:52:05] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=skip | TP=100.0%
