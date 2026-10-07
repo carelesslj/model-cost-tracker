@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-07T22:57:37+08:00",
+ "generated_at": "2026-10-07T22:58:48+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2814,7 +2814,7 @@
      "first_pct": 100.0
     }
    },
-   "fetched_at": "22:57:37"
+   "fetched_at": "22:58:48"
   }
  }
 }
