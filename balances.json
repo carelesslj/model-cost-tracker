@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-07T22:52:05+08:00",
+ "generated_at": "2026-10-07T22:57:37+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2788,25 +2788,24 @@
    "plans": {
     "OpenCode Go": {
      "rolling": {
-      "percent": 0,
-      "resets_at": "2026-09-29T02:20:09.602Z",
+      "percent": 2,
+      "resets_at": "2026-10-07T19:34:52.000Z",
       "status": "ok",
-      "first_percent": 0
+      "first_percent": 2
      },
      "weekly": {
-      "percent": 0,
-      "resets_at": "2026-10-05T00:00:00.000Z",
+      "percent": 1,
+      "resets_at": "2026-10-12T00:00:00.000Z",
       "status": "ok",
-      "first_percent": 100
+      "first_percent": 1
      },
      "monthly": {
-      "percent": 50,
+      "percent": 58,
       "resets_at": "2026-10-17T07:38:53.000Z",
       "status": "ok",
-      "first_percent": 50
+      "first_percent": 58
      },
-     "source": "auto",
-     "as_of": "2026-09-29"
+     "source": "auto"
     },
     "Token Plan": {
      "monthly_pct": 100.0,
@@ -2815,7 +2814,7 @@
      "first_pct": 100.0
     }
    },
-   "fetched_at": "22:52:05"
+   "fetched_at": "22:57:37"
   }
  }
 }
