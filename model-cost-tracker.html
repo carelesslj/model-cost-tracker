@@ -244,7 +244,7 @@ footer{margin-top:8px;font-size:12px;color:var(--dim);text-align:right;line-heig
 <div class="sec" style="--acc:var(--violet)">📦 订阅额度<span class="sechint">统一口径：环内数字 = <b>已用 %</b>（越高越紧张）· OpenCode Go 5小时/周/月三窗口 · 百炼 Token Plan 月额度（09-22 起取消周限额）</span></div>
 <div class="panel"><div class="plans" id="planCards"></div></div>
 
-<div class="sec" style="--acc:var(--amber)">📋 订阅每日用量<span class="sechint">用量 = 当日已用% − 前日已用%（窗口重置当日按新窗口已用%计）</span></div>
+<div class="sec" style="--acc:var(--amber)">📋 订阅每日已用<span class="sechint">口径 = <b>当日已用 % 状态值</b>（非增量）· 数字下降 = 窗口重置 · <b>⏳</b> = 该日非实测（会话失效、由最近有效快照回填）</span></div>
 <div class="panel"><div class="scrolly"><table id="planUsageTable"></table></div></div>
 
 <div class="sec" style="--acc:var(--violet)">🧾 月度账单<span class="sechint">现金消耗 = Σ当日(首末差) · 订阅 = 月费 ÷ 当月应出勤日 × 已过天数 · 仅统计 data.js 覆盖范围</span></div>
@@ -599,13 +599,25 @@ function renderPlans(latest){
 }
 
 function renderPlanUsage(days){
+  /* 2026-10-07 用户口径变更：本表填"当日状态值"（已用 %），不再算日增量——
+     这本身就是一张历史额度占用状态表，数字比前日下降即窗口重置。
+     无 ⏳ = 当日实时拉到的真值；带 ⏳ = 当日数据源会话失效、由最近有效快照回填
+     （as_of 指向真值日期），灰显以免把回填值当成实测历史。 */
+  const cell=(d, win, isTp)=>{
+    const p = planOf(d)[isTp ? "Token Plan" : "OpenCode Go"] || {};
+    const v = isTp ? p.monthly_pct : (p[win]||{}).percent;
+    if(v==null) return '<span class="zero">—</span>';
+    const stale = p.as_of && p.as_of!==d;
+    return `<b style="color:${stale?'#94a3b8':pctColor(v)}">${v}%</b>`
+         + (stale?`<span class="zero" title="非当日实测：回填自 ${p.as_of} 的快照">⏳</span>`:"");
+  };
   let h="<tr><th>日期</th><th>Go·5h 已用</th><th>Go·周 已用</th><th>Go·月 已用</th><th>TP·月 已用</th></tr>";
   [...days].reverse().forEach(d=>{
     h+=`<tr><td style="color:var(--muted)">${d}</td>`;
-    h+=`<td>${useTxt(planUse(goWin("rolling"), goWinF("rolling"), d))}</td>`;
-    h+=`<td>${useTxt(planUse(goWin("weekly"), goWinF("weekly"), d))}</td>`;
-    h+=`<td>${useTxt(planUse(goWin("monthly"), goWinF("monthly"), d))}</td>`;
-    h+=`<td>${useTxt(planUse(tpPct, tpFst, d))}</td></tr>`;
+    h+=`<td>${cell(d,"rolling",false)}</td>`;
+    h+=`<td>${cell(d,"weekly",false)}</td>`;
+    h+=`<td>${cell(d,"monthly",false)}</td>`;
+    h+=`<td>${cell(d,null,true)}</td></tr>`;
   });
   $("planUsageTable").innerHTML=h;
 }
@@ -701,15 +713,14 @@ function exportCsv(){
   const allDates=Object.keys(DATA.daily).sort();
   if(!allDates.length)return;
   const cons=calcCons(allDates);
-  const head=["日期",...MODELS.map(m=>m+"用量(元)"),"合计用量(元)","Go·5h已用%","Go·周已用%","Go·月已用%","TP·月已用%"];
+  const head=["日期",...MODELS.map(m=>m+"用量(元)"),"合计用量(元)","Go·5h状态%","Go·周状态%","Go·月状态%","TP·月状态%"];
   const rows=[head];
   allDates.forEach(d=>{
     const cell=m=>{const u=cons[d][m];return u==null?"":u.toFixed(2)};
     const tb=MODELS.reduce((s,m)=>s+(cons[d][m]||0),0).toFixed(2);
-    const du=x=>{const u=planUse(x.c,x.f,d);return u?u.v:""};
+    const sv=f=>{const v=f(d);return v==null?"":v};   // 状态值口径（与页面同：当日已用%，非增量）
     rows.push([d,...MODELS.map(cell),tb,
-      du({c:goWin("rolling"),f:goWinF("rolling")}),du({c:goWin("weekly"),f:goWinF("weekly")}),
-      du({c:goWin("monthly"),f:goWinF("monthly")}),du({c:tpPct,f:tpFst})]);
+      sv(goWin("rolling")),sv(goWin("weekly")),sv(goWin("monthly")),sv(tpPct)]);
   });
   const csv="\uFEFF"+rows.map(r=>r.join(",")).join("\r\n");
   const a=document.createElement("a");
