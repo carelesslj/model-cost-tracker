@@ -83,6 +83,9 @@ svg{display:block;width:100%;height:auto}
 .ring .rl{font-size:12.5px;color:var(--muted);margin-top:4px;font-weight:600}
 .ring .rr{font-size:11.5px;color:var(--dim);margin-top:2px;min-height:16px;font-family:var(--font-mono)}
 .pinfo{font-size:12px;color:var(--dim);margin-top:12px;line-height:1.7}
+.updBtn{margin-left:6px;padding:2px 9px;font-size:11px;font-weight:600;font-family:inherit;color:var(--acc,var(--cyan));background:transparent;border:1px solid currentColor;border-radius:999px;cursor:pointer;vertical-align:middle;transition:opacity .15s}
+.updBtn:hover{opacity:.75}
+.updBtn:disabled{opacity:.5;cursor:default}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 th{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);color:#334155;font-weight:700;padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);position:sticky;top:0;font-size:12.5px;letter-spacing:.3px}
 th:first-child,td:first-child{text-align:left}
@@ -578,7 +581,7 @@ function renderPlans(latest){
         ${ring(go.weekly&&go.weekly.percent,goStale?"本周已用*":"本周已用",go.weekly&&go.weekly.resets_at)}
         ${ring(go.monthly&&go.monthly.percent,goStale?"本月已用*":"本月已用",go.monthly&&go.monthly.resets_at)}
       </div>
-      <div class="pinfo" style="${go.source==="auto"&&!goStale?"":"color:var(--amber)"}">${goStale?`⏳ <b>快照 @${go.as_of}，非实时</b> · `:""}窗口重置：5h ${rst("rolling")} · 本周 ${rst("weekly")} · 本月 ${rst("monthly")}<br>Go 价格恒定不分峰谷</div></div>`;
+      <div class="pinfo" style="${go.source==="auto"&&!goStale?"":"color:var(--amber)"}">${goStale?`⏳ <b>快照 @${go.as_of}，非实时</b> · `:""}窗口重置：5h ${rst("rolling")} · 本周 ${rst("weekly")} · 本月 ${rst("monthly")}<br>Go 价格恒定不分峰谷 <button class="updBtn" data-only="OpenCode Go" title="只重新拉取 OpenCode Go（本地服务模式）">🔄 更新</button></div></div>`;
   }else{
     html+=`<div class="pcard"><div class="pt">OpenCode Go</div><div class="empty" style="padding:18px">${go.error||"无数据"}</div></div>`;
   }
@@ -591,7 +594,7 @@ function renderPlans(latest){
   else tpFoot=(tpStale?`⏳ <b style="color:var(--amber)">快照 @${tp.as_of}，非实时</b> · `:"窗口重置：")+`${tp.resets_at?fmtReset(tp.resets_at)+"重置":"—"} · 订阅到期 ${TP_SUB_END}（剩 ${daysLeft} 天，未开自动续费·到期前手动续）`;
   html+=`<div class="pcard"><div class="pt">阿里云 Token Plan<span>Standard · 月额度已用%（09-22 起取消周限额）${tpStale?' · <b style="color:var(--amber)">⏳陈旧</b>':(tp.source==="auto"?" · 自动":" · 手动")}</span></div>
     <div class="rings">${ring(tpp,tpStale?"月已用*":"月已用",tp.resets_at)}</div>
-    <div class="pinfo" style="${tp.source==="auto"&&!tpStale?"":"color:var(--amber)"}">${tpFoot}</div></div>`;
+    <div class="pinfo" style="${tp.source==="auto"&&!tpStale?"":"color:var(--amber)"}">${tpFoot} <button class="updBtn" data-only="Token Plan" title="只重新拉取 Token Plan 月额度（本地服务模式）">🔄 更新</button></div></div>`;
   $("planCards").innerHTML=html;
 }
 
@@ -963,6 +966,30 @@ $("btnRefresh").addEventListener("click", async ()=>{
     else b.textContent="❌ "+String(j.error||"失败").slice(0,24);
   }catch(e){b.textContent="❌ 网络错误";}
   setTimeout(()=>{b.disabled=false;b.textContent="🔄 立即刷新"},1600);
+});
+
+/* 卡片级独立更新：只重拉 OpenCode Go / Token Plan 单个渠道（需本地 sync_server） */
+$("planCards").addEventListener("click", async e=>{
+  const b=e.target.closest(".updBtn"); if(!b) return;
+  const only=b.dataset.only;
+  const reset=()=>{b.disabled=false;b.textContent="🔄 更新";};
+  if(isCloud){ b.textContent="⚠ 需本机打开"; b.title="云端页面无法触发本机拉取：请用 http://127.0.0.1:8765/model-cost-tracker.html 打开"; setTimeout(reset,2400); return; }
+  if(!hasServer){ b.textContent="⚠ 服务未启动"; setTimeout(reset,2400); return; }
+  b.disabled=true; b.textContent="⏳ 拉取中…";
+  try{
+    const r=await fetch("/api/refresh",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({only:[only]})});
+    const j=await r.json();
+    if(j.ok){
+      DATA=j.data;
+      try{const pr=await fetch("/api/prices");if(pr.ok){const pj=await pr.json();if(pj&&pj.rows)window.PRICE_DATA=pj;}}catch(_){}
+      renderAll();
+      const rep=(j.report||{})[only]||{};
+      const bad = rep.source==="error"||rep.source==="no_credentials";
+      b.textContent = bad ? "❌ 会话失效·见说明" : ("✅ 已更新"+(j.cloudPush&&j.cloudPush.ok?"·☁️":""));
+      b.title = bad ? String(rep.error||"渠道会话失效"): "";
+    } else b.textContent="❌ "+String(j.error||"失败").slice(0,20);
+  }catch(err){ b.textContent="❌ 网络错误"; }
+  setTimeout(reset,2600);
 });
 
 $("btnManual").addEventListener("click",()=>{

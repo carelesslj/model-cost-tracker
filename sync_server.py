@@ -72,12 +72,33 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if self.path == "/api/refresh":
             try:
                 fb_reload()
+                # body.only 支持单渠道独立更新（仪表盘卡片上的"更新"按钮）：
+                # {"only":["Token Plan"]} / {"only":["OpenCode Go"]}；不给=全渠道。
+                only = body.get("only") or None
+                if isinstance(only, str):
+                    only = [only]
                 secrets = fb.load_secrets()
-                cash, plans, _ = fb.query_all(secrets)
+                cash, plans, _ = fb.query_all(secrets, only=only)
                 hist = fb.load_history()
                 fb.merge_day(hist, cash, plans)
                 fb.write_outputs(hist)
                 fb.sync_md(hist)
+                # 本次实际拉到的渠道结果（前端据此区分"真更新"与"会话失效走回填"）
+                report = {}
+                if only:
+                    for p in fb.CASH_PROVIDERS:
+                        v = cash.get(p) or {}
+                        if v.get("source") != "skipped":
+                            report[p] = {"source": v.get("source"), "value": v.get("value"),
+                                         "error": v.get("error")}
+                    for k, v in plans.items():
+                        v = v or {}
+                        if v.get("source") == "skipped":
+                            continue
+                        report[k] = {"source": v.get("source"), "error": v.get("error"),
+                                     "value": (v.get("monthly_pct") if k == "Token Plan"
+                                               else ((v.get("monthly") or {}).get("percent")))}
+                fb.log_summary(cash, plans)
                 # 顺手推云端（Actions 的 schedule 高峰延迟 1~2h，不可依赖）
                 # 失败不影响本地刷新结果；带凭证泄漏扫描护栏，命中即拒推
                 try:
@@ -85,7 +106,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     cp_ok, cp_msg = push_to_cloud.push()
                 except Exception as e:
                     cp_ok, cp_msg = False, str(e)[:120]
-                json_response(self, 200, {"ok": True, "data": hist,
+                json_response(self, 200, {"ok": True, "data": hist, "report": report,
                                           "cloudPush": {"ok": cp_ok, "msg": cp_msg}})
             except Exception as e:
                 json_response(self, 500, {"ok": False, "error": str(e)[:300]})
