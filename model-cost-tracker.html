@@ -985,7 +985,8 @@ $("planCards").addEventListener("click", async e=>{
       renderAll();
       const rep=(j.report||{})[only]||{};
       const bad = rep.source==="error"||rep.source==="no_credentials";
-      b.textContent = bad ? "❌ 会话失效·见说明" : ("✅ 已更新"+(j.cloudPush&&j.cloudPush.ok?"·☁️":""));
+      const noKey = /未配置|no key|key/i.test(String(rep.error||""));
+      b.textContent = bad ? (noKey?"⚠ 本机未配 Key":"❌ 会话失效·见说明") : ("✅ 已更新"+(j.cloudPush&&j.cloudPush.ok?"·☁️":""));
       b.title = bad ? String(rep.error||"渠道会话失效"): "";
     } else b.textContent="❌ "+String(j.error||"失败").slice(0,20);
   }catch(err){ b.textContent="❌ 网络错误"; }

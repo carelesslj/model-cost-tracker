@@ -181,3 +181,4 @@
 [2026-10-07 22:47:22] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=ERR(本机未配置 OpenCode Go key) | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
 [2026-10-07 22:48:54] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=ERR(本机未配置 OpenCode Go key) | TP=skip
 [2026-10-07 22:49:22] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=skip | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
+[2026-10-07 22:50:42] DeepSeek=skip | 智谱=skip | Kimi=skip | 百炼=skip | 火山=skip | MiniMax=skip | Go=skip | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
