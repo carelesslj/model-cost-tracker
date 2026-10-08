@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-08 22:18:49",
+ "updated_at": "2026-10-09 04:26:27",
  "go_page_date": "2026年10月8日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -36,11 +36,11 @@
     "id": "z-ai/glm-5.3",
     "name": "Z.ai: GLM 5.3",
     "base": "glm 5.3",
-    "input": 0.049,
+    "input": 0.07,
     "output": 3.39,
     "cache_read": 0.048
    },
-   "in_diff_pct": 2757.1
+   "in_diff_pct": 1900.0
   },
   {
    "model": "GLM-5.2",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.03,
-    "output": 10.0,
-    "cache_read": 0.03
+    "input": 0.07,
+    "output": 4.3,
+    "cache_read": 0.07
    },
-   "in_diff_pct": 4566.7
+   "in_diff_pct": 1900.0
   },
   {
    "model": "Kimi K3",
@@ -72,11 +72,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 0.62,
-    "output": 12.3,
-    "cache_read": 0.43
+    "input": 0.82,
+    "output": 13.5,
+    "cache_read": 0.55
    },
-   "in_diff_pct": 383.9
+   "in_diff_pct": 265.9
   },
   {
    "model": "Kimi K2.7 Code",
@@ -108,11 +108,11 @@
     "id": "moonshotai/kimi-k2.6",
     "name": "MoonshotAI: Kimi K2.6",
     "base": "kimi k2.6",
-    "input": 0.441,
+    "input": 0.4344,
     "output": 2.45,
-    "cache_read": 0.1224
+    "cache_read": 0.12
    },
-   "in_diff_pct": 115.4
+   "in_diff_pct": 118.7
   },
   {
    "model": "LongCat-2.0",
@@ -141,6 +141,24 @@
    "quota": "无限制 限时",
    "tier": null,
    "or": null,
+   "in_diff_pct": null
+  },
+  {
+   "model": "Step 5 Preview Free",
+   "input": null,
+   "output": null,
+   "cache_read": null,
+   "cache_write": null,
+   "quota": "无限制 限时",
+   "tier": null,
+   "or": {
+    "id": "stepfun/step-5-preview",
+    "name": "StepFun: Step 5 Preview",
+    "base": "step 5 preview",
+    "input": 1.0,
+    "output": 2.7,
+    "cache_read": 0.05
+   },
    "in_diff_pct": null
   },
   {
@@ -407,11 +425,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.2923,
-    "output": 0.5846,
-    "cache_read": 0.0244
+    "input": 0.2873,
+    "output": 0.5745,
+    "cache_read": 0.0239
    },
-   "in_diff_pct": 125.8
+   "in_diff_pct": 129.7
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -425,11 +443,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.2923,
-    "output": 0.5846,
-    "cache_read": 0.0244
+    "input": 0.2873,
+    "output": 0.5745,
+    "cache_read": 0.0239
    },
-   "in_diff_pct": 351.6
+   "in_diff_pct": 359.5
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -443,11 +461,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0173,
+    "input": 0.0131,
     "output": 1.28,
-    "cache_read": 0.0173
+    "cache_read": 0.0131
    },
-   "in_diff_pct": 767.1
+   "in_diff_pct": 1045.0
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -461,11 +479,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0173,
+    "input": 0.0131,
     "output": 1.28,
-    "cache_read": 0.0173
+    "cache_read": 0.0131
    },
-   "in_diff_pct": 1634.1
+   "in_diff_pct": 2190.1
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -515,11 +533,11 @@
     "id": "tencent/hy4-preview",
     "name": "Tencent: Hy4 preview",
     "base": "hy4 preview",
-    "input": 0.834,
-    "output": 2.501,
-    "cache_read": 0.042
+    "input": 0.7506,
+    "output": 2.2509,
+    "cache_read": 0.0378
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 11.1
   },
   {
    "model": "Hy3",
@@ -533,11 +551,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Space Bunny",
