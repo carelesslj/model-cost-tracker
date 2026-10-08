@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-07 22:47:38",
- "go_page_date": "2026年10月6日",
+ "updated_at": "2026-10-08 10:20:30",
+ "go_page_date": "2026年10月7日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -36,11 +36,11 @@
     "id": "z-ai/glm-5.3",
     "name": "Z.ai: GLM 5.3",
     "base": "glm 5.3",
-    "input": 0.07,
-    "output": 7.0,
-    "cache_read": 0.065
+    "input": 0.049,
+    "output": 3.39,
+    "cache_read": 0.048
    },
-   "in_diff_pct": 1900.0
+   "in_diff_pct": 2757.1
   },
   {
    "model": "GLM-5.2",
@@ -55,8 +55,8 @@
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
     "input": 0.171,
-    "output": 7.2,
-    "cache_read": 0.162
+    "output": 12.0,
+    "cache_read": 0.15
    },
    "in_diff_pct": 718.7
   },
@@ -72,11 +72,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 0.62,
+    "input": 0.65,
     "output": 15.0,
     "cache_read": 0.43
    },
-   "in_diff_pct": 383.9
+   "in_diff_pct": 361.5
   },
   {
    "model": "Kimi K2.7 Code",
@@ -371,11 +371,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.05,
+    "input": 0.3,
     "output": 1.2,
-    "cache_read": 0.02
+    "cache_read": 0.006
    },
-   "in_diff_pct": 200.0
+   "in_diff_pct": -50.0
   },
   {
    "model": "DeepSeek V4.1 Flash (Peak)",
@@ -389,11 +389,11 @@
     "id": "deepseek/deepseek-v4.1-flash",
     "name": "DeepSeek: DeepSeek V4.1 Flash",
     "base": "deepseek v4.1 flash",
-    "input": 0.05,
+    "input": 0.3,
     "output": 1.2,
-    "cache_read": 0.02
+    "cache_read": 0.006
    },
-   "in_diff_pct": 500.0
+   "in_diff_pct": 0.0
   },
   {
    "model": "DeepSeek V4 Pro (Off-Peak)",
@@ -693,6 +693,42 @@
     "cache_read": 0.02
    },
    "in_diff_pct": 100.0
+  },
+  {
+   "model": "Claude Haiku 5.5 (≤ 100K tokens)",
+   "input": 0.1,
+   "output": 0.5,
+   "cache_read": 0.01,
+   "cache_write": 0.125,
+   "quota": "$15",
+   "tier": null,
+   "or": {
+    "id": "anthropic/claude-haiku-5.5",
+    "name": "Anthropic: Claude Haiku 5.5",
+    "base": "claude haiku 5.5",
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.01
+   },
+   "in_diff_pct": 0.0
+  },
+  {
+   "model": "Claude Haiku 5.5 (> 100K tokens)",
+   "input": 0.5,
+   "output": 2.5,
+   "cache_read": 0.05,
+   "cache_write": 0.625,
+   "quota": "$15",
+   "tier": "长上下文档",
+   "or": {
+    "id": "anthropic/claude-haiku-5.5",
+    "name": "Anthropic: Claude Haiku 5.5",
+    "base": "claude haiku 5.5",
+    "input": 0.1,
+    "output": 0.5,
+    "cache_read": 0.01
+   },
+   "in_diff_pct": 400.0
   }
  ],
  "requests": [
@@ -875,6 +911,12 @@
    "h5": 2050,
    "weekly": 5100,
    "monthly": 10250
+  },
+  {
+   "model": "Claude Haiku 5.5",
+   "h5": 3850,
+   "weekly": 9620,
+   "monthly": 19230
   }
  ]
 }
