@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-09 04:26:27",
+ "updated_at": "2026-10-09 07:49:13",
  "go_page_date": "2026年10月8日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -36,11 +36,11 @@
     "id": "z-ai/glm-5.3",
     "name": "Z.ai: GLM 5.3",
     "base": "glm 5.3",
-    "input": 0.07,
+    "input": 0.039,
     "output": 3.39,
-    "cache_read": 0.048
+    "cache_read": 0.038
    },
-   "in_diff_pct": 1900.0
+   "in_diff_pct": 3489.7
   },
   {
    "model": "GLM-5.2",
@@ -54,11 +54,11 @@
     "id": "z-ai/glm-5.2",
     "name": "Z.ai: GLM 5.2",
     "base": "glm 5.2",
-    "input": 0.07,
+    "input": 0.069,
     "output": 4.3,
-    "cache_read": 0.07
+    "cache_read": 0.068
    },
-   "in_diff_pct": 1900.0
+   "in_diff_pct": 1929.0
   },
   {
    "model": "Kimi K3",
@@ -74,7 +74,7 @@
     "base": "kimi k3",
     "input": 0.82,
     "output": 13.5,
-    "cache_read": 0.55
+    "cache_read": 0.45
    },
    "in_diff_pct": 265.9
   },
@@ -108,11 +108,11 @@
     "id": "moonshotai/kimi-k2.6",
     "name": "MoonshotAI: Kimi K2.6",
     "base": "kimi k2.6",
-    "input": 0.4344,
+    "input": 0.465,
     "output": 2.45,
-    "cache_read": 0.12
+    "cache_read": 0.0975
    },
-   "in_diff_pct": 118.7
+   "in_diff_pct": 104.3
   },
   {
    "model": "LongCat-2.0",
@@ -461,11 +461,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0131,
+    "input": 0.0099,
     "output": 1.28,
-    "cache_read": 0.0131
+    "cache_read": 0.0099
    },
-   "in_diff_pct": 1045.0
+   "in_diff_pct": 1415.2
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -479,11 +479,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0131,
+    "input": 0.0099,
     "output": 1.28,
-    "cache_read": 0.0131
+    "cache_read": 0.0099
    },
-   "in_diff_pct": 2190.1
+   "in_diff_pct": 2930.3
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
