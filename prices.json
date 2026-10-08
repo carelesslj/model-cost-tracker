@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-08 18:31:55",
+ "updated_at": "2026-10-08 22:18:49",
  "go_page_date": "2026年10月8日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -108,11 +108,11 @@
     "id": "moonshotai/kimi-k2.6",
     "name": "MoonshotAI: Kimi K2.6",
     "base": "kimi k2.6",
-    "input": 0.465,
+    "input": 0.441,
     "output": 2.45,
-    "cache_read": 0.0975
+    "cache_read": 0.1224
    },
-   "in_diff_pct": 104.3
+   "in_diff_pct": 115.4
   },
   {
    "model": "LongCat-2.0",
@@ -407,11 +407,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9553,
-    "output": 1.9105,
-    "cache_read": 0.0796
+    "input": 0.2923,
+    "output": 0.5846,
+    "cache_read": 0.0244
    },
-   "in_diff_pct": -30.9
+   "in_diff_pct": 125.8
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -425,11 +425,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.9553,
-    "output": 1.9105,
-    "cache_read": 0.0796
+    "input": 0.2923,
+    "output": 0.5846,
+    "cache_read": 0.0244
    },
-   "in_diff_pct": 38.2
+   "in_diff_pct": 351.6
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -443,11 +443,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0075,
+    "input": 0.0173,
     "output": 1.28,
-    "cache_read": 0.0075
+    "cache_read": 0.0173
    },
-   "in_diff_pct": 1900.0
+   "in_diff_pct": 767.1
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -461,11 +461,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.0075,
+    "input": 0.0173,
     "output": 1.28,
-    "cache_read": 0.0075
+    "cache_read": 0.0173
    },
-   "in_diff_pct": 3900.0
+   "in_diff_pct": 1634.1
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
@@ -776,6 +776,12 @@
   },
   {
    "model": "LongCat 2.5 Preview Free",
+   "h5": null,
+   "weekly": null,
+   "monthly": null
+  },
+  {
+   "model": "Step 5 Preview Free",
    "h5": null,
    "weekly": null,
    "monthly": null
