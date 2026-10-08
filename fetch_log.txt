@@ -198,3 +198,4 @@
 [2026-10-08 21:34:33] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=0/2/59% | TP=100.0%
 [2026-10-08 22:35:33] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=2/3/59% | TP=100.0%
 [2026-10-08 23:36:35] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=4/3/59% | TP=100.0%
+[2026-10-09 00:37:33] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=4/3/59% | TP=100.0%
