@@ -214,3 +214,4 @@
 [2026-10-09 13:08:34] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=0/6/61% | TP=100.0%
 [2026-10-09 13:20:11] DeepSeek=23.38 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.38 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=0/6/61% | TP=no_credentials(本机会话凭证已 8 天未刷新，TP 写入权让渡主控设备)
 [2026-10-09 14:20:07] DeepSeek=23.38 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.38 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=0/6/61% | TP=no_credentials(本机会话凭证已 8 天未刷新，TP 写入权让渡主控设备)
+[2026-10-09 15:20:11] DeepSeek=23.38 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.38 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=48/25/70% | TP=no_credentials(本机会话凭证已 8 天未刷新，TP 写入权让渡主控设备)
