@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-10T01:25:15+08:00",
+ "generated_at": "2026-10-10T10:20:05+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2967,7 +2967,7 @@
   "2026-10-10": {
    "cash": {
     "DeepSeek": {
-     "value": 23.38,
+     "value": 23.35,
      "source": "auto",
      "first_value": 23.38
     },
@@ -3018,7 +3018,7 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-10-09T22:24:54.820Z",
+      "resets_at": "2026-10-10T07:20:05.403Z",
       "status": "ok",
       "first_percent": 2
      },
@@ -3037,7 +3037,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "01:25:15"
+   "fetched_at": "10:20:05"
   }
  }
 }
