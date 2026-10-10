@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-10 23:20:19",
- "go_page_date": "2026年10月8日",
+ "updated_at": "2026-10-11 06:20:12",
+ "go_page_date": "2026年10月10日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
   "openrouter": "https://openrouter.ai/api/v1/models"
@@ -72,11 +72,11 @@
     "id": "moonshotai/kimi-k3",
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
-    "input": 0.5,
-    "output": 13.5,
-    "cache_read": 0.28
+    "input": 0.8,
+    "output": 15.0,
+    "cache_read": 0.55
    },
-   "in_diff_pct": 500.0
+   "in_diff_pct": 275.0
   },
   {
    "model": "Kimi K2.7 Code",
@@ -108,11 +108,11 @@
     "id": "moonshotai/kimi-k2.6",
     "name": "MoonshotAI: Kimi K2.6",
     "base": "kimi k2.6",
-    "input": 0.441,
+    "input": 0.4344,
     "output": 2.45,
-    "cache_read": 0.1098
+    "cache_read": 0.1077
    },
-   "in_diff_pct": 115.4
+   "in_diff_pct": 118.7
   },
   {
    "model": "LongCat-2.0",
@@ -533,11 +533,11 @@
     "id": "tencent/hy4-preview",
     "name": "Tencent: Hy4 preview",
     "base": "hy4 preview",
-    "input": 0.834,
-    "output": 2.501,
-    "cache_read": 0.042
+    "input": 0.7506,
+    "output": 2.2509,
+    "cache_read": 0.0378
    },
-   "in_diff_pct": 0.0
+   "in_diff_pct": 11.1
   },
   {
    "model": "Hy3",
@@ -551,11 +551,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.132,
-    "output": 0.528,
-    "cache_read": 0.033
+    "input": 0.0825,
+    "output": 0.33,
+    "cache_read": 0.0206
    },
-   "in_diff_pct": 6.1
+   "in_diff_pct": 69.7
   },
   {
    "model": "Space Bunny",
