@@ -231,3 +231,4 @@
 [2026-10-10 09:20:23] DeepSeek=23.35 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.38 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=ERR(HTTPSConnectionPool(host='opencode.ai', port=443): Max retri) | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
 [2026-10-10 09:20:29] 价格拉取失败: HTTPSConnectionPool(host='opencode.ai', port=443): Max retries exceeded with url: /docs/zh-cn/go/ (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED
 [2026-10-10 10:20:05] DeepSeek=23.35 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.38 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=0/30/73% | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
+[2026-10-10 11:20:09] DeepSeek=23.35 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=186.38 | 火山=10.0 | ⚠火山余额低 | MiniMax=0.0 | ⚠MiniMax余额低 | Go=0/30/73% | TP=no_credentials(本机会话凭证已 9 天未刷新，TP 写入权让渡主控设备)
