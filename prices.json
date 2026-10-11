@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-11 06:20:12",
+ "updated_at": "2026-10-11 11:46:36",
  "go_page_date": "2026年10月10日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -73,7 +73,7 @@
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
     "input": 0.8,
-    "output": 15.0,
+    "output": 12.0,
     "cache_read": 0.55
    },
    "in_diff_pct": 275.0
@@ -108,11 +108,11 @@
     "id": "moonshotai/kimi-k2.6",
     "name": "MoonshotAI: Kimi K2.6",
     "base": "kimi k2.6",
-    "input": 0.4344,
-    "output": 2.45,
-    "cache_read": 0.1077
+    "input": 0.65,
+    "output": 3.41,
+    "cache_read": 0.15
    },
-   "in_diff_pct": 118.7
+   "in_diff_pct": 46.2
   },
   {
    "model": "LongCat-2.0",
