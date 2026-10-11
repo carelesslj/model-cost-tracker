@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-11 11:46:36",
+ "updated_at": "2026-10-11 18:54:20",
  "go_page_date": "2026年10月10日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -36,11 +36,11 @@
     "id": "z-ai/glm-5.3",
     "name": "Z.ai: GLM 5.3",
     "base": "glm 5.3",
-    "input": 0.039,
+    "input": 0.07,
     "output": 4.8,
-    "cache_read": 0.038
+    "cache_read": 0.05
    },
-   "in_diff_pct": 3489.7
+   "in_diff_pct": 1900.0
   },
   {
    "model": "GLM-5.2",
@@ -73,7 +73,7 @@
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
     "input": 0.8,
-    "output": 12.0,
+    "output": 10.0,
     "cache_read": 0.55
    },
    "in_diff_pct": 275.0
@@ -533,11 +533,11 @@
     "id": "tencent/hy4-preview",
     "name": "Tencent: Hy4 preview",
     "base": "hy4 preview",
-    "input": 0.7506,
-    "output": 2.2509,
-    "cache_read": 0.0378
+    "input": 0.834,
+    "output": 2.501,
+    "cache_read": 0.042
    },
-   "in_diff_pct": 11.1
+   "in_diff_pct": 0.0
   },
   {
    "model": "Hy3",
@@ -551,11 +551,11 @@
     "id": "tencent/hy3",
     "name": "Tencent: Hy3",
     "base": "hy3",
-    "input": 0.0825,
-    "output": 0.33,
-    "cache_read": 0.0206
+    "input": 0.132,
+    "output": 0.528,
+    "cache_read": 0.033
    },
-   "in_diff_pct": 69.7
+   "in_diff_pct": 6.1
   },
   {
    "model": "Space Bunny",
