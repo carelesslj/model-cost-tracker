@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-11T16:20:09+08:00",
+ "generated_at": "2026-10-11T17:20:09+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2961,15 +2961,6 @@
   },
   "2026-10-11": {
    "cash": {
-    "Kimi": {
-     "value": 7.55,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 7.55
-     },
-     "first_value": 7.55
-    },
     "DeepSeek": {
      "value": 22.96,
      "source": "auto",
@@ -2991,8 +2982,17 @@
      "source": "auto",
      "first_value": 10.0
     },
+    "Kimi": {
+     "value": 7.55,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 7.55
+     },
+     "first_value": 7.55
+    },
     "百炼": {
-     "value": 181.74,
+     "value": 180.57,
      "source": "auto",
      "first_value": 186.38
     },
@@ -3032,7 +3032,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "16:20:09"
+   "fetched_at": "17:20:09"
   }
  }
 }
