@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-12T10:20:02+08:00",
+ "generated_at": "2026-10-12T13:13:43+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -2989,17 +2989,6 @@
      "value": 179.35,
      "source": "auto",
      "first_value": 186.38
-    },
-    "MiniMax": {
-     "value": 0.0,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 0.0,
-      "credit": 0.0,
-      "owed": 0.0
-     },
-     "first_value": 0.0
     }
    },
    "plans": {
@@ -3032,30 +3021,19 @@
      "source": "auto"
     }
    },
-   "fetched_at": "23:56:11"
+   "fetched_at": "21:57:13"
   },
   "2026-10-12": {
    "cash": {
-    "MiniMax": {
-     "value": 0.0,
+    "DeepSeek": {
+     "value": 22.96,
      "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 0.0,
-      "credit": 0.0,
-      "owed": 0.0
-     },
-     "first_value": 0.0
+     "first_value": 23.42
     },
     "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
-    "DeepSeek": {
-     "value": 22.93,
-     "source": "auto",
-     "first_value": 22.96
+     "value": null,
+     "source": "no_credentials",
+     "error": "未配置火山引擎 AK/SK"
     },
     "Kimi": {
      "value": 7.55,
@@ -3072,9 +3050,20 @@
      "first_value": 0.0
     },
     "百炼": {
-     "value": 179.3,
+     "value": 179.37,
      "source": "auto",
-     "first_value": 179.35
+     "first_value": 186.38
+    },
+    "MiniMax": {
+     "value": 0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": 0.0
     }
    },
    "plans": {
@@ -3087,19 +3076,19 @@
     },
     "OpenCode Go": {
      "rolling": {
-      "percent": 1,
+      "percent": 9,
       "resets_at": "2026-10-12T06:45:14.000Z",
       "status": "ok",
       "first_percent": 2
      },
      "weekly": {
-      "percent": 0,
+      "percent": 3,
       "resets_at": "2026-10-19T00:00:00.000Z",
       "status": "ok",
       "first_percent": 1
      },
      "monthly": {
-      "percent": 73,
+      "percent": 75,
       "resets_at": "2026-10-17T07:38:53.000Z",
       "status": "ok",
       "first_percent": 58
@@ -3107,7 +3096,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "10:20:02"
+   "fetched_at": "13:13:43"
   }
  }
 }

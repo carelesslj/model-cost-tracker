@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-12 05:22:32",
+ "updated_at": "2026-10-12 13:14:02",
  "go_page_date": "2026年10月11日",
  "sources": {
   "go": "https://opencode.ai/docs/zh-cn/go/",
@@ -73,7 +73,7 @@
     "name": "MoonshotAI: Kimi K3",
     "base": "kimi k3",
     "input": 0.73,
-    "output": 13.5,
+    "output": 10.0,
     "cache_read": 0.55
    },
    "in_diff_pct": 311.0
@@ -425,11 +425,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.2088,
-    "output": 0.4176,
-    "cache_read": 0.0174
+    "input": 0.9553,
+    "output": 1.9105,
+    "cache_read": 0.0796
    },
-   "in_diff_pct": 216.1
+   "in_diff_pct": -30.9
   },
   {
    "model": "DeepSeek V4 Pro (Peak)",
@@ -443,11 +443,11 @@
     "id": "deepseek/deepseek-v4-pro",
     "name": "DeepSeek: DeepSeek V4 Pro 0423",
     "base": "deepseek v4 pro 0423",
-    "input": 0.2088,
-    "output": 0.4176,
-    "cache_read": 0.0174
+    "input": 0.9553,
+    "output": 1.9105,
+    "cache_read": 0.0796
    },
-   "in_diff_pct": 532.2
+   "in_diff_pct": 38.2
   },
   {
    "model": "DeepSeek V4 Flash (Off-Peak)",
@@ -461,11 +461,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.03,
+    "input": 0.0228,
     "output": 1.28,
-    "cache_read": 0.03
+    "cache_read": 0.0228
    },
-   "in_diff_pct": 400.0
+   "in_diff_pct": 557.9
   },
   {
    "model": "DeepSeek V4 Flash (Peak)",
@@ -479,11 +479,11 @@
     "id": "deepseek/deepseek-v4-flash",
     "name": "DeepSeek: DeepSeek V4 Flash 0423",
     "base": "deepseek v4 flash 0423",
-    "input": 0.03,
+    "input": 0.0228,
     "output": 1.28,
-    "cache_read": 0.03
+    "cache_read": 0.0228
    },
-   "in_diff_pct": 900.0
+   "in_diff_pct": 1215.8
   },
   {
    "model": "DeepSeek V4 Flash Vision Exp (Off-Peak)",
