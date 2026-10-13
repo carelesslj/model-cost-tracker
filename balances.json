@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-14T05:20:04+08:00",
+ "generated_at": "2026-10-14T05:41:24+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -3171,30 +3171,19 @@
      "source": "auto"
     }
    },
-   "fetched_at": "23:20:12"
+   "fetched_at": "22:20:41"
   },
   "2026-10-14": {
    "cash": {
     "DeepSeek": {
      "value": 22.39,
      "source": "auto",
-     "first_value": 22.39
+     "first_value": 22.91
     },
     "火山": {
      "value": 10.0,
      "source": "auto",
      "first_value": 10.0
-    },
-    "MiniMax": {
-     "value": 0.0,
-     "source": "auto",
-     "detail": {
-      "cash": 0.0,
-      "voucher": 0.0,
-      "credit": 0.0,
-      "owed": 0.0
-     },
-     "first_value": 0.0
     },
     "Kimi": {
      "value": 7.55,
@@ -3206,14 +3195,25 @@
      "first_value": 7.55
     },
     "智谱": {
-     "value": 0.0,
-     "source": "auto",
-     "first_value": 0.0
+     "value": null,
+     "source": "no_credentials",
+     "error": "本机未配置智谱 key"
     },
     "百炼": {
      "value": 179.29,
      "source": "auto",
      "first_value": 179.29
+    },
+    "MiniMax": {
+     "value": 0.0,
+     "source": "auto",
+     "detail": {
+      "cash": 0.0,
+      "voucher": 0.0,
+      "credit": 0.0,
+      "owed": 0.0
+     },
+     "first_value": 0.0
     }
    },
    "plans": {
@@ -3227,7 +3227,7 @@
     "OpenCode Go": {
      "rolling": {
       "percent": 0,
-      "resets_at": "2026-10-14T02:20:04.045Z",
+      "resets_at": "2026-10-14T02:41:35.489Z",
       "status": "ok",
       "first_percent": 2
      },
@@ -3246,7 +3246,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "05:20:04"
+   "fetched_at": "05:41:24"
   }
  }
 }
