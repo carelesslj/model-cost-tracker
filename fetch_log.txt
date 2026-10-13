@@ -240,3 +240,5 @@
 [2026-10-13 14:10:50] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
 [2026-10-13 15:12:04] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=0/53/100% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
 [2026-10-13 15:12:10] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
+[2026-10-13 16:13:45] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=0/53/100% | TP=error(Token Plan 会话已过期或响应异常，需重新抓取（详见 .secrets aliyun_con)
+[2026-10-13 16:13:50] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
