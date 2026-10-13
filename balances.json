@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated_at": "2026-10-13T11:32:20+08:00",
+ "generated_at": "2026-10-13T12:25:48+08:00",
  "cash_providers": [
   "DeepSeek",
   "智谱",
@@ -3100,16 +3100,6 @@
   },
   "2026-10-13": {
    "cash": {
-    "DeepSeek": {
-     "value": 22.87,
-     "source": "auto",
-     "first_value": 22.91
-    },
-    "火山": {
-     "value": 10.0,
-     "source": "auto",
-     "first_value": 10.0
-    },
     "MiniMax": {
      "value": 0.0,
      "source": "auto",
@@ -3121,10 +3111,10 @@
      },
      "first_value": 0.0
     },
-    "智谱": {
-     "value": 0.0,
+    "DeepSeek": {
+     "value": 22.87,
      "source": "auto",
-     "first_value": 0.0
+     "first_value": 22.91
     },
     "Kimi": {
      "value": 7.55,
@@ -3135,10 +3125,20 @@
      },
      "first_value": 7.55
     },
+    "火山": {
+     "value": 10.0,
+     "source": "auto",
+     "first_value": 10.0
+    },
     "百炼": {
      "value": 179.29,
      "source": "auto",
      "first_value": 179.29
+    },
+    "智谱": {
+     "value": 0.0,
+     "source": "auto",
+     "first_value": 0.0
     }
    },
    "plans": {
@@ -3171,7 +3171,7 @@
      "source": "auto"
     }
    },
-   "fetched_at": "11:32:20"
+   "fetched_at": "12:25:48"
   }
  }
 }

@@ -260,3 +260,5 @@
 [2026-10-13 10:44:06] 价格拉取失败: HTTPSConnectionPool(host='opencode.ai', port=443): Max retries exceeded with url: /docs/zh-cn/go/ (Caused by NameResolutionError("<urllib3.connection.
 [2026-10-13 11:32:20] DeepSeek=22.87 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=179.29 | 火山=10.0 | ⚠火山余额低 | MiniMax=ERR(400 Client Error: Bad Request for url: https://www.minimaxi.) | Go=68/53/100% | TP=no_credentials(本机会话凭证已 12 天未刷新，TP 写入权让渡主控设备)
 [2026-10-13 11:32:22] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
+[2026-10-13 12:25:48] DeepSeek=22.87 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=179.29 | 火山=10.0 | ⚠火山余额低 | MiniMax=ERR(400 Client Error: Bad Request for url: https://www.minimaxi.) | Go=68/53/100% | TP=no_credentials(本机会话凭证已 12 天未刷新，TP 写入权让渡主控设备)
+[2026-10-13 12:25:49] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
