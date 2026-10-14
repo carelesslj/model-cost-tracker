@@ -298,3 +298,5 @@
 [2026-10-15 03:20:21] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
 [2026-10-15 04:20:14] DeepSeek=22.33 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=179.22 | 火山=10.0 | ⚠火山余额低 | MiniMax=ERR(400 Client Error: Bad Request for url: https://www.minimaxi.) | Go=0/53/100% | TP=no_credentials(本机会话凭证已 13 天未刷新，TP 写入权让渡主控设备)
 [2026-10-15 04:20:20] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
+[2026-10-15 05:20:15] DeepSeek=22.33 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=179.22 | 火山=10.0 | ⚠火山余额低 | MiniMax=ERR(400 Client Error: Bad Request for url: https://www.minimaxi.) | Go=0/53/100% | TP=no_credentials(本机会话凭证已 13 天未刷新，TP 写入权让渡主控设备)
+[2026-10-15 05:20:16] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
