@@ -368,3 +368,5 @@
 [2026-10-17 22:48:35] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
 [2026-10-17 23:49:33] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=ERR(403 Client Error: Forbidden for url: https://opencode.ai/zen) | TP=no_credentials(本机会话凭证已 8 天未刷新，TP 写入权让渡主控设备)
 [2026-10-17 23:49:35] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
+[2026-10-18 00:50:34] DeepSeek=ERR(本机未配置 DeepSeek key) | 智谱=ERR(本机未配置智谱 key) | Kimi=ERR(本机未配置 Kimi key) | 百炼=ERR(未配置阿里云 AK/SK) | 火山=ERR(未配置火山引擎 AK/SK) | MiniMax=ERR(未抓取 MiniMax 控制台会话) | Go=ERR(403 Client Error: Forbidden for url: https://opencode.ai/zen) | TP=no_credentials(本机会话凭证已 8 天未刷新，TP 写入权让渡主控设备)
+[2026-10-18 00:50:38] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
