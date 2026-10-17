@@ -350,3 +350,5 @@
 [2026-10-17 19:58:04] 价格拉取失败: HTTPSConnectionPool(host='opencode.ai', port=443): Max retries exceeded with url: /docs/zh-cn/go/ (Caused by NameResolutionError("<urllib3.connection.
 [2026-10-17 20:52:10] DeepSeek=ERR(HTTPSConnectionPool(host='api.deepseek.com', port=443): Max ) | 智谱=ERR(HTTPSConnectionPool(host='www.bigmodel.cn', port=443): Max r) | Kimi=ERR(HTTPSConnectionPool(host='api.moonshot.cn', port=443): Max r) | 百炼=ERR(HTTPSConnectionPool(host='business.aliyuncs.com', port=443):) | 火山=ERR(HTTPSConnectionPool(host='billing.volcengineapi.com', port=4) | MiniMax=ERR(HTTPSConnectionPool(host='www.minimaxi.com', port=443): Max ) | Go=ERR(HTTPSConnectionPool(host='opencode.ai', port=443): Max retri) | TP=no_credentials(本机会话凭证已 16 天未刷新，TP 写入权让渡主控设备)
 [2026-10-17 20:52:12] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
+[2026-10-17 21:20:14] DeepSeek=23.28 | 智谱=0.0 | ⚠智谱余额低 | Kimi=7.55 | ⚠Kimi余额低 | 百炼=176.23 | 火山=10.0 | ⚠火山余额低 | MiniMax=ERR(400 Client Error: Bad Request for url: https://www.minimaxi.) | Go=ERR(403 Client Error: Forbidden for url: https://opencode.ai/zen) | TP=no_credentials(本机会话凭证已 16 天未刷新，TP 写入权让渡主控设备)
+[2026-10-17 21:20:16] 价格拉取失败: 未找到 Go 价格表（页面结构可能已变更）
